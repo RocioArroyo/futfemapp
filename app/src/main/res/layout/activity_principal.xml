@@ -8,7 +8,7 @@
     android:layout_gravity="center"
     android:gravity="center"
     tools:context=".ui.PrincipalActivity"
-    android:background="@color/violeta">
+    android:background="@color/grisFondo">
 
     <ProgressBar
         android:id="@+id/idProgressBar"

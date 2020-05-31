@@ -9,4 +9,5 @@ if ($result) {
 } else {
       echo "REGISTRO FAIL";
 }
+mysqli_close($conn);
 ?>

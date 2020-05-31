@@ -9,4 +9,5 @@ if (mysqli_num_rows($result)==1){
 }else{
 	echo "LOGIN FAIL";
 }
+mysqli_close($conn);
 ?>

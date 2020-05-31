@@ -39,14 +39,16 @@ public class EquipoDAO {
             if (!s.equalsIgnoreCase(context.getString(R.string.clasificacion_fail))) {
                 jsonArray = new JSONArray(s);
                 List<EquipoDTO> listaEquipos = new ArrayList<>();
+                EquipoDTO equipoDTO = new EquipoDTO();
+                listaEquipos.add(equipoDTO);
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    EquipoDTO equipoDTO = new EquipoDTO();
+                    equipoDTO = new EquipoDTO();
                     equipoDTO.setEquId(jsonObject.getString("equ_id"));
                     equipoDTO.setEquNombre(jsonObject.getString("equ_nombre"));
                     equipoDTO.setEquPuntos(jsonObject.getInt("equ_puntos"));
                     equipoDTO.setEquParGanado(jsonObject.getInt("equ_par_ganados"));
-                    equipoDTO.setEquParEmpatados(jsonObject.getInt("equ_par_empatado"));
+                    equipoDTO.setEquParEmpatados(jsonObject.getInt("equ_par_empatados"));
                     equipoDTO.setEquParPerdidos(jsonObject.getInt("equ_par_perdidos"));
                     equipoDTO.setEquGolesFavor(jsonObject.getInt("equ_goles_favor"));
                     equipoDTO.setEquGolesContra(jsonObject.getInt("equ_goles_contra"));
@@ -60,7 +62,7 @@ public class EquipoDAO {
                 Log.i(TAG, "validarEquipo: ERROR");
             }
         } catch (JSONException e) {
-            Log.e(TAG, "validarPassword: Error al validar la recuperacion de a clasifiacion", e);
+            Log.e(TAG, "validarPassword: Error al validar la recuperacion de la clasifiacion", e);
         }
     }
 

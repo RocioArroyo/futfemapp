@@ -1,24 +1,25 @@
 <?php
 require "conn.php";
+mysqli_set_charset($conn, 'utf8');
 $mysql_query="SELECT * FROM EQUIPO ORDER BY EQU_PUNTOS DESC";
-$clasificacion=array();
 $result=mysqli_query($conn,$mysql_query);
+$json_array=array();
 if (mysqli_num_rows($result)>0) {
-	while($fila=mysqli_fetch_array($result)) {
-		$id=$fila['equ_id'];
-		$nombre=$fila['equ_nombre'];
-		$puntos=$fila['equ_puntos'];
-		$parganado=$fila['equ_par_ganados'];
-		$parempatado=$fila['equ_par_empatados'];
-		$parperdido=$fila['equ_par_perdidos'];
-		$golfavor=$fila['equ_goles_favor'];
-		$golcontra=$fila['equ_goles_contra'];
+	while($fila=mysqli_fetch_assoc($result)) {
+		$rowArray['equ_id']=$fila['equ_id'];
+		$rowArray['equ_nombre']=$fila['equ_nombre'];
+		$rowArray['equ_puntos']=$fila['equ_puntos'];
+		$rowArray['equ_par_ganados']=$fila['equ_par_ganados'];
+		$rowArray['equ_par_empatados']=$fila['equ_par_empatados'];
+		$rowArray['equ_par_perdidos']=$fila['equ_par_perdidos'];
+		$rowArray['equ_goles_favor']=$fila['equ_goles_favor'];
+		$rowArray['equ_goles_contra']=$fila['equ_goles_contra'];
 
-		$clasificaciones[]=array('equ_id'=>$id, 'equ_nombre'=>$nombre, 'equ_puntos'=>$puntos, 'equ_par_ganados'=>$parganado, 'equ_par_empatado'=>$parempatado, 'equ_par_perdidos'=>$parperdido, 'equ_goles_favor'=>$golfavor, 'equ_goles_contra'=>$golcontra);
+		array_push($json_array, $rowArray);
 	}
-	$json_string=json_encode($clasificaciones);
-	echo $json_string;
+	echo json_encode($json_array);
 }else{
 	echo "CLASIFICACION FAIL";
 }
+mysqli_close($conn);
 ?>
