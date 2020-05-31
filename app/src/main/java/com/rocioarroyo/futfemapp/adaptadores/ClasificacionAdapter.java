@@ -53,13 +53,8 @@ public class ClasificacionAdapter extends ArrayAdapter {
         }
         if (posicion == 0) {
             vistaTag.posicion.setText("  ");
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                vistaTag.icono.setImageDrawable(ponerIconoAdecuadoDrawable(posicion));
-                vistaTag.icono.setVisibility(ImageView.INVISIBLE);
-            } else {
-                vistaTag.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
-                vistaTag.icono.setVisibility(ImageView.INVISIBLE);
-            }
+            vistaTag.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
+            vistaTag.icono.setVisibility(ImageView.INVISIBLE);
             vistaTag.nombre.setText(getContext().getString(R.string.nombre));
             vistaTag.puntos.setText(getContext().getString(R.string.puntos));
             vistaTag.partidosJugados.setText(getContext().getString(R.string.partidos_jugados));
@@ -71,11 +66,7 @@ public class ClasificacionAdapter extends ArrayAdapter {
             vistaTag.golesDiferencia.setText(getContext().getString(R.string.goles_diferencia));
         } else {
             vistaTag.posicion.setText(Integer.toString(posicion));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                vistaTag.icono.setImageDrawable(ponerIconoAdecuadoDrawable(posicion));
-            } else {
-                vistaTag.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
-            }
+            vistaTag.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
             vistaTag.nombre.setText(datos.get(posicion).getEquNombre().split("-")[1]);
             vistaTag.puntos.setText(Integer.toString(datos.get(posicion).getEquPuntos()));
             vistaTag.partidosJugados.setText(Integer.toString(partidosJugados(datos.get(posicion).getEquParGanado(), datos.get(posicion).getEquParEmpatados(), datos.get(posicion).getEquParPerdidos())));
@@ -97,30 +88,43 @@ public class ClasificacionAdapter extends ArrayAdapter {
         return partidosGnados+partidosEmpatados+partidosPerdidos;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public Drawable ponerIconoAdecuadoDrawable(int posicion) {
-        if(posicion==0){
-            return getContext().getDrawable(R.drawable.ic_equipos);
-        }else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
-            return getContext().getDrawable(R.drawable.ic_barcelona16);
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_madrid))) {
-            return getContext().getDrawable(R.drawable.ic_atmadrid16);
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_bilbao))) {
-            return getContext().getDrawable(R.drawable.ic_at_bilbao16);
-        } else {
-            return getContext().getDrawable(R.drawable.ic_equipos);
-        }
-    }
-
     public int ponerIconoAdecuadoMipmap(int posicion) {
         if(posicion==0){
-            return R.mipmap.ic_equipos16_foreground;
+            return R.mipmap.ic_equipos128_foreground;
         }else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
-            return R.mipmap.ic_barcelona16_foreground;
+            return R.mipmap.ic_barcelona128_foreground;
         } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_madrid))) {
-            return R.mipmap.ic_atmadrid16_foreground;
+            return R.mipmap.ic_atmadrid128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_bilbao))) {
+            return R.mipmap.ic_bilbao128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.betis))) {
+            return R.mipmap.ic_betis128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.deportivo))) {
+            return R.mipmap.ic_depor128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.espanyol))) {
+            return R.mipmap.ic_espanyol128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.levante))) {
+            return R.mipmap.ic_levante128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.logrono))) {
+            return R.mipmap.ic_logrono128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.madrid))) {
+            return R.mipmap.ic_madrid128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.rayo))) {
+            return R.mipmap.ic_rayo128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.sevilla))) {
+            return R.mipmap.ic_sevilla128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.sociedad))) {
+            return R.mipmap.ic_sociedad128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.sporting))) {
+            return R.mipmap.ic_sporting128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.tacones))) {
+            return R.mipmap.ic_tacon128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.tenerife))) {
+            return R.mipmap.ic_tenerife128_foreground;
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.valencia))) {
+            return R.mipmap.ic_valencia128_foreground;
         } else {
-            return R.mipmap.ic_equipos16_foreground;
+            return R.mipmap.ic_equipos128_foreground;
         }
     }
 

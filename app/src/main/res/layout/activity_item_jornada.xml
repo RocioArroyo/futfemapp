@@ -11,7 +11,7 @@
         android:layout_height="100dp"
         android:layout_weight="1"
         android:gravity="center"
-        app:srcCompat="@mipmap/ic_equipos32_foreground" />
+        app:srcCompat="@mipmap/ic_equipos128_foreground" />
 
     <LinearLayout
         android:layout_width="40dp"
@@ -87,6 +87,6 @@
         android:layout_height="100dp"
         android:layout_weight="1"
         android:gravity="center"
-        app:srcCompat="@mipmap/ic_equipos32_foreground" />
+        app:srcCompat="@mipmap/ic_equipos128_foreground" />
 
 </LinearLayout>
