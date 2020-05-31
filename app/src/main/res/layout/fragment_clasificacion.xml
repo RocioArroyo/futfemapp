@@ -25,23 +25,22 @@
 
             <TextView
                 android:id="@+id/tvPosicion"
-                android:layout_width="2dp"
-                android:layout_height="wrap_content"
+                android:layout_width="1dp"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center" />
 
             <TextView
                 android:id="@+id/tvNombre"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:layout_height="25dp"
                 android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/nombre" />
+                android:gravity="left" />
 
             <TextView
                 android:id="@+id/tvPuntos"
                 android:layout_width="3dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/puntos" />
@@ -49,7 +48,7 @@
             <TextView
                 android:id="@+id/tvPartidosJugados"
                 android:layout_width="2dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/partidos_jugados" />
@@ -57,7 +56,7 @@
             <TextView
                 android:id="@+id/tvPartidosGanados"
                 android:layout_width="2dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/partidos_ganados" />
@@ -65,7 +64,7 @@
             <TextView
                 android:id="@+id/tvPartidosEmpatados"
                 android:layout_width="2dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/partidos_empatados" />
@@ -73,7 +72,7 @@
             <TextView
                 android:id="@+id/tvParidosPerdidos"
                 android:layout_width="2dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/partidos_perdidos" />
@@ -81,7 +80,7 @@
             <TextView
                 android:id="@+id/tvGolesFavor"
                 android:layout_width="3dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/goles_favor" />
@@ -89,7 +88,7 @@
             <TextView
                 android:id="@+id/tvGolesContra"
                 android:layout_width="3dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/goles_contra" />
@@ -97,7 +96,7 @@
             <TextView
                 android:id="@+id/tvGolesDiferencia"
                 android:layout_width="3dp"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/goles_diferencia" />

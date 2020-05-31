@@ -12,92 +12,90 @@
 
         <TextView
             android:id="@+id/tvPosicionE"
-            android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number" />
 
+        <ImageView
+            android:id="@+id/idIconoEquipo"
+            android:layout_width="17dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:gravity="left" />
+
         <TextView
             android:id="@+id/tvNombreE"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_width="3dp"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="left"
-            android:inputType="text"
-            android:text="@string/nombre"/>
+            android:inputType="text"/>
 
         <TextView
             android:id="@+id/tvPuntosE"
             android:layout_width="3dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/puntos"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvPartidosJugadosE"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/partidos_jugados"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvPartidosGanadosE"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/partidos_ganados"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvPartidosEmpatadosE"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/partidos_empatados"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvPartidosPerdidosE"
             android:layout_width="2dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/partidos_perdidos"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvGolesFavorE"
             android:layout_width="3dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/goles_favor"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvGolesContraE"
             android:layout_width="3dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/goles_contra"/>
+            android:inputType="number"/>
 
         <TextView
             android:id="@+id/tvGolesDiferenciaE"
             android:layout_width="3dp"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:inputType="number"
-            android:text="@string/goles_diferencia"/>
+            android:inputType="number"/>
 
     </LinearLayout>
 </LinearLayout>

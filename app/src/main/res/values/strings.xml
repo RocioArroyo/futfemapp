@@ -46,4 +46,20 @@
     <string name="item_noticias">Noticias</string>
     <string name="clasificacion_fail" translatable="false">CLASIFICACION FAIL</string>
     <string name="title_wait">Por favor espere...</string>
+    <string name="barcelona" translatable="false">FCB</string>
+    <string name="at_madrid" translatable="false">ATM</string>
+    <string name="levante" translatable="false">LUD</string>
+    <string name="deportivo" translatable="false">DEP</string>
+    <string name="at_bilbao" translatable="false">ATH</string>
+    <string name="sociedad" translatable="false">RSO</string>
+    <string name="logrono" translatable="false">EDF</string>
+    <string name="rayo" translatable="false">RVM</string>
+    <string name="tenerife" translatable="false">UDG</string>
+    <string name="tacones" translatable="false">TAC</string>
+    <string name="sevilla" translatable="false">SFC</string>
+    <string name="betis" translatable="false">RBB</string>
+    <string name="madrid" translatable="false">MAD</string>
+    <string name="sporting" translatable="false">SPH</string>
+    <string name="valencia" translatable="false">VCF</string>
+    <string name="espanyol" translatable="false">ESP</string>
 </resources>

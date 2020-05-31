@@ -2,11 +2,16 @@ package com.rocioarroyo.futfemapp.adaptadores;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
@@ -32,6 +37,7 @@ public class ClasificacionAdapter extends ArrayAdapter {
             view = layoutInflater.inflate(R.layout.activity_item_clasificacion, null);
             vistaTag = new VistaTag();
             vistaTag.posicion = view.findViewById(R.id.tvPosicionE);
+            vistaTag.icono = view.findViewById(R.id.idIconoEquipo);
             vistaTag.nombre = view.findViewById(R.id.tvNombreE);
             vistaTag.puntos = view.findViewById(R.id.tvPuntosE);
             vistaTag.partidosJugados = view.findViewById(R.id.tvPartidosJugadosE);
@@ -45,8 +51,14 @@ public class ClasificacionAdapter extends ArrayAdapter {
         } else {
             vistaTag = (VistaTag) view.getTag();
         }
-        vistaTag.posicion.setText(Integer.toString(posicion));
-        vistaTag.nombre.setText(datos.get(posicion).getEquNombre());
+        int posicionClasificacion = posicion+1;
+        vistaTag.posicion.setText(Integer.toString(posicionClasificacion));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            vistaTag.icono.setImageDrawable(ponerIconoAdecuado(posicion));
+        } else {
+            vistaTag.icono.setImageResource(R.mipmap.ic_logos_foreground);
+        }
+        vistaTag.nombre.setText(datos.get(posicion).getEquNombre().split("-")[1]);
         vistaTag.puntos.setText(Integer.toString(datos.get(posicion).getEquPuntos()));
         vistaTag.partidosJugados.setText(Integer.toString(partidosJugados(datos.get(posicion).getEquParGanado(), datos.get(posicion).getEquParEmpatados(), datos.get(posicion).getEquParPerdidos())));
         vistaTag.partidosGanados.setText(Integer.toString(datos.get(posicion).getEquParGanado()));
@@ -65,10 +77,21 @@ public class ClasificacionAdapter extends ArrayAdapter {
     private int partidosJugados(int partidosGnados, int partidosEmpatados, int partidosPerdidos) {
         return partidosGnados+partidosEmpatados+partidosPerdidos;
     }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public Drawable ponerIconoAdecuado(int posicion) {
+        if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
+            return getContext().getDrawable(R.drawable.ic_barcelona);
+        } else {
+            return getContext().getDrawable(R.drawable.ic_barcelona);
+        }
+    }
+
 }
 
 class VistaTag {
     TextView posicion;
+    ImageView icono;
     TextView nombre;
     TextView puntos;
     TextView partidosJugados;
