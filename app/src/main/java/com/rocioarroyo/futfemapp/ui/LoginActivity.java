@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
@@ -81,12 +82,12 @@ public class LoginActivity extends AppCompatActivity {
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtPassRepeat.setVisibility(TextInputEditText.INVISIBLE);
+                txtPassRepeat.setVisibility(TextInputEditText.GONE);
                 btnRegistrarse.setVisibility(Button.GONE);
                 txtRegistro.setVisibility(TextView.VISIBLE);
                 btnLogin.setVisibility(Button.VISIBLE);
                 txtLogin.setVisibility(TextView.GONE);
-                txtLayoutPassRepeat.setVisibility(TextInputLayout.INVISIBLE);
+                txtLayoutPassRepeat.setVisibility(TextInputLayout.GONE);
                 btnRecordarPass.setVisibility(Button.GONE);
                 txtRecordarPass.setVisibility(TextView.VISIBLE);
                 txtLayoutPass.setVisibility(TextInputLayout.VISIBLE);

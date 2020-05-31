@@ -102,9 +102,11 @@ public class ClasificacionAdapter extends ArrayAdapter {
         if(posicion==0){
             return getContext().getDrawable(R.drawable.ic_equipos);
         }else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
-            return getContext().getDrawable(R.drawable.ic_barcelona);
+            return getContext().getDrawable(R.drawable.ic_barcelona16);
         } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_madrid))) {
-            return getContext().getDrawable(R.drawable.ic_atmadrid);
+            return getContext().getDrawable(R.drawable.ic_atmadrid16);
+        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_bilbao))) {
+            return getContext().getDrawable(R.drawable.ic_at_bilbao16);
         } else {
             return getContext().getDrawable(R.drawable.ic_equipos);
         }

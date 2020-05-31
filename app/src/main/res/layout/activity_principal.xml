@@ -10,30 +10,6 @@
     tools:context=".ui.PrincipalActivity"
     android:background="@color/grisFondo">
 
-    <ProgressBar
-        android:id="@+id/idProgressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_gravity="center"
-        android:max="100"
-        android:progress="1"
-        android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/idEsperar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title_wait"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textColor="@color/negro"
-        android:visibility="gone"/>
-
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"

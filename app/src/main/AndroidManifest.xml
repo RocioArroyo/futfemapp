@@ -9,14 +9,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_logol_foreground"
+        android:icon="@mipmap/ic_logo128_foreground"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:usesCleartextTraffic="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.LoginActivity">
+        <activity android:name=".ui.LoginActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
