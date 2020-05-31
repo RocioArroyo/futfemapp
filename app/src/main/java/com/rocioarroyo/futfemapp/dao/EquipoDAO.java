@@ -44,7 +44,6 @@ public class EquipoDAO {
                     EquipoDTO equipoDTO = new EquipoDTO();
                     equipoDTO.setEquId(jsonObject.getString("equ_id"));
                     equipoDTO.setEquNombre(jsonObject.getString("equ_nombre"));
-                    equipoDTO.setEquPosicion(jsonObject.getInt("equ_posicion"));
                     equipoDTO.setEquPuntos(jsonObject.getInt("equ_puntos"));
                     equipoDTO.setEquParGanado(jsonObject.getInt("equ_par_ganados"));
                     equipoDTO.setEquParEmpatados(jsonObject.getInt("equ_par_empatado"));

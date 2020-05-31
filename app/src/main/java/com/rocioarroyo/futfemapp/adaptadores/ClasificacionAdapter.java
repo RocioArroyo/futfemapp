@@ -45,7 +45,7 @@ public class ClasificacionAdapter extends ArrayAdapter {
         } else {
             vistaTag = (VistaTag) view.getTag();
         }
-        vistaTag.posicion.setText(Integer.toString(datos.get(posicion).getEquPosicion()));
+        vistaTag.posicion.setText(Integer.toString(posicion));
         vistaTag.nombre.setText(datos.get(posicion).getEquNombre());
         vistaTag.puntos.setText(Integer.toString(datos.get(posicion).getEquPuntos()));
         vistaTag.partidosJugados.setText(Integer.toString(partidosJugados(datos.get(posicion).getEquParGanado(), datos.get(posicion).getEquParEmpatados(), datos.get(posicion).getEquParPerdidos())));

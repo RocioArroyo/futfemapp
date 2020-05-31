@@ -8,7 +8,6 @@ public class EquipoDTO implements Parcelable {
 
     private String equId;
     private String equNombre;
-    private int equPosicion;
     private int equPuntos;
     private int equParGanado;
     private int equParEmpatados;
@@ -19,10 +18,9 @@ public class EquipoDTO implements Parcelable {
     public EquipoDTO() {
     }
 
-    public EquipoDTO(String equId, String equNombre, int equPosicion, int equPuntos, int equParGanado, int equParEmpatados, int equParPerdidos, int equGolesFavor, int equGolesContra) {
+    public EquipoDTO(String equId, String equNombre, int equPuntos, int equParGanado, int equParEmpatados, int equParPerdidos, int equGolesFavor, int equGolesContra) {
         this.equId = equId;
         this.equNombre = equNombre;
-        this.equPosicion = equPosicion;
         this.equPuntos = equPuntos;
         this.equParGanado = equParGanado;
         this.equParEmpatados = equParEmpatados;
@@ -34,7 +32,6 @@ public class EquipoDTO implements Parcelable {
     private EquipoDTO(Parcel in) {
         equId = in.readString();
         equNombre = in.readString();
-        equPosicion = in.readInt();
         equPuntos = in.readInt();
         equParGanado = in.readInt();
         equParEmpatados = in.readInt();
@@ -69,14 +66,6 @@ public class EquipoDTO implements Parcelable {
 
     public void setEquNombre(String equNombre) {
         this.equNombre = equNombre;
-    }
-
-    public int getEquPosicion() {
-        return equPosicion;
-    }
-
-    public void setEquPosicion(int equPosicion) {
-        this.equPosicion = equPosicion;
     }
 
     public int getEquPuntos() {
@@ -136,7 +125,6 @@ public class EquipoDTO implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(equId);
         dest.writeString(equNombre);
-        dest.writeInt(equPosicion);
         dest.writeInt(equPuntos);
         dest.writeInt(equParGanado);
         dest.writeInt(equParEmpatados);
