@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/iClasificacion"
+        android:title="@string/item_clasificacion"
+        android:icon="@drawable/ic_clasificacion"/>
+
+    <item android:id="@+id/iJornada"
+        android:title="@string/item_jornada"
+        android:icon="@drawable/ic_jornada" />
+
+    <item android:id="@+id/iEquipos"
+        android:title="@string/item_equipos"
+        android:icon="@drawable/ic_equipos"/>
+
+    <item android:id="@+id/iNoticias"
+        android:title="@string/item_noticias"
+        android:icon="@drawable/ic_noticias"/>
+
+</menu>

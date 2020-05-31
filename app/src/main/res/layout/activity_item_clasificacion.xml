@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/violeta">
+
+    <LinearLayout
+        android:id="@+id/llhEquipo1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvPosicionE"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/tvNombreE"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:inputType="text"
+            android:text="@string/nombre"/>
+
+        <TextView
+            android:id="@+id/tvPuntosE"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/puntos"/>
+
+        <TextView
+            android:id="@+id/tvPartidosJugadosE"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/partidos_jugados"/>
+
+        <TextView
+            android:id="@+id/tvPartidosGanadosE"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/partidos_ganados"/>
+
+        <TextView
+            android:id="@+id/tvPartidosEmpatadosE"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/partidos_empatados"/>
+
+        <TextView
+            android:id="@+id/tvPartidosPerdidosE"
+            android:layout_width="2dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/partidos_perdidos"/>
+
+        <TextView
+            android:id="@+id/tvGolesFavorE"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/goles_favor"/>
+
+        <TextView
+            android:id="@+id/tvGolesContraE"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/goles_contra"/>
+
+        <TextView
+            android:id="@+id/tvGolesDiferenciaE"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:inputType="number"
+            android:text="@string/goles_diferencia"/>
+
+    </LinearLayout>
+</LinearLayout>

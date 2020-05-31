@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llvGenerico"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:background="@color/violeta">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <LinearLayout
+            android:id="@+id/llhCabecera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvPosicion"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/tvNombre"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/nombre" />
+
+            <TextView
+                android:id="@+id/tvPuntos"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/puntos" />
+
+            <TextView
+                android:id="@+id/tvPartidosJugados"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/partidos_jugados" />
+
+            <TextView
+                android:id="@+id/tvPartidosGanados"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/partidos_ganados" />
+
+            <TextView
+                android:id="@+id/tvPartidosEmpatados"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/partidos_empatados" />
+
+            <TextView
+                android:id="@+id/tvParidosPerdidos"
+                android:layout_width="2dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/partidos_perdidos" />
+
+            <TextView
+                android:id="@+id/tvGolesFavor"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/goles_favor" />
+
+            <TextView
+                android:id="@+id/tvGolesContra"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/goles_contra" />
+
+            <TextView
+                android:id="@+id/tvGolesDiferencia"
+                android:layout_width="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/goles_diferencia" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/lvClasificacion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+
+            />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="93dp" />
+
+
+    </LinearLayout>
+
+</FrameLayout >

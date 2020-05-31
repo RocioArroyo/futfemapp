@@ -1,0 +1,49 @@
+<resources>
+    <string name="boton_login">Iniciar Sesión</string>
+    <string name="descripcion_logo">Logo FutFemApp</string>
+    <string name="errorCampoVacio">El texto no puede estar vacio</string>
+    <string name="errorValidacionEmail">Por favor, introduzca un formato de email correcto</string>
+    <string name="title_registro"><u>Resgistrarse</u></string>
+    <string name="type_login" translatable="false">login</string>
+    <string name="login_ok" translatable="false">LOGIN OK</string>
+    <string name="conn_ok" translatable="false">CONNECT OK</string>
+    <string name="conn_fail" translatable="false">CONNECT FAIL</string>
+    <string name="title_password">Contraseña</string>
+    <string name="login_fail" translatable="false">LOGIN FAIL</string>
+    <string name="EMAIL_PATTERN" translatable="false">^[_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,4})$</string>
+    <string name="errorUsPass">Usuario y/o contraseña incorrecto</string>
+    <string name="type_registro" translatable="false">registro</string>
+    <string name="app_name" translatable="false">FutFemApp</string>
+    <string name="title_pass_repeat">Repetir Contraseña</string>
+    <string name="title_usuario">E-mail</string>
+    <string name="errorPass">La contraseña no coincide</string>
+    <string name="boton_registro">Resgistrarse</string>
+    <string name="title_login"><u>Iniciar sesion</u></string>
+    <string name="errorConectionDB">No se ha podido conectar con la base de datos</string>
+    <string name="registro_ok" translatable="false">REGISTRO_OK</string>
+    <string name="registro_fail" translatable="false">REGISTRO_FAIL</string>
+    <string name="errorUsExistente">Ya existe un usuario con ese e-mail</string>
+    <string name="title_pass_olvidada"><u>¿Has olvidado tu contraseña? <b>Pulsa aquí</b></u></string>
+    <string name="type_pass" translatable="false">password</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="partidos_jugados" translatable="false">PJ</string>
+    <string name="partidos_ganados" translatable="false">PG</string>
+    <string name="partidos_empatados" translatable="false">PE</string>
+    <string name="partidos_perdidos" translatable="false">PP</string>
+    <string name="goles_favor" translatable="false">GF</string>
+    <string name="goles_contra" translatable="false">GC</string>
+    <string name="goles_diferencia" translatable="false">GD</string>
+    <string name="boton_recordar_pass">Recuperar Contraseña</string>
+    <string name="errorEmail">No existe este Email</string>
+    <string name="email_fail" translatable="false">EMAIL FAIL</string>
+    <string name="puntos" translatable="false">P</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="type_clasificacion" translatable="false">clasificacion</string>
+    <string name="item_clasificacion">Clasificacion</string>
+    <string name="item_jornada">Jornada</string>
+    <string name="item_equipos">Equipos</string>
+    <string name="item_noticias">Noticias</string>
+    <string name="clasificacion_fail" translatable="false">CLASIFICACION FAIL</string>
+    <string name="title_wait">Por favor espere...</string>
+</resources>
