@@ -31,7 +31,7 @@
         android:text="@string/title_wait"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textColor="@color/violetaOscuro"
+        android:textColor="@color/negro"
         android:visibility="gone"/>
 
     <FrameLayout
@@ -46,10 +46,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:background="@color/azulVerdoso"
-        app:itemBackground="@color/azulVerdoso"
-        app:itemTextColor="@color/violetaOscuro"
-        app:itemIconTint="@color/violetaOscuro"
+        android:background="@color/amarilloLetras"
+        app:itemBackground="@color/amarilloLetras"
+        app:itemTextColor="@color/negro"
+        app:itemIconTint="@color/negro"
         app:menu="@menu/menu_botton_navigation"/>
 
 </LinearLayout>

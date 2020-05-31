@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="violeta">#C39CC9</color>
-    <color name="violetaOscuro">#3C1053</color>
-    <color name="azulVerdoso">#24C6BD</color>
-    <color name="azulVerdosoOscuro">#106863</color>
-    <color name="azulOscuro">#1C3576</color>
     <color name="blanco">#FFFFFF</color>
     <color name="negro">#000000</color>
     <color name="grisClaro">#CBCCCF</color>
     <color name="rojoError">#FC3232</color>
     <color name="grisFondo">#C8C8C8</color>
-    <color name="amarilloLetras"#F8F40D></color>
+    <color name="amarilloLetras">#F8F40D</color>
+    <color name="amarilloOscuro">#AFAC2D</color>
 </resources>

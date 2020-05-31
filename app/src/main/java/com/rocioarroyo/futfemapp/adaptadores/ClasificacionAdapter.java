@@ -55,8 +55,10 @@ public class ClasificacionAdapter extends ArrayAdapter {
             vistaTag.posicion.setText("  ");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 vistaTag.icono.setImageDrawable(ponerIconoAdecuadoDrawable(posicion));
+                vistaTag.icono.setVisibility(ImageView.INVISIBLE);
             } else {
                 vistaTag.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
+                vistaTag.icono.setVisibility(ImageView.INVISIBLE);
             }
             vistaTag.nombre.setText(getContext().getString(R.string.nombre));
             vistaTag.puntos.setText(getContext().getString(R.string.puntos));

@@ -52,20 +52,20 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/violeta"
+            android:textColorHint="@color/amarilloLetras"
             android:theme="@style/AppTheme.FloatingLabel">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/idUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/violeta"
+                android:backgroundTint="@color/amarilloLetras"
                 android:focusable="true"
                 android:hint="@string/title_usuario"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textColor="@color/violeta"
-                android:textColorHint="@color/violeta"
+                android:textColor="@color/amarilloLetras"
+                android:textColorHint="@color/amarilloLetras"
                 android:theme="@style/EditText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -75,20 +75,20 @@
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.FloatingLabel"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/violeta"
+            app:passwordToggleTint="@color/amarilloLetras"
             android:id="@+id/idLayoutPass">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/idPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/violeta"
+                android:backgroundTint="@color/amarilloLetras"
                 android:focusable="true"
                 android:hint="@string/title_password"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textColor="@color/violeta"
-                android:textColorHint="@color/violeta"
+                android:textColor="@color/amarilloLetras"
+                android:textColorHint="@color/amarilloLetras"
                 android:theme="@style/EditText"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.FloatingLabel"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/violeta"
+            app:passwordToggleTint="@color/amarilloLetras"
             android:visibility="gone"
             android:id="@+id/idLayoutPassRepeat">
 
@@ -106,13 +106,13 @@
                 android:id="@+id/idPasswordRepeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/violeta"
+                android:backgroundTint="@color/amarilloLetras"
                 android:focusable="true"
                 android:hint="@string/title_pass_repeat"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textColor="@color/violeta"
-                android:textColorHint="@color/violeta"
+                android:textColor="@color/amarilloLetras"
+                android:textColorHint="@color/amarilloLetras"
                 android:theme="@style/EditText"
                 android:visibility="gone"/>
 
@@ -135,7 +135,7 @@
             android:text="@string/boton_login"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/violetaOscuro"
+            android:textColor="@color/negro"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -149,7 +149,7 @@
             android:text="@string/boton_registro"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/violetaOscuro"
+            android:textColor="@color/negro"
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone"/>
@@ -164,7 +164,7 @@
             android:text="@string/boton_recordar_pass"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/violetaOscuro"
+            android:textColor="@color/negro"
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone"/>
@@ -175,7 +175,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/title_registro"
-            android:textColor="@color/violeta"
+            android:textColor="@color/amarilloLetras"
             android:focusable="true"/>
         <TextView
             android:id="@+id/idLogin"
@@ -183,7 +183,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/title_login"
-            android:textColor="@color/violeta"
+            android:textColor="@color/amarilloLetras"
             android:visibility="gone"
             android:focusable="true"/>
 
@@ -193,7 +193,7 @@
             android:id="@+id/idPassOlvidada"
             android:text="@string/title_pass_olvidada"
             android:gravity="center"
-            android:textColor="@color/violeta"/>
+            android:textColor="@color/amarilloLetras"/>
 
         <Space
             android:layout_width="match_parent"

@@ -81,12 +81,12 @@ public class LoginActivity extends AppCompatActivity {
         txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                txtPassRepeat.setVisibility(TextInputEditText.GONE);
+                txtPassRepeat.setVisibility(TextInputEditText.INVISIBLE);
                 btnRegistrarse.setVisibility(Button.GONE);
                 txtRegistro.setVisibility(TextView.VISIBLE);
                 btnLogin.setVisibility(Button.VISIBLE);
                 txtLogin.setVisibility(TextView.GONE);
-                txtLayoutPassRepeat.setVisibility(TextInputLayout.GONE);
+                txtLayoutPassRepeat.setVisibility(TextInputLayout.INVISIBLE);
                 btnRecordarPass.setVisibility(Button.GONE);
                 txtRecordarPass.setVisibility(TextView.VISIBLE);
                 txtLayoutPass.setVisibility(TextInputLayout.VISIBLE);

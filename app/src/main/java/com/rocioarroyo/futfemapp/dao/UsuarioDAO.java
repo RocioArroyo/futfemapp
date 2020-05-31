@@ -63,7 +63,7 @@ public class UsuarioDAO {
                 usuarioDTO.setUsrEmail(jsonObject.getString("usr_email"));
                 usuarioDTO.setUsrPassword(jsonObject.getString("usr_password"));
                 txtError.setText(context.getString(R.string.title_password) + ": " + usuarioDTO.getUsrPassword());
-                txtError.setTextColor(Color.parseColor("#C39CC9"));
+                txtError.setTextColor(Color.parseColor("#F8F40D"));
                 txtError.setVisibility(TextView.VISIBLE);
             } else {
                 txtError.setText(context.getText(R.string.errorEmail));
