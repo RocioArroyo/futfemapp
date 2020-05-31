@@ -7,10 +7,10 @@ $result=mysqli_query($conn,$mysql_query);
 
 if (mysqli_num_rows($result)==1){
 	while($fila=mysqli_fetch_array($result)) {
-		$username=$fila['usr_email'];
-		$password=$fila['usr_password'];
+		$username=$fila['usu_email'];
+		$password=$fila['usu_password'];
 
-		$usuarios[]=array('usr_email'=>$username, 'usr_password'=>$password);
+		$usuarios[]=array('usu_email'=>$username, 'usu_password'=>$password);
 	}
 	$json_string=json_encode($usuarios);
 	echo $json_string;

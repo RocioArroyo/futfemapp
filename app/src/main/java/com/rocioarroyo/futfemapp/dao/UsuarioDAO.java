@@ -60,8 +60,8 @@ public class UsuarioDAO {
                 jsonArray = new JSONArray(s);
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
                 UsuarioDTO usuarioDTO = new UsuarioDTO();
-                usuarioDTO.setUsrEmail(jsonObject.getString("usr_email"));
-                usuarioDTO.setUsrPassword(jsonObject.getString("usr_password"));
+                usuarioDTO.setUsrEmail(jsonObject.getString("usu_email"));
+                usuarioDTO.setUsrPassword(jsonObject.getString("usu_password"));
                 txtError.setText(context.getString(R.string.title_password) + ": " + usuarioDTO.getUsrPassword());
                 txtError.setTextColor(Color.parseColor("#F8F40D"));
                 txtError.setVisibility(TextView.VISIBLE);

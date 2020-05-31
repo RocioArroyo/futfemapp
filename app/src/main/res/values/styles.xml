@@ -8,7 +8,7 @@
         <item name="actionBarStyle">@style/ActionBarStyle</item>
         <item name="colorControlActivated">@color/blanco</item>
         <item name="colorControlNormal">@color/amarilloLetras</item>
-        <item name="colorError">@color/rojoError</item>
+        <item name="android:textColorHint">@color/amarilloLetras</item>
     </style>
 
     <style name="ActionBarTitleTextStyle" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">

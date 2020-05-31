@@ -44,29 +44,27 @@
             android:id="@+id/idErrorUsPass"
             android:text=""
             android:gravity="center"
-            android:textColor="@color/rojoError"
             android:textStyle="bold"
             android:visibility="invisible"
-            android:textSize="20dp"/>
+            android:textSize="20dp"
+            android:textColor="@color/rojoError"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/amarilloLetras"
             android:theme="@style/AppTheme.FloatingLabel">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/idUserName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/amarilloLetras"
                 android:focusable="true"
                 android:hint="@string/title_usuario"
-                android:inputType="text"
+                android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:textColor="@color/amarilloLetras"
-                android:textColorHint="@color/amarilloLetras"
-                android:theme="@style/EditText"/>
+                android:theme="@style/EditText"
+                android:textColor="@color/blanco"
+                android:backgroundTint="@color/amarilloLetras"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,14 +80,13 @@
                 android:id="@+id/idPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/amarilloLetras"
                 android:focusable="true"
                 android:hint="@string/title_password"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textColor="@color/amarilloLetras"
-                android:textColorHint="@color/amarilloLetras"
-                android:theme="@style/EditText"/>
+                android:theme="@style/EditText"
+                android:textColor="@color/blanco"
+                android:backgroundTint="@color/amarilloLetras"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,23 +95,22 @@
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.FloatingLabel"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/amarilloLetras"
-            android:visibility="gone"
+            app:passwordToggleTint="@color/blanco"
+            android:visibility="invisible"
             android:id="@+id/idLayoutPassRepeat">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/idPasswordRepeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/amarilloLetras"
                 android:focusable="true"
                 android:hint="@string/title_pass_repeat"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textColor="@color/amarilloLetras"
-                android:textColorHint="@color/amarilloLetras"
                 android:theme="@style/EditText"
-                android:visibility="gone"/>
+                android:visibility="invisible"
+                android:textColor="@color/blanco"
+                android:backgroundTint="@color/amarilloLetras"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +131,6 @@
             android:text="@string/boton_login"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/negro"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -149,7 +144,6 @@
             android:text="@string/boton_registro"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/negro"
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone"/>
@@ -164,7 +158,6 @@
             android:text="@string/boton_recordar_pass"
             android:textAlignment="center"
             android:textAllCaps="false"
-            android:textColor="@color/negro"
             android:textSize="20sp"
             android:textStyle="bold"
             android:visibility="gone"/>
@@ -175,17 +168,18 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/title_registro"
-            android:textColor="@color/amarilloLetras"
-            android:focusable="true"/>
+            android:focusable="true"
+            android:textColor="@color/amarilloLetras"/>
+
         <TextView
             android:id="@+id/idLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/title_login"
-            android:textColor="@color/amarilloLetras"
             android:visibility="gone"
-            android:focusable="true"/>
+            android:focusable="true"
+            android:textColor="@color/amarilloLetras"/>
 
         <TextView
             android:layout_width="match_parent"
