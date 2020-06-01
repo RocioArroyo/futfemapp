@@ -23,4 +23,5 @@
     <string name="item_equipos">Teams</string>
     <string name="item_jornada">Journey</string>
     <string name="title_wait">Please wait</string>
+    <string name="suspendido">DISC</string>
 </resources>

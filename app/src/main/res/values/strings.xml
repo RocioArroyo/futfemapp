@@ -45,7 +45,7 @@
     <string name="item_equipos">Equipos</string>
     <string name="item_noticias">Noticias</string>
     <string name="clasificacion_fail" translatable="false">CLASIFICACION FAIL</string>
-    <string name="title_wait">Por favor espere...</string>
+    <string name="title_wait">Por favor espere…</string>
     <string name="barcelona" translatable="false">FCB</string>
     <string name="at_madrid" translatable="false">ATM</string>
     <string name="levante" translatable="false">LUD</string>
@@ -62,4 +62,8 @@
     <string name="sporting" translatable="false">SPH</string>
     <string name="valencia" translatable="false">VCF</string>
     <string name="espanyol" translatable="false">ESP</string>
+    <string name="equipo_vis" translatable="false">icono equipo visitante</string>
+    <string name="equipo_loc" translatable="false">icono del equipo visitante</string>
+    <string name="separador" translatable="false">-</string>
+    <string name="suspendido">SUSP</string>
 </resources>

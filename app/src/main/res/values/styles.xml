@@ -36,4 +36,18 @@
         <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
+    <style name="spinner_style">
+        <item name="android:popupBackground">@color/negro</item>
+        <item name="android:scrollbarAlwaysDrawVerticalTrack">true</item>
+        <item name="android:dropDownSelector">@color/amarilloLetras</item>
+        <item name="android:textColor">@color/amarilloLetras</item>
+        <item name="background">@color/negro</item>
+    </style>
+
+    <style name="SpinnerTextViewItem" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/amarilloLetras</item>
+    </style>
+
 </resources>
