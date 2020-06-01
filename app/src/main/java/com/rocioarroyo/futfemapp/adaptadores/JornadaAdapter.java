@@ -34,7 +34,7 @@ public class JornadaAdapter extends ArrayAdapter {
         VistaTagJornada vistaTagJornada;
         if (view == null) {
             LayoutInflater layoutInflater = activity.getLayoutInflater();
-            view = layoutInflater.inflate(R.layout.activity_item_clasificacion, null);
+            view = layoutInflater.inflate(R.layout.activity_item_jornada, null);
             vistaTagJornada = new VistaTagJornada();
             vistaTagJornada.fecha = view.findViewById(R.id.tvFecha);
             vistaTagJornada.hora = view.findViewById(R.id.tvHora);
@@ -51,11 +51,11 @@ public class JornadaAdapter extends ArrayAdapter {
         }
         vistaTagJornada.fecha.setText(datos.get(posicion).getParFechaHora().split(" ")[0]);
         vistaTagJornada.hora.setText(ponerHora(posicion));
-        vistaTagJornada.equLocal.setText(datos.get(posicion).getParEquLocal().split("-")[0]);
+        vistaTagJornada.equLocal.setText(datos.get(posicion).getParEquLocal().split("-")[1]);
         vistaTagJornada.icoLocal.setImageResource(ponerIconoAdecuadoMipmapLocal(posicion));
         vistaTagJornada.golLocal.setText(ponerGolesLocal(posicion));
         vistaTagJornada.separacion.setText(ponerSeparador(posicion));
-        vistaTagJornada.equVisitante.setText(datos.get(posicion).getParEquVisitante());
+        vistaTagJornada.equVisitante.setText(datos.get(posicion).getParEquVisitante().split("-")[1]);
         vistaTagJornada.icoVisitante.setImageResource(ponerIconoAdecuadoMipmapVisitante(posicion));
         vistaTagJornada.golVisitante.setText(ponerGolesVisitante(posicion));
         return (view);
@@ -96,9 +96,7 @@ public class JornadaAdapter extends ArrayAdapter {
     }
 
     private int ponerIconoAdecuadoMipmapLocal(int posicion) {
-        if(posicion==0){
-            return R.mipmap.ic_equipos128_foreground;
-        }else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.barcelona))) {
+        if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
         } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.at_madrid))) {
             return R.mipmap.ic_atmadrid128_foreground;
@@ -136,9 +134,7 @@ public class JornadaAdapter extends ArrayAdapter {
     }
 
     private int ponerIconoAdecuadoMipmapVisitante(int posicion) {
-        if(posicion==0){
-            return R.mipmap.ic_equipos128_foreground;
-        }else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.barcelona))) {
+        if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
         } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.at_madrid))) {
             return R.mipmap.ic_atmadrid128_foreground;

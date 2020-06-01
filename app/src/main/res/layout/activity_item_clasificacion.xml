@@ -17,7 +17,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <ImageView
             android:id="@+id/idIconoEquipo"
@@ -33,7 +34,8 @@
             android:layout_weight="1"
             android:gravity="left"
             android:inputType="text"
-            android:textColor="@color/negro" />
+            android:textColor="@color/negro"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvPuntosE"
@@ -42,7 +44,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvPartidosJugadosE"
@@ -51,7 +54,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvPartidosGanadosE"
@@ -60,7 +64,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvPartidosEmpatadosE"
@@ -69,7 +74,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvPartidosPerdidosE"
@@ -78,7 +84,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvGolesFavorE"
@@ -87,7 +94,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvGolesContraE"
@@ -96,7 +104,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tvGolesDiferenciaE"
@@ -105,7 +114,8 @@
             android:layout_weight="1"
             android:gravity="center"
             android:inputType="number"
-            android:textColor="@color/negro"/>
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
     </LinearLayout>
 </LinearLayout>

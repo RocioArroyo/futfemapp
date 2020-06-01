@@ -13,7 +13,9 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.adaptadores.ClasificacionAdapter;
+import com.rocioarroyo.futfemapp.adaptadores.JornadaAdapter;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
+import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.ui.PrincipalActivity;
 
 import java.util.ArrayList;
@@ -25,13 +27,13 @@ public class JornadaFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private final String TAG = ClasificacionFragment.class.getName();
+    private final String TAG = JornadaFragment.class.getName();
 
-    private ArrayList<EquipoDTO> mParam1;
+    private ArrayList<PartidoDTO> mParam1;
     private String mParam2;
 
     ListView lvPrincipal;
-    public static ClasificacionAdapter adaptador;
+    public static JornadaAdapter adaptador;
     FragmentActivity listener;
 
     public JornadaFragment() {
@@ -45,7 +47,7 @@ public class JornadaFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment ClasificacionFragment.
      */
-    public static JornadaFragment newInstance(ArrayList<EquipoDTO> param1, String param2) {
+    public static JornadaFragment newInstance(ArrayList<PartidoDTO> param1, String param2) {
         JornadaFragment fragment = new JornadaFragment();
         Bundle args = new Bundle();
         args.putParcelableArrayList(ARG_PARAM1, param1);
@@ -75,14 +77,14 @@ public class JornadaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_jornadas, container, false);
+        return inflater.inflate(R.layout.fragment_jornada, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ListView lv = view.findViewById(R.id.lvJornadas);
-        adaptador = new ClasificacionAdapter(listener, mParam1);
+        adaptador = new JornadaAdapter(listener, mParam1);
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
     }

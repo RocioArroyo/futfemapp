@@ -16,9 +16,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
+import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
+import com.rocioarroyo.futfemapp.fragments.JornadaFragment;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 
 public class PrincipalActivity extends AppCompatActivity {
@@ -26,13 +29,13 @@ public class PrincipalActivity extends AppCompatActivity {
     Context context;
     BottomNavigationView btnNavigation;
     ArrayList<EquipoDTO> listaEquipos;
+    ArrayList<PartidoDTO> listaPartidos;
 
     public PrincipalActivity() {
     }
 
     public PrincipalActivity(Context context) {
         this.context = context;
-
     }
 
     @Override
@@ -43,6 +46,7 @@ public class PrincipalActivity extends AppCompatActivity {
         btnNavigation = findViewById(R.id.idBottomNavigation);
 
         listaEquipos = getIntent().getParcelableArrayListExtra("listaEquipos");
+        listaPartidos = getIntent().getParcelableArrayListExtra("listaPartidos");
 
 
         btnNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
@@ -55,26 +59,30 @@ public class PrincipalActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
-    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
-        new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.iClasificacion:
-                        listaEquipos = getIntent().getParcelableArrayListExtra("listaEquipos");
-                        openFragment(ClasificacionFragment.newInstance(listaEquipos, ""));
-                        return true;
-                    case R.id.iJornada:
-                        //openFragment(SmsFragment.newInstance("", ""));
-                        return true;
-                    case R.id.iEquipos:
-                        //openFragment(NotificationFragment.newInstance("", ""));
-                        return true;
-                    case R.id.iNoticias:
-                        //openFragment(NotificationFragment.newInstance("", ""));
-                        return true;
-                }
-                return false;
+    BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+                case R.id.iClasificacion:
+                    listaEquipos = getIntent().getParcelableArrayListExtra("listaEquipos");
+                    openFragment(ClasificacionFragment.newInstance(listaEquipos, ""));
+                    return true;
+                case R.id.iJornada:
+                    listaPartidos = getIntent().getParcelableArrayListExtra("listaPartidos");
+                    openFragment(JornadaFragment.newInstance(listaPartidos, ""));
+                    return true;
+                case R.id.iEquipos:
+                    //openFragment(NotificationFragment.newInstance("", ""));
+                    return true;
+                case R.id.iNoticias:
+                    //openFragment(NotificationFragment.newInstance("", ""));
+                    return true;
             }
-        };
+            return false;
+        }
+    };
+
+    public interface AsyncListener {
+        void doStuff( ArrayList list );
+    }
 
 }

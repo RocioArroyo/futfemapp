@@ -16,8 +16,9 @@ public class PartidoDTO implements Parcelable {
     private String parEquLocal;
     private String parEquVisitante;
 
-    protected PartidoDTO(Parcel in) {
+    private PartidoDTO(Parcel in) {
         parId = in.readString();
+        parFechaHora = in.readString();
         parGolesLocal = in.readInt();
         parGolesVisitante = in.readInt();
         parJornada = in.readInt();
@@ -28,6 +29,7 @@ public class PartidoDTO implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(parId);
+        dest.writeString(parFechaHora);
         dest.writeInt(parGolesLocal);
         dest.writeInt(parGolesVisitante);
         dest.writeInt(parJornada);

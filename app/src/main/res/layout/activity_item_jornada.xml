@@ -15,15 +15,23 @@
 
         <TextView
             android:id="@+id/tvFecha"
-            android:layout_width="250sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="start"
+            android:textColor="@color/negro"
+            android:textStyle="bold"
+            android:background="@color/amarilloSuave"/>
 
         <TextView
             android:id="@+id/tvHora"
-            android:layout_width="250sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:gravity="end"
+            android:textColor="@color/negro"
+            android:textStyle="bold"
+            android:background="@color/amarilloSuave"/>
 
 
     </LinearLayout>
@@ -39,7 +47,9 @@
             android:id="@+id/tvNombreLocal"
             android:layout_width="100sp"
             android:layout_height="32sp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textColor="@color/negro"
+            android:textStyle="bold"/>
 
         <ImageView
             android:id="@+id/ivLocal"
@@ -54,6 +64,7 @@
             android:layout_height="32sp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textColor="@color/negro"
             android:textStyle="bold" />
 
         <TextView
@@ -61,7 +72,9 @@
             android:layout_width="10sp"
             android:layout_height="32sp"
             android:layout_weight="1"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textColor="@color/negro"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tvPuntosVisitante"
@@ -69,6 +82,7 @@
             android:layout_height="32sp"
             android:layout_weight="1"
             android:gravity="center"
+            android:textColor="@color/negro"
             android:textStyle="bold" />
 
         <ImageView
@@ -85,7 +99,9 @@
             android:layout_width="100sp"
             android:layout_height="32sp"
             android:gravity="center"
-            android:text="" />
+            android:textColor="@color/negro"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
 </LinearLayout>

@@ -66,4 +66,6 @@
     <string name="equipo_loc" translatable="false">icono del equipo visitante</string>
     <string name="separador" translatable="false">-</string>
     <string name="suspendido">SUSP</string>
+    <string name="jornada_fail" translatable="false">JORNADA FAIL</string>
+    <string name="type_jornada" translatable="false">jornada</string>
 </resources>
