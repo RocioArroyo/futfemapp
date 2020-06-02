@@ -20,7 +20,7 @@
     <string name="boton_registro">Resgistrarse</string>
     <string name="title_login"><u>Iniciar sesion</u></string>
     <string name="errorConectionDB">No se ha podido conectar con la base de datos</string>
-    <string name="registro_ok" translatable="false">REGISTRO_OK</string>
+    <string name="registro_ok" translatable="false">REGISTRO OK</string>
     <string name="registro_fail" translatable="false">REGISTRO_FAIL</string>
     <string name="errorUsExistente">Ya existe un usuario con ese e-mail</string>
     <string name="title_pass_olvidada"><u>¿Has olvidado tu contraseña? <b>Pulsa aquí</b></u></string>

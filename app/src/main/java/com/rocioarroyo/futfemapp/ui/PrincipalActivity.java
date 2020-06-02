@@ -1,27 +1,23 @@
 package com.rocioarroyo.futfemapp.ui;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rocioarroyo.futfemapp.R;
-import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
 import com.rocioarroyo.futfemapp.fragments.JornadaFragment;
+import com.rocioarroyo.futfemapp.fragments.NoticiasFragment;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 
 public class PrincipalActivity extends AppCompatActivity {
@@ -46,8 +42,7 @@ public class PrincipalActivity extends AppCompatActivity {
         btnNavigation = findViewById(R.id.idBottomNavigation);
         btnNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
-        listaEquipos = getIntent().getParcelableArrayListExtra("listaEquipos");
-        openFragment(ClasificacionFragment.newInstance(listaEquipos, ""));
+        btnNavigation.setSelectedItemId(R.id.iClasificacion);
     }
 
     public void openFragment(Fragment fragment) {
@@ -56,6 +51,7 @@ public class PrincipalActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
@@ -71,15 +67,11 @@ public class PrincipalActivity extends AppCompatActivity {
                     //openFragment(NotificationFragment.newInstance("", ""));
                     return true;
                 case R.id.iNoticias:
-                    //openFragment(NotificationFragment.newInstance("", ""));
+                    openFragment(NoticiasFragment.newInstance("", ""));
                     return true;
             }
             return false;
         }
     };
-
-    public interface AsyncListener {
-        void doStuff( ArrayList list );
-    }
 
 }

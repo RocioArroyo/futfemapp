@@ -11,11 +11,10 @@
     android:background="@color/grisFondo">
 
     <FrameLayout
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="0sp"
-    android:layout_marginBottom="50dp"
-    android:layout_weight="1" />
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/idBottomNavigation"

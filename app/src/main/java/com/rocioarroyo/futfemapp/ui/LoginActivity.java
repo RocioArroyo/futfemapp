@@ -3,11 +3,14 @@ package com.rocioarroyo.futfemapp.ui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -54,6 +57,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Log.i(TAG, "onClick: LOGIN PULSADO");
                 login();
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(txtUserName.getWindowToken(), 0);
+                inputMethodManager.hideSoftInputFromWindow(txtPassword.getWindowToken(), 0);
             }
         });
 
@@ -76,6 +82,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "onClick: REGISTRO PULSADO");
                 registrarse();
+                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(txtUserName.getWindowToken(), 0);
+                inputMethodManager.hideSoftInputFromWindow(txtPassword.getWindowToken(), 0);
+                inputMethodManager.hideSoftInputFromWindow(txtPassRepeat.getWindowToken(), 0);
+
             }
         });
 
