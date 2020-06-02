@@ -55,20 +55,21 @@ public class PrincipalActivity extends AppCompatActivity {
 
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            String user_name = getIntent().getStringExtra("user_name");
             switch (item.getItemId()) {
                 case R.id.iClasificacion:
                     listaEquipos = getIntent().getParcelableArrayListExtra("listaEquipos");
-                    openFragment(ClasificacionFragment.newInstance(listaEquipos, ""));
+                    openFragment(ClasificacionFragment.newInstance(listaEquipos, user_name));
                     return true;
                 case R.id.iJornada:
                     listaPartidos = getIntent().getParcelableArrayListExtra("listaPartidos");
-                    openFragment(JornadaFragment.newInstance(listaPartidos, ""));
+                    openFragment(JornadaFragment.newInstance(listaPartidos, user_name));
                     return true;
                 case R.id.iEquipos:
-                    openFragment(EquipoFragment.newInstance(listaEquipos, ""));
+                    openFragment(EquipoFragment.newInstance(listaEquipos, user_name));
                     return true;
                 case R.id.iNoticias:
-                    openFragment(NoticiasFragment.newInstance("", ""));
+                    openFragment(NoticiasFragment.newInstance(user_name, ""));
                     return true;
             }
             return false;

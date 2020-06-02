@@ -40,7 +40,7 @@ public class PartidoDAO {
         this.context = context;
     }
 
-    public ArrayList<PartidoDTO> recibirJornadas(String type, String login_url) {
+    public ArrayList<PartidoDTO> recibirJornadas(String type, String user_name, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_jornada))) {
@@ -77,9 +77,12 @@ public class PartidoDAO {
                     if (!result.equalsIgnoreCase(context.getString(R.string.jornada_fail))) {
                         jsonArray = new JSONArray(result);
                         ArrayList<PartidoDTO> listaPartidos = new ArrayList<>();
+                        PartidoDTO partidoDTO=new PartidoDTO();
+                        partidoDTO.setParId(user_name);
+                        listaPartidos.add(partidoDTO);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
-                            PartidoDTO partidoDTO = new PartidoDTO();
+                            partidoDTO = new PartidoDTO();
                             partidoDTO.setParFechaHora(jsonObject.getString("par_fecha_hora"));
                             if (jsonObject.getString("par_goles_local").equalsIgnoreCase("null")) {
                                 partidoDTO.setParGolesLocal(99);
@@ -117,9 +120,12 @@ public class PartidoDAO {
 
     public void validarPartidos(ArrayList<PartidoDTO> listaPartidos, ArrayList<EquipoDTO> listaEquipos) {
         if (listaPartidos!=null && !listaPartidos.isEmpty()) {
+            String user_name = listaPartidos.get(0).getParId();
+            listaPartidos.remove(0);
             Intent intent = new Intent(context, PrincipalActivity.class);
             intent.putParcelableArrayListExtra("listaEquipos", listaEquipos);
             intent.putParcelableArrayListExtra("listaPartidos" , listaPartidos);
+            intent.putExtra("user_name" ,user_name);
             context.startActivity(intent);
         }
     }

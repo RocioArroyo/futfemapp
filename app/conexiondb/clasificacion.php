@@ -36,8 +36,6 @@ if (mysqli_num_rows($result)>0) {
 				}
 			}
 		}
-
-
 		array_push($json_array, $rowArray);
 	}
 	echo json_encode($json_array);

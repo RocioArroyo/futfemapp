@@ -54,7 +54,7 @@ public class UsuarioDAO {
                 Log.i(TAG, "validarLoginRegistro: abrimos la pantalla de inicio ya que el login es correcto");
                 txtError.setVisibility(TextView.INVISIBLE);
                 backgroundWorker = new BackgroundWorker(context);
-                backgroundWorker.execute(context.getString(R.string.type_clasificacion), textInputEditText.getText().toString());
+                backgroundWorker.execute(context.getString(R.string.type_clasificacion), resultados.get(1), textInputEditText.getText().toString());
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.login_fail))) {
                 Log.i(TAG, "validarLoginRegistro: inicio de sesion incorrecto");
                 txtError.setText(context.getString(R.string.errorUsPass));
@@ -141,6 +141,7 @@ public class UsuarioDAO {
                     Log.i(TAG, "mandarEmailPass: SALIDA");
                     ArrayList<String> resultados = new ArrayList<>();
                     resultados.add(result);
+                    resultados.add(user_name);
                     return resultados;
                 }
             } catch (IOException e) {

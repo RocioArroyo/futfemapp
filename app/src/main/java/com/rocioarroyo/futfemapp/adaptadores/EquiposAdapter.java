@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import com.rocioarroyo.futfemapp.R;
+import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 
 import java.util.ArrayList;
@@ -23,10 +24,13 @@ public class EquiposAdapter extends ArrayAdapter {
 
     Activity activity;
     private ArrayList<EquipoDTO> datos;
+    private boolean favCheck = false;
+    private String user_name="";
 
-    public EquiposAdapter(Context context, ArrayList<EquipoDTO> datos) {
+    public EquiposAdapter(Context context, ArrayList<EquipoDTO> datos, String user_name) {
         super(context, R.layout.activity_item_equipos, datos);
         this.activity = (Activity) context;
+        this.user_name=user_name;
         this.datos = datos;
     }
 
@@ -48,35 +52,55 @@ public class EquiposAdapter extends ArrayAdapter {
         }
         vistaTagEquipos.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
         vistaTagEquipos.nombre.setText(datos.get(posicion).getEquNombre().split("-")[0]);
-        vistaTagEquipos.posicion.setText(Integer.toString(posicion));
-        vistaTagEquipos.puntos.setText(Integer.toString(datos.get(posicion).getEquPuntos()));
+        vistaTagEquipos.posicion.setText("Posicion: " + posicion+1);
+        vistaTagEquipos.puntos.setText("Puntos: " + datos.get(posicion).getEquPuntos());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             vistaTagEquipos.fav.setBackground(ponerIconoFavDrawable(posicion));
         } else {
             vistaTagEquipos.fav.setImageResource(ponerIconoFavMipMap(posicion));
         }
+        vistaTagEquipos.fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                    if (favCheck) {
+                        favCheck=false;
+                        datos.get(posicion).setFav(0);
+                        vistaTagEquipos.fav.setBackground(getContext().getDrawable(R.drawable.ic_nofav_foreground));
+                    } else {
+                        favCheck=true;
+                        datos.get(posicion).setFav(1);
+                        vistaTagEquipos.fav.setBackground(getContext().getDrawable(R.drawable.ic_fav_foreground));
+                    }
+                }
+                favoritos(posicion);
+            }
+        });
         return (view);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private Drawable ponerIconoFavDrawable (int posicion) {
         if (datos.get(posicion).getFav()==1) {
+            favCheck=true;
             return getContext().getDrawable(R.drawable.ic_fav_foreground);
         } else {
+            favCheck=false;
             return getContext().getDrawable(R.drawable.ic_nofav_foreground);
         }
     }
 
     private int ponerIconoFavMipMap (int posicion) {
         if (datos.get(posicion).getFav()==1) {
+            favCheck=true;
             return R.drawable.ic_fav_foreground;
         } else {
+            favCheck=false;
             return R.drawable.ic_nofav_foreground;
         }
     }
 
-    private int ponerIconoAdecuadoMipmap(int pos) {
-        int posicion = pos + 1;
+    private int ponerIconoAdecuadoMipmap(int posicion) {
         if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
         } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_madrid))) {
@@ -112,6 +136,11 @@ public class EquiposAdapter extends ArrayAdapter {
         } else {
             return R.mipmap.ic_equipos128_foreground;
         }
+    }
+
+    private void favoritos(int posicion) {
+        BackgroundWorker backgroundWorker = new BackgroundWorker(getContext());
+        backgroundWorker.execute(getContext().getString(R.string.type_fav), user_name, datos.get(posicion).getEquId());
     }
 }
     class VistaTagEquipos {

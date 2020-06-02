@@ -42,23 +42,25 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
         partidoDAO = new PartidoDAO(context);
         Log.i(TAG, "doInBackground: ENTRADA");
         String type = strings[0];
+        String user_name = strings[1];
         String login_url="http://192.168.1.149";
         if (type.equalsIgnoreCase(context.getString(R.string.type_login)) || type.equalsIgnoreCase(context.getString(R.string.type_registro))) {
             tipo = "loginregistro";
-            String user_name = strings[1];
             String pass_word = strings[2];
             return usuarioDAO.mandarEmailPass(type, user_name, pass_word, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_pass))) {
             tipo = "recuperapass";
-            String user_name = strings[1];
             return usuarioDAO.recibirPassword(type, user_name, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_clasificacion))) {
             tipo="clasificacion";
-            String user_name = strings[1];
             return equipoDAO.recibirClasificacion(type, user_name, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_jornada))) {
             tipo = "jornada";
-            return partidoDAO.recibirJornadas(type, login_url);
+            return partidoDAO.recibirJornadas(type, user_name, login_url);
+        } else if (type.equalsIgnoreCase(context.getString(R.string.type_fav))) {
+            tipo="favorito";
+            String equ_id = strings[2];
+            return equipoDAO.controlFavoritos(context.getString(R.string.type_fav), user_name, equ_id, login_url);
         }
         Log.i(TAG, "doInBackground: NO SE HAN PODIDO OBTENER LOS DATOS");
         Log.i(TAG, "doInBackground: SALIDA");
@@ -83,6 +85,8 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             equipoDAO.validarClasificacion(s);
         } else if (tipo.equalsIgnoreCase("jornada")) {
             partidoDAO.validarPartidos(s, listaEquipos);
+        } else if (tipo.equalsIgnoreCase("favorito")) {
+            equipoDAO.validarFavorito(s);
         }
     }
 

@@ -68,4 +68,9 @@
     <string name="suspendido">SUSP</string>
     <string name="jornada_fail" translatable="false">JORNADA FAIL</string>
     <string name="type_jornada" translatable="false">jornada</string>
+    <string name="type_fav" translatable="false">fav</string>
+    <string name="fav_del_ok" translatable="false">FAVORITO ELIMINADO OK</string>
+    <string name="fav_del_fail" translatable="false">FAVORITO ELIMINADO FAIL</string>
+    <string name="fav_ins_ok" translatable="false">FAVORITO INSERTADO OK</string>
+    <string name="fav_ins_fail" translatable="false">FAVORITO INSERTADO FAIL</string>
 </resources>
