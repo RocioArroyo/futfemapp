@@ -6,7 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -19,6 +22,8 @@ import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.ui.PrincipalActivity;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class JornadaFragment extends Fragment {
 
@@ -32,9 +37,12 @@ public class JornadaFragment extends Fragment {
     private ArrayList<PartidoDTO> mParam1;
     private String mParam2;
 
-    ListView lvPrincipal;
     public static JornadaAdapter adaptador;
     FragmentActivity listener;
+
+    private ListView lv;
+    private Spinner spnJornada;
+    private ArrayAdapter<String> comoAdapter;
 
     public JornadaFragment() {
     }
@@ -83,8 +91,19 @@ public class JornadaFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView lv = view.findViewById(R.id.lvJornadas);
-        adaptador = new JornadaAdapter(listener, mParam1);
+        lv = view.findViewById(R.id.lvJornadas);
+        spnJornada = view.findViewById(R.id.idSpnJornadas);
+        List<String> listaJornadas = new ArrayList<>();
+        String[] srtJornadas = new String[30];
+        for (int i=0; i<srtJornadas.length; i++) {
+            int num = i + 1;
+            srtJornadas[i] = "JORNADA "+num;
+        }
+        Collections.addAll(listaJornadas, srtJornadas);
+        comoAdapter = new ArrayAdapter<>(this.getContext(), R.layout.custom_spinner, srtJornadas);
+        spnJornada.setSelection(0);
+        spnJornada.setAdapter(comoAdapter);
+        adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(0));
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
     }
@@ -98,6 +117,31 @@ public class JornadaFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        spnJornada.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(position));
+                lv.setAdapter(adaptador);
+                Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(0));
+                lv.setAdapter(adaptador);
+                Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
+            }
+        });
+    }
+
+    private ArrayList<PartidoDTO> obtenerPartidosJornada (int posicion) {
+        ArrayList<PartidoDTO> listaPartipoxJornada = new ArrayList<>();
+        for (PartidoDTO partidoDTO: mParam1) {
+            if ((partidoDTO.getParJornada()-1)==posicion) {
+                listaPartipoxJornada.add(partidoDTO);
+            }
+        }
+        return listaPartipoxJornada;
     }
 
 }

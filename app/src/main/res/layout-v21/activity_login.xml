@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/negro"
+    tools:context=".ui.LoginActivity">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:contentDescription="@string/descripcion_logo"
+            android:foregroundGravity="center"
+            app:srcCompat="@mipmap/ic_logo128_foreground" />
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.FloatingLabel">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idUserName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/amarilloLetras"
+                android:focusable="true"
+                android:hint="@string/title_usuario"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:textColor="@color/blanco"
+                android:theme="@style/EditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idLayoutPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.FloatingLabel"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/amarilloLetras">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/amarilloLetras"
+                android:focusable="true"
+                android:hint="@string/title_password"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@color/blanco"
+                android:theme="@style/EditText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/idLayoutPassRepeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.FloatingLabel"
+            android:visibility="gone"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/amarilloLetras">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/idPasswordRepeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/amarilloLetras"
+                android:focusable="true"
+                android:hint="@string/title_pass_repeat"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:textColor="@color/blanco"
+                android:theme="@style/EditText"
+                android:visibility="gone" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/idErrorUsPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/rojoError"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
+        <Button
+            android:id="@+id/idBtnLogin"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_estilos"
+            android:focusable="true"
+            android:text="@string/boton_login"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/idBtnRegistrarse"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_estilos"
+            android:focusable="true"
+            android:text="@string/boton_registro"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <Button
+            android:id="@+id/idBtnRecordarPass"
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_estilos"
+            android:focusable="true"
+            android:text="@string/boton_recordar_pass"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/idRegistro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/title_registro"
+            android:focusable="true"
+            android:textColor="@color/amarilloLetras"/>
+
+        <TextView
+            android:id="@+id/idLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/title_login"
+            android:visibility="gone"
+            android:focusable="true"
+            android:textColor="@color/amarilloLetras"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/idPassOlvidada"
+            android:text="@string/title_pass_olvidada"
+            android:gravity="center"
+            android:textColor="@color/amarilloLetras"/>
+
+    </LinearLayout>
+
+</LinearLayout>

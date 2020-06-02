@@ -44,12 +44,9 @@ public class PrincipalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_principal);
 
         btnNavigation = findViewById(R.id.idBottomNavigation);
+        btnNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
 
         listaEquipos = getIntent().getParcelableArrayListExtra("listaEquipos");
-        listaPartidos = getIntent().getParcelableArrayListExtra("listaPartidos");
-
-
-        btnNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         openFragment(ClasificacionFragment.newInstance(listaEquipos, ""));
     }
 

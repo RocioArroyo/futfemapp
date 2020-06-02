@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
 
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.adaptadores.ClasificacionAdapter;
@@ -30,9 +32,9 @@ public class ClasificacionFragment extends Fragment {
     private ArrayList<EquipoDTO> mParam1;
     private String mParam2;
 
-    ListView lvPrincipal;
     public static ClasificacionAdapter adaptador;
     FragmentActivity listener;
+    private ListView lv;
 
     public ClasificacionFragment() {
     }
@@ -81,7 +83,7 @@ public class ClasificacionFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ListView lv = view.findViewById(R.id.lvClasificacion);
+        lv = view.findViewById(R.id.lvClasificacion);
         adaptador = new ClasificacionAdapter(listener, mParam1);
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");

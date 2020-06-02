@@ -40,7 +40,7 @@ public class PartidoDAO {
         this.context = context;
     }
 
-    public ArrayList<PartidoDTO> recibirJornadas(String type, String num_jornada, String login_url) {
+    public ArrayList<PartidoDTO> recibirJornadas(String type, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_jornada))) {
@@ -54,17 +54,6 @@ public class PartidoDAO {
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
                     httpURLConnection.setDoInput(true);
-
-                    OutputStream outputStream = httpURLConnection.getOutputStream();
-                    Log.i(TAG, "recibirJornadas: mandamos mensaje a la base de datos");
-                    BufferedWriter bufferedWriter = null;
-                    bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-                    String post_data = URLEncoder.encode("jornada", "UTF-8") + "=" + URLEncoder.encode(num_jornada, "UTF-8");
-                    Log.i(TAG, "recibirJornadas: codificamos el mensaje a mandar");
-                    bufferedWriter.write(post_data);
-                    Log.i(TAG, "recibirJornadas: mandamos el mensaje: " + post_data);
-                    bufferedWriter.flush();
-                    bufferedWriter.close();
 
                     InputStream inputStream = httpURLConnection.getInputStream();
                     Log.i(TAG, "recibirJornadas: recibimos los datos de la base de datos");
@@ -92,8 +81,16 @@ public class PartidoDAO {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             PartidoDTO partidoDTO = new PartidoDTO();
                             partidoDTO.setParFechaHora(jsonObject.getString("par_fecha_hora"));
-                            partidoDTO.setParGolesLocal(jsonObject.getInt("par_goles_local"));
-                            partidoDTO.setParGolesVisitante(jsonObject.getInt("par_goles_visitante"));
+                            if (jsonObject.getString("par_goles_local").equalsIgnoreCase("null")) {
+                                partidoDTO.setParGolesLocal(99);
+                            } else {
+                                partidoDTO.setParGolesLocal(jsonObject.getInt("par_goles_local"));
+                            }
+                            if (jsonObject.getString("par_goles_visitante").equalsIgnoreCase("null")) {
+                                partidoDTO.setParGolesVisitante(99);
+                            } else {
+                                partidoDTO.setParGolesVisitante(jsonObject.getInt("par_goles_visitante"));
+                            }
                             partidoDTO.setParJornada(jsonObject.getInt("par_jornada"));
                             partidoDTO.setParEquLocal(jsonObject.getString("equ_nombre_loc"));
                             partidoDTO.setParEquVisitante(jsonObject.getString("equ_nombre_vis"));

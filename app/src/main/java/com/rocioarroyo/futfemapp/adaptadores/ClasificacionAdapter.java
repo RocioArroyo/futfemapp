@@ -2,11 +2,13 @@ package com.rocioarroyo.futfemapp.adaptadores;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rocioarroyo.futfemapp.R;
@@ -43,6 +45,7 @@ public class ClasificacionAdapter extends ArrayAdapter {
             vistaTagClasificacion.golesFavor = view.findViewById(R.id.tvGolesFavorE);
             vistaTagClasificacion.golesContra = view.findViewById(R.id.tvGolesContraE);
             vistaTagClasificacion.golesDiferencia = view.findViewById(R.id.tvGolesDiferenciaE);
+            vistaTagClasificacion.listado = view.findViewById(R.id.llhEquipo1);
             view.setTag(vistaTagClasificacion);
         } else {
             vistaTagClasificacion = (VistaTagClasificacion) view.getTag();
@@ -60,6 +63,7 @@ public class ClasificacionAdapter extends ArrayAdapter {
             vistaTagClasificacion.golesFavor.setText(getContext().getString(R.string.goles_favor));
             vistaTagClasificacion.golesContra.setText(getContext().getString(R.string.goles_contra));
             vistaTagClasificacion.golesDiferencia.setText(getContext().getString(R.string.goles_diferencia));
+            darColorCabecera(posicion, vistaTagClasificacion);
         } else {
             vistaTagClasificacion.posicion.setText(Integer.toString(posicion));
             vistaTagClasificacion.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
@@ -82,6 +86,12 @@ public class ClasificacionAdapter extends ArrayAdapter {
 
     private int partidosJugados(int partidosGnados, int partidosEmpatados, int partidosPerdidos) {
         return partidosGnados+partidosEmpatados+partidosPerdidos;
+    }
+
+    private void darColorCabecera(int posicion, VistaTagClasificacion vistaTagClasificacion) {
+        if (posicion==0) {
+            vistaTagClasificacion.listado.setBackgroundColor(Color.parseColor("#F9F7B2"));
+        }
     }
 
     private int ponerIconoAdecuadoMipmap(int posicion) {
@@ -138,4 +148,5 @@ public class ClasificacionAdapter extends ArrayAdapter {
         TextView golesFavor;
         TextView golesContra;
         TextView golesDiferencia;
+        LinearLayout listado;
     }
