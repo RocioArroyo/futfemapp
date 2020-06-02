@@ -1,32 +1,28 @@
 package com.rocioarroyo.futfemapp.dao;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-import android.os.Parcelable;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
-import com.rocioarroyo.futfemapp.dto.UsuarioDTO;
-import com.rocioarroyo.futfemapp.ui.PrincipalActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.List;
 
 public class EquipoDAO {
 
@@ -42,11 +38,11 @@ public class EquipoDAO {
     public void validarClasificacion(ArrayList<EquipoDTO> s) {
         if (s!=null) {
             BackgroundWorker backgroundWorker = new BackgroundWorker(context, s);
-            backgroundWorker.execute(context.getString(R.string.type_jornada), "1");
+            backgroundWorker.execute(context.getString(R.string.type_jornada));
         }
     }
 
-    public ArrayList<EquipoDTO> recibirClasificacion(String type, String login_url) {
+    public ArrayList<EquipoDTO> recibirClasificacion(String type, String user_name, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_clasificacion))) {
@@ -60,6 +56,17 @@ public class EquipoDAO {
                     httpURLConnection.setRequestMethod("POST");
                     httpURLConnection.setDoOutput(true);
                     httpURLConnection.setDoInput(true);
+
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    Log.i(TAG, "recibirPassword: mandamos mensaje a la base de datos");
+                    BufferedWriter bufferedWriter = null;
+                    bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                    String post_data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8");
+                    Log.i(TAG, "recibirPassword: codificamos el mensaje a mandar");
+                    bufferedWriter.write(post_data);
+                    Log.i(TAG, "recibirPassword: mandamos el mensaje: " + post_data);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
 
                     InputStream inputStream = httpURLConnection.getInputStream();
                     Log.i(TAG, "recibirEquipos: recibimos los datos de la base de datos");
@@ -96,6 +103,7 @@ public class EquipoDAO {
                             equipoDTO.setEquParPerdidos(jsonObject.getInt("equ_par_perdidos"));
                             equipoDTO.setEquGolesFavor(jsonObject.getInt("equ_goles_favor"));
                             equipoDTO.setEquGolesContra(jsonObject.getInt("equ_goles_contra"));
+                            equipoDTO.setFav(jsonObject.getInt("fav"));
                             listaEquipos.add(equipoDTO);
                         }
                         return listaEquipos;

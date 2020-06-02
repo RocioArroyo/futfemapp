@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dto.UsuarioDTO;
@@ -41,6 +42,7 @@ public class UsuarioDAO {
 
     public void validarLoginRegistro(ArrayList<String> resultados) {
         String resultado = resultados.get(0);
+        TextInputEditText textInputEditText = ((Activity)context).findViewById(R.id.idUserName);
         TextView txtError = ((Activity)context).findViewById(R.id.idErrorUsPass);
         if (resultado == null) {
             Log.i(TAG, "validarLoginRegistro: No se ha podido conectar con la base de datos");
@@ -52,7 +54,7 @@ public class UsuarioDAO {
                 Log.i(TAG, "validarLoginRegistro: abrimos la pantalla de inicio ya que el login es correcto");
                 txtError.setVisibility(TextView.INVISIBLE);
                 backgroundWorker = new BackgroundWorker(context);
-                backgroundWorker.execute(context.getString(R.string.type_clasificacion));
+                backgroundWorker.execute(context.getString(R.string.type_clasificacion), textInputEditText.getText().toString());
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.login_fail))) {
                 Log.i(TAG, "validarLoginRegistro: inicio de sesion incorrecto");
                 txtError.setText(context.getString(R.string.errorUsPass));

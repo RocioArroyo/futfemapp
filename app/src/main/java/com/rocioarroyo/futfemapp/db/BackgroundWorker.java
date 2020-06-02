@@ -54,7 +54,8 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             return usuarioDAO.recibirPassword(type, user_name, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_clasificacion))) {
             tipo="clasificacion";
-            return equipoDAO.recibirClasificacion(type, login_url);
+            String user_name = strings[1];
+            return equipoDAO.recibirClasificacion(type, user_name, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_jornada))) {
             tipo = "jornada";
             return partidoDAO.recibirJornadas(type, login_url);

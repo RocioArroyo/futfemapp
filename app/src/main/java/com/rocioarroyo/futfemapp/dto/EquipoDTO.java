@@ -4,7 +4,6 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.RequiresApi;
 
 
 public class EquipoDTO implements Parcelable {
@@ -17,12 +16,12 @@ public class EquipoDTO implements Parcelable {
     private int equParPerdidos;
     private int equGolesFavor;
     private int equGolesContra;
-    private boolean fav;
+    private int fav;
 
     public EquipoDTO() {
     }
 
-    public EquipoDTO(String equId, String equNombre, int equPuntos, int equParGanado, int equParEmpatados, int equParPerdidos, int equGolesFavor, int equGolesContra, boolean fav) {
+    public EquipoDTO(String equId, String equNombre, int equPuntos, int equParGanado, int equParEmpatados, int equParPerdidos, int equGolesFavor, int equGolesContra, int fav) {
         this.equId = equId;
         this.equNombre = equNombre;
         this.equPuntos = equPuntos;
@@ -34,7 +33,6 @@ public class EquipoDTO implements Parcelable {
         this.fav=fav;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     private EquipoDTO(Parcel in) {
         equId = in.readString();
         equNombre = in.readString();
@@ -44,11 +42,10 @@ public class EquipoDTO implements Parcelable {
         equParPerdidos = in.readInt();
         equGolesFavor = in.readInt();
         equGolesContra = in.readInt();
-        fav = in.readBoolean();
+        fav = in.readInt();
     }
 
     public static final Creator<EquipoDTO> CREATOR = new Creator<EquipoDTO>() {
-        @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
         public EquipoDTO createFromParcel(Parcel in) {
             return new EquipoDTO(in);
@@ -124,11 +121,11 @@ public class EquipoDTO implements Parcelable {
         this.equGolesContra = equGolesContra;
     }
 
-    public boolean isFav() {
+    public int getFav() {
         return fav;
     }
 
-    public void setFav(boolean fav) {
+    public void setFav(int fav) {
         this.fav = fav;
     }
 
@@ -137,7 +134,6 @@ public class EquipoDTO implements Parcelable {
         return 0;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(equId);
@@ -148,6 +144,6 @@ public class EquipoDTO implements Parcelable {
         dest.writeInt(equParPerdidos);
         dest.writeInt(equGolesFavor);
         dest.writeInt(equGolesContra);
-        dest.writeBoolean(fav);
+        dest.writeInt(fav);
     }
 }

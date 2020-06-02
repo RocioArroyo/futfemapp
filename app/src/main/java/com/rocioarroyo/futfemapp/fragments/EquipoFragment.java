@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.fragment.app.Fragment;
@@ -13,10 +14,13 @@ import androidx.fragment.app.FragmentActivity;
 
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.adaptadores.ClasificacionAdapter;
+import com.rocioarroyo.futfemapp.adaptadores.EquiposAdapter;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.ui.PrincipalActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class EquipoFragment extends Fragment {
 
@@ -29,7 +33,7 @@ public class EquipoFragment extends Fragment {
     private ArrayList<EquipoDTO> mParam1;
     private String mParam2;
 
-    public static ClasificacionAdapter adaptador;
+    public static EquiposAdapter adaptador;
     FragmentActivity listener;
     private ListView lv;
 
@@ -74,14 +78,15 @@ public class EquipoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_clasificacion, container, false);
+        return inflater.inflate(R.layout.fragment_equipos, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv = view.findViewById(R.id.lvEquipos);
-        adaptador = new ClasificacionAdapter(listener, mParam1);
+        mParam1.remove(0);
+        adaptador = new EquiposAdapter(listener, mParam1);
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
     }
@@ -96,4 +101,5 @@ public class EquipoFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
+
 }

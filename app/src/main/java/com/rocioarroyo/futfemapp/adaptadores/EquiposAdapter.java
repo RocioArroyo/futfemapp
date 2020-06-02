@@ -30,7 +30,6 @@ public class EquiposAdapter extends ArrayAdapter {
         this.datos = datos;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public View getView(final int posicion, View convertView, ViewGroup parent) {
         View view = convertView;
         VistaTagEquipos vistaTagEquipos;
@@ -38,36 +37,47 @@ public class EquiposAdapter extends ArrayAdapter {
             LayoutInflater layoutInflater = activity.getLayoutInflater();
             view = layoutInflater.inflate(R.layout.activity_item_equipos, null);
             vistaTagEquipos = new VistaTagEquipos();
-
-            view.setTag(vistaTagEquipos);
-        } else {
-            vistaTagEquipos = (VistaTagEquipos) view.getTag();
-            vistaTagEquipos.icono = view.findViewById(R.id.idIconoEquipo);
+            vistaTagEquipos.icono = view.findViewById(R.id.ivIconoClub);
             vistaTagEquipos.nombre = view.findViewById(R.id.idNombreEquipos);
             vistaTagEquipos.posicion = view.findViewById(R.id.idPosicionEquipos);
             vistaTagEquipos.puntos = view.findViewById(R.id.idPuntosEquipos);
             vistaTagEquipos.fav = view.findViewById(R.id.btnFav);
+            view.setTag(vistaTagEquipos);
+        } else {
+            vistaTagEquipos = (VistaTagEquipos) view.getTag();
         }
         vistaTagEquipos.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
         vistaTagEquipos.nombre.setText(datos.get(posicion).getEquNombre().split("-")[0]);
-        vistaTagEquipos.posicion.setText(Integer.toString(posicion+1));
+        vistaTagEquipos.posicion.setText(Integer.toString(posicion));
         vistaTagEquipos.puntos.setText(Integer.toString(datos.get(posicion).getEquPuntos()));
-        vistaTagEquipos.fav.setBackground(ponerIconoFav(posicion));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            vistaTagEquipos.fav.setBackground(ponerIconoFavDrawable(posicion));
+        } else {
+            vistaTagEquipos.fav.setImageResource(ponerIconoFavMipMap(posicion));
+        }
         return (view);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    private Drawable ponerIconoFav (int posicion) {
-        if (datos.get(posicion).isFav()) {
+    private Drawable ponerIconoFavDrawable (int posicion) {
+        if (datos.get(posicion).getFav()==1) {
             return getContext().getDrawable(R.drawable.ic_fav_foreground);
         } else {
             return getContext().getDrawable(R.drawable.ic_nofav_foreground);
         }
     }
 
-    private int ponerIconoAdecuadoMipmap(int p) {
-        int posicion = p+1;
-         if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
+    private int ponerIconoFavMipMap (int posicion) {
+        if (datos.get(posicion).getFav()==1) {
+            return R.drawable.ic_fav_foreground;
+        } else {
+            return R.drawable.ic_nofav_foreground;
+        }
+    }
+
+    private int ponerIconoAdecuadoMipmap(int pos) {
+        int posicion = pos + 1;
+        if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
         } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_madrid))) {
             return R.mipmap.ic_atmadrid128_foreground;
@@ -104,10 +114,10 @@ public class EquiposAdapter extends ArrayAdapter {
         }
     }
 }
-class VistaTagEquipos {
-    ImageView icono;
-    TextView nombre;
-    TextView posicion;
-    TextView puntos;
-    ImageButton fav;
-}
+    class VistaTagEquipos {
+        ImageView icono;
+        TextView nombre;
+        TextView posicion;
+        TextView puntos;
+        ImageButton fav;
+    }

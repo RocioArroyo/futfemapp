@@ -14,6 +14,7 @@ import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
+import com.rocioarroyo.futfemapp.fragments.EquipoFragment;
 import com.rocioarroyo.futfemapp.fragments.JornadaFragment;
 import com.rocioarroyo.futfemapp.fragments.NoticiasFragment;
 
@@ -64,7 +65,7 @@ public class PrincipalActivity extends AppCompatActivity {
                     openFragment(JornadaFragment.newInstance(listaPartidos, ""));
                     return true;
                 case R.id.iEquipos:
-                    //openFragment(NotificationFragment.newInstance("", ""));
+                    openFragment(EquipoFragment.newInstance(listaEquipos, ""));
                     return true;
                 case R.id.iNoticias:
                     openFragment(NoticiasFragment.newInstance("", ""));
