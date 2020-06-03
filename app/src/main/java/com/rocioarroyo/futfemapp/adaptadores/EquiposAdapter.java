@@ -24,7 +24,6 @@ public class EquiposAdapter extends ArrayAdapter {
 
     Activity activity;
     private ArrayList<EquipoDTO> datos;
-    private boolean favCheck = false;
     private String user_name="";
 
     public EquiposAdapter(Context context, ArrayList<EquipoDTO> datos, String user_name) {
@@ -52,23 +51,17 @@ public class EquiposAdapter extends ArrayAdapter {
         }
         vistaTagEquipos.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
         vistaTagEquipos.nombre.setText(datos.get(posicion).getEquNombre().split("-")[0]);
-        vistaTagEquipos.posicion.setText("Posicion: " + posicion+1);
+        int pos = posicion+1;
+        vistaTagEquipos.posicion.setText("Posicion: " + pos);
         vistaTagEquipos.puntos.setText("Puntos: " + datos.get(posicion).getEquPuntos());
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            vistaTagEquipos.fav.setBackground(ponerIconoFavDrawable(posicion));
-        } else {
-            vistaTagEquipos.fav.setImageResource(ponerIconoFavMipMap(posicion));
-        }
         vistaTagEquipos.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    if (favCheck) {
-                        favCheck=false;
+                    if (datos.get(posicion).getFav()==1) {
                         datos.get(posicion).setFav(0);
                         vistaTagEquipos.fav.setBackground(getContext().getDrawable(R.drawable.ic_nofav_foreground));
                     } else {
-                        favCheck=true;
                         datos.get(posicion).setFav(1);
                         vistaTagEquipos.fav.setBackground(getContext().getDrawable(R.drawable.ic_fav_foreground));
                     }
@@ -76,26 +69,27 @@ public class EquiposAdapter extends ArrayAdapter {
                 favoritos(posicion);
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            vistaTagEquipos.fav.setBackground(ponerIconoFavDrawable(posicion));
+        } else {
+            vistaTagEquipos.fav.setImageResource(ponerIconoFavMipMap(posicion));
+        }
         return (view);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private Drawable ponerIconoFavDrawable (int posicion) {
         if (datos.get(posicion).getFav()==1) {
-            favCheck=true;
             return getContext().getDrawable(R.drawable.ic_fav_foreground);
         } else {
-            favCheck=false;
             return getContext().getDrawable(R.drawable.ic_nofav_foreground);
         }
     }
 
     private int ponerIconoFavMipMap (int posicion) {
         if (datos.get(posicion).getFav()==1) {
-            favCheck=true;
             return R.drawable.ic_fav_foreground;
         } else {
-            favCheck=false;
             return R.drawable.ic_nofav_foreground;
         }
     }

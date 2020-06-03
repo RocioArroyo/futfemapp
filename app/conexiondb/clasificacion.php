@@ -25,17 +25,20 @@ if (mysqli_num_rows($result)>0) {
 		$rowArray['equ_par_perdidos']=$fila['equ_par_perdidos'];
 		$rowArray['equ_goles_favor']=$fila['equ_goles_favor'];
 		$rowArray['equ_goles_contra']=$fila['equ_goles_contra'];
-		if (empty($favoritos)) {
+
+		if ($cfav==0) {
 			$rowArray['fav']="0";
 		} else {
 			foreach ($favoritos as $favorito) {
-				if ($fila['equ_id']==$favorito){
-					$rowsArray['fav']="1";
+				if ($fila['equ_id']==$favorito['fav_equ']) {
+					$rowArray['fav']="1";
+					break;
 				} else {
 					$rowArray['fav']="0";
 				}
 			}
 		}
+
 		array_push($json_array, $rowArray);
 	}
 	echo json_encode($json_array);
@@ -44,3 +47,4 @@ if (mysqli_num_rows($result)>0) {
 }
 mysqli_close($conn);
 ?>
+

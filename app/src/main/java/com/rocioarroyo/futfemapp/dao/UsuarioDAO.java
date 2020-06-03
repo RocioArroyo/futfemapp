@@ -41,7 +41,10 @@ public class UsuarioDAO {
     }
 
     public void validarLoginRegistro(ArrayList<String> resultados) {
-        String resultado = resultados.get(0);
+        String resultado = null;
+        if (resultados!=null && !resultados.isEmpty()) {
+            resultado = resultados.get(0);
+        }
         TextInputEditText textInputEditText = ((Activity)context).findViewById(R.id.idUserName);
         TextView txtError = ((Activity)context).findViewById(R.id.idErrorUsPass);
         if (resultado == null) {
