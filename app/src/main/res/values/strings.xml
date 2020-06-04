@@ -24,6 +24,7 @@
     <string name="title_menu_usuario">Usuario</string>
     <string name="title_cerrar_sesion">Cerrar Sesión</string>
     <string name="title_cambiar_pass">Cambiar Contraseña</string>
+    <string name="title_baja">Dar de Baja</string>
 
     <!-- TYPE PARA LOCALIZAR QUE PHP ABRIR -->
     <string name="type_login" translatable="false">login</string>

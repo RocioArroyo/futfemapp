@@ -1,6 +1,7 @@
 package com.rocioarroyo.futfemapp.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
@@ -60,8 +61,14 @@ public class PrincipalActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.iUsuario:
+            case R.id.iCerrarSesion:
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.iCambiarPass:
 
+                return true;
+            case R.id.iBaja:
                 return true;
         }
         return super.onOptionsItemSelected(item);

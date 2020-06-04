@@ -16,6 +16,8 @@
                     android:title="@string/title_cerrar_sesion"/>
                 <item android:id="@+id/iCambiarPass"
                     android:title="@string/title_cambiar_pass"/>
+                <item android:id="@+id/iBaja"
+                    android:title="@string/title_baja"/>
 
             </group>
 
