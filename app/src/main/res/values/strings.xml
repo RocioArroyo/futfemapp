@@ -18,7 +18,7 @@
     <string name="title_password">Contraseña</string>
     <string name="title_pass_repeat">Repetir Contraseña</string>
     <string name="title_usuario">E-mail</string>
-    <string name="title_login"><u>Iniciar sesion</u></string>
+    <string name="title_login"><u>Iniciar Sesión</u></string>
     <string name="title_pass_olvidada"><u>¿Has olvidado tu contraseña? <b>Pulsa aquí</b></u></string>
     <string name="title_wait">Por favor espere…</string>
     <string name="title_menu_usuario">Usuario</string>
@@ -61,8 +61,8 @@
     <string name="goles_contra">GC</string>
     <string name="goles_diferencia">GD</string>
     <string name="puntos" translatable="false">P</string>
-    <string name="item_clasificacion">Clasificacion</string>
-    <string name="item_jornada">Jornada</string>
+    <string name="item_clasificacion">Clasificación</string>
+    <string name="item_jornada">Jornadas</string>
     <string name="item_equipos">Equipos</string>
     <string name="item_noticias">Noticias</string>
     <string name="barcelona" translatable="false">FCB</string>
@@ -83,7 +83,7 @@
     <string name="espanyol" translatable="false">ESP</string>
     <string name="separador" translatable="false">-</string>
     <string name="suspendido">SUSP</string>
-    <string name="posicion">Posicion:</string>
+    <string name="posicion">Posición:</string>
     <string name="puntos_equipo">Puntos:</string>
 
     <!-- OTROS -->

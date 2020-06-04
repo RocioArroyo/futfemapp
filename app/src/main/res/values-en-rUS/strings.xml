@@ -10,8 +10,8 @@
     <string name="title_pass_repeat">Repeat Password</string>
     <string name="title_usuario">E-mail</string>
     <string name="errorPass">" password does not match"</string>
-    <string name="title_registro">" <u>Sign up</u>"</string>
-    <string name="title_login"><u>Log in</u></string>
+    <string name="title_registro">" <u>Sign Up</u>"</string>
+    <string name="title_login"><u>Log In</u></string>
     <string name="errorConectionDB">Could not connect to the database</string>
     <string name="errorUsExistente">There is already a user with that e-mail</string>
     <string name="title_pass_olvidada"><u>Forgot your password? <b> Click here </b></u></string>
@@ -21,7 +21,7 @@
     <string name="item_clasificacion">Classification</string>
     <string name="item_noticias">News</string>
     <string name="item_equipos">Teams</string>
-    <string name="item_jornada">Journey</string>
+    <string name="item_jornada">Journeys</string>
     <string name="title_wait">Please wait</string>
     <string name="suspendido">DISC</string>
     <string name="title_menu_usuario">User</string>
