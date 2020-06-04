@@ -24,4 +24,16 @@
     <string name="item_jornada">Journey</string>
     <string name="title_wait">Please wait</string>
     <string name="suspendido">DISC</string>
+    <string name="title_menu_usuario">User</string>
+    <string name="title_cerrar_sesion">Log Out</string>
+    <string name="title_cambiar_pass">Change Password</string>
+    <string name="partidos_jugados" translatable="false">MP</string>
+    <string name="partidos_ganados" translatable="false">WM</string>
+    <string name="partidos_empatados">DM</string>
+    <string name="partidos_perdidos">LM</string>
+    <string name="goles_favor">FG</string>
+    <string name="goles_contra">AG</string>
+    <string name="goles_diferencia">DG</string>
+    <string name="posicion">Position:</string>
+    <string name="puntos_equipo">Points:</string>
 </resources>

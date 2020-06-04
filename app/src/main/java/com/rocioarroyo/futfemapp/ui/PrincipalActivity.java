@@ -2,7 +2,11 @@ package com.rocioarroyo.futfemapp.ui;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +15,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rocioarroyo.futfemapp.R;
+import com.rocioarroyo.futfemapp.dao.EquipoDAO;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
@@ -46,6 +51,22 @@ public class PrincipalActivity extends AppCompatActivity {
         btnNavigation.setSelectedItemId(R.id.iClasificacion);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_login, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.iUsuario:
+
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
@@ -66,7 +87,8 @@ public class PrincipalActivity extends AppCompatActivity {
                     openFragment(JornadaFragment.newInstance(listaPartidos, user_name));
                     return true;
                 case R.id.iEquipos:
-                    openFragment(EquipoFragment.newInstance(listaEquipos, user_name));
+                    ArrayList<EquipoDTO> listaOrdenada = new EquipoDAO().reordenarLista(listaEquipos);
+                    openFragment(EquipoFragment.newInstance(listaOrdenada, user_name));
                     return true;
                 case R.id.iNoticias:
                     openFragment(NoticiasFragment.newInstance(user_name, ""));

@@ -4,12 +4,14 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
 
 
 public class EquipoDTO implements Parcelable {
 
     private String equId;
     private String equNombre;
+    private int posicion;
     private int equPuntos;
     private int equParGanado;
     private int equParEmpatados;
@@ -17,13 +19,15 @@ public class EquipoDTO implements Parcelable {
     private int equGolesFavor;
     private int equGolesContra;
     private int fav;
+    private ArrayList<EquipoDTO> listaFavoritos;
 
     public EquipoDTO() {
     }
 
-    public EquipoDTO(String equId, String equNombre, int equPuntos, int equParGanado, int equParEmpatados, int equParPerdidos, int equGolesFavor, int equGolesContra, int fav) {
+    public EquipoDTO(String equId, String equNombre, int posicion, int equPuntos, int equParGanado, int equParEmpatados, int equParPerdidos, int equGolesFavor, int equGolesContra, int fav) {
         this.equId = equId;
         this.equNombre = equNombre;
+        this.posicion = posicion;
         this.equPuntos = equPuntos;
         this.equParGanado = equParGanado;
         this.equParEmpatados = equParEmpatados;
@@ -36,6 +40,7 @@ public class EquipoDTO implements Parcelable {
     private EquipoDTO(Parcel in) {
         equId = in.readString();
         equNombre = in.readString();
+        posicion = in.readInt();
         equPuntos = in.readInt();
         equParGanado = in.readInt();
         equParEmpatados = in.readInt();
@@ -72,6 +77,10 @@ public class EquipoDTO implements Parcelable {
     public void setEquNombre(String equNombre) {
         this.equNombre = equNombre;
     }
+
+    public int getPosicion() {return posicion;}
+
+    public void setPosicion(int posicion) {this.posicion = posicion;}
 
     public int getEquPuntos() {
         return equPuntos;
@@ -129,6 +138,14 @@ public class EquipoDTO implements Parcelable {
         this.fav = fav;
     }
 
+    public ArrayList<EquipoDTO> getListaFavoritos() {
+        return listaFavoritos;
+    }
+
+    public void setListaFavoritos(ArrayList<EquipoDTO> listaFavoritos) {
+        this.listaFavoritos = listaFavoritos;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -138,6 +155,7 @@ public class EquipoDTO implements Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(equId);
         dest.writeString(equNombre);
+        dest.writeInt(posicion);
         dest.writeInt(equPuntos);
         dest.writeInt(equParGanado);
         dest.writeInt(equParEmpatados);

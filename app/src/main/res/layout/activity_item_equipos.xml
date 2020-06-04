@@ -2,17 +2,22 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grisFondo">
+    android:background="@color/grisFondo"
+    android:layout_gravity="center"
+    android:gravity="center">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="start">
 
         <ImageView
             android:id="@+id/ivIconoClub"
             android:layout_width="match_parent"
             android:layout_height="100sp"
             android:layout_gravity="center"
+            android:foregroundGravity="left"
             android:contentDescription="@string/equipo_loc" />
 
     </LinearLayout>
@@ -21,13 +26,16 @@
         android:layout_width="wrap_content"
         android:layout_height="100sp"
         android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/idNombreEquipos"
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:textSize="20sp"
+            android:layout_gravity="start"
+            android:gravity="start"
             android:textColor="@color/negro"
             android:textStyle="bold"/>
 
@@ -40,6 +48,8 @@
                 android:id="@+id/idPosicionEquipos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:gravity="start"
                 android:textSize="15sp"
                 android:textColor="@color/negro"/>
 
@@ -51,6 +61,8 @@
                 android:id="@+id/idPuntosEquipos"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:gravity="end"
                 android:textColor="@color/negro"
                 android:textSize="15sp" />
 
@@ -59,16 +71,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="100sp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:gravity="end">
 
         <ImageButton
             android:id="@+id/btnFav"
             android:layout_width="0sp"
-            android:layout_height="50sp"
+            android:layout_height="100sp"
             android:layout_weight="1"
-            android:layout_gravity="center"
+            android:layout_gravity="end"
             android:background="@drawable/ic_nofav_foreground" />
 
     </LinearLayout>

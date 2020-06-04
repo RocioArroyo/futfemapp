@@ -161,9 +161,10 @@
 
         <TextView
             android:id="@+id/idRegistro"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_gravity="center"
             android:text="@string/title_registro"
             android:focusable="true"
             android:textColor="@color/amarilloLetras"/>
@@ -179,11 +180,12 @@
             android:textColor="@color/amarilloLetras"/>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/idPassOlvidada"
             android:text="@string/title_pass_olvidada"
             android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="@color/amarilloLetras"/>
 
     </LinearLayout>

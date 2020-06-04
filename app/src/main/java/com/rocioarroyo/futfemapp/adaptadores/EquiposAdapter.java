@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.RequiresApi;
 
 import com.rocioarroyo.futfemapp.R;
+import com.rocioarroyo.futfemapp.dao.EquipoDAO;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 
@@ -51,9 +52,8 @@ public class EquiposAdapter extends ArrayAdapter {
         }
         vistaTagEquipos.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
         vistaTagEquipos.nombre.setText(datos.get(posicion).getEquNombre().split("-")[0]);
-        int pos = posicion+1;
-        vistaTagEquipos.posicion.setText("Posicion: " + pos);
-        vistaTagEquipos.puntos.setText("Puntos: " + datos.get(posicion).getEquPuntos());
+        vistaTagEquipos.posicion.setText(getContext().getString(R.string.posicion) + " " + datos.get(posicion).getPosicion());
+        vistaTagEquipos.puntos.setText(getContext().getString(R.string.puntos) + " " + datos.get(posicion).getEquPuntos());
         vistaTagEquipos.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +66,7 @@ public class EquiposAdapter extends ArrayAdapter {
                         vistaTagEquipos.fav.setBackground(getContext().getDrawable(R.drawable.ic_fav_foreground));
                     }
                 }
+                new EquipoDAO().reordenarLista(datos);
                 favoritos(posicion);
             }
         });

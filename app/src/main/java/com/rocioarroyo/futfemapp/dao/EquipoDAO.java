@@ -28,6 +28,7 @@ public class EquipoDAO {
 
     private final String TAG = EquipoDAO.class.getName();
     private Context context;
+    private ArrayList<EquipoDTO> listaEquipos;
 
     public EquipoDAO() {}
 
@@ -36,6 +37,7 @@ public class EquipoDAO {
     }
 
     public void validarClasificacion(ArrayList<EquipoDTO> s) {
+        listaEquipos = s;
         if (s!=null) {
             String user_name = s.get(17).getEquId();
             s.remove(17);
@@ -52,11 +54,35 @@ public class EquipoDAO {
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.fav_ins_fail))) {
                 Log.e(TAG, "validarFavorito: NO SE HAN PODIDO INSERTAR EN LA TABLA", new Exception());
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.fav_del_ok))) {
+                reordenarLista(listaEquipos);
                 Log.i(TAG, "validarFavorito: SE HA ELIMINADO CORRECTAMENTE");
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.fav_ins_ok))) {
+                reordenarLista(listaEquipos);
                 Log.i(TAG, "validarFavorito: SE HA INSERTADO CORRECTAMENTE");
             }
         }
+    }
+
+    public ArrayList<EquipoDTO> reordenarLista(ArrayList<EquipoDTO> listaEquipos) {
+        ArrayList<EquipoDTO> listaOrdenada = new ArrayList<>();
+        ArrayList<EquipoDTO> listaFav = new ArrayList<>();
+        ArrayList<EquipoDTO> listaNoFav = new ArrayList<>();
+        listaOrdenada.add(listaEquipos.get(0));
+        for (EquipoDTO equipoDTO: listaEquipos) {
+            if (equipoDTO.getEquNombre()!=null && equipoDTO.getFav()==1) {
+                listaFav.add(equipoDTO);
+            } else if (equipoDTO.getEquNombre()!=null && equipoDTO.getFav()==0) {
+                listaNoFav.add(equipoDTO);
+            }
+        }
+        if (!listaFav.isEmpty()) {
+            listaOrdenada.addAll(listaFav);
+        }
+        if (!listaNoFav.isEmpty()) {
+            listaOrdenada.addAll(listaNoFav);
+        }
+
+        return listaOrdenada;
     }
 
     public ArrayList<EquipoDTO> recibirClasificacion(String type, String user_name, String login_url) {
@@ -114,6 +140,7 @@ public class EquipoDAO {
                             equipoDTO = new EquipoDTO();
                             equipoDTO.setEquId(jsonObject.getString("equ_id"));
                             equipoDTO.setEquNombre(jsonObject.getString("equ_nombre"));
+                            equipoDTO.setPosicion(i+1);
                             equipoDTO.setEquPuntos(jsonObject.getInt("equ_puntos"));
                             equipoDTO.setEquParGanado(jsonObject.getInt("equ_par_ganados"));
                             equipoDTO.setEquParEmpatados(jsonObject.getInt("equ_par_empatados"));

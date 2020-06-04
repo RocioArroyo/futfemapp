@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/iUsuario"
+        android:icon="@drawable/ic_person_black_24dp"
+        android:title="@string/title_menu_usuario"
+        app:showAsAction="always">
+
+        <menu>
+
+            <group android:id="@+id/grupo">
+
+                <item android:id="@+id/iCerrarSesion"
+                    android:title="@string/title_cerrar_sesion"/>
+                <item android:id="@+id/iCambiarPass"
+                    android:title="@string/title_cambiar_pass"/>
+
+            </group>
+
+        </menu>
+
+    </item>
+</menu>
