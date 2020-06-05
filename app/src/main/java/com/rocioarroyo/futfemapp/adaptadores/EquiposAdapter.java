@@ -135,7 +135,7 @@ public class EquiposAdapter extends ArrayAdapter {
 
     private void favoritos(int posicion) {
         BackgroundWorker backgroundWorker = new BackgroundWorker(activity, user_name);
-        backgroundWorker.execute(activity.getString(R.string.type_fav), user_name, datos.get(posicion).getEquId());
+        backgroundWorker.execute(activity.getString(R.string.type_fav), datos.get(posicion).getEquId());
     }
 }
     class VistaTagEquipos {

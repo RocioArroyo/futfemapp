@@ -84,7 +84,7 @@ public class ClasificacionFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv = view.findViewById(R.id.lvClasificacion);
-        adaptador = new ClasificacionAdapter(listener, mParam1);
+        adaptador = new ClasificacionAdapter(listener, mParam1, mParam2);
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
     }

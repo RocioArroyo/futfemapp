@@ -41,7 +41,6 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
     @Override
     protected ArrayList doInBackground(String... strings) {
         String type = strings[0];
-        user_name = strings[1];
         usuarioDAO = new UsuarioDAO(context, user_name);
         equipoDAO = new EquipoDAO(context, user_name);
         partidoDAO = new PartidoDAO(context, user_name);
@@ -49,7 +48,7 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
         String login_url="http://192.168.1.149";
         if (type.equalsIgnoreCase(context.getString(R.string.type_login)) || type.equalsIgnoreCase(context.getString(R.string.type_registro))) {
             tipo = "loginregistro";
-            String pass_word = strings[2];
+            String pass_word = strings[1];
             return usuarioDAO.mandarEmailPass(type, pass_word, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_pass))) {
             tipo = "recuperapass";
@@ -62,10 +61,11 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             return partidoDAO.recibirJornadas(type, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_fav))) {
             tipo="favorito";
-            String equ_id = strings[2];
+            String equ_id = strings[1];
             return equipoDAO.controlFavoritos(context.getString(R.string.type_fav), equ_id, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_cambiar_pass))) {
-            String nueva_pass = strings[3];
+            tipo="cambiarpass";
+            String nueva_pass = strings[1];
             return usuarioDAO.cambiarContrasena(context.getString(R.string.type_cambiar_pass), nueva_pass, login_url);
         }
         Log.i(TAG, "doInBackground: NO SE HAN PODIDO OBTENER LOS DATOS");

@@ -20,13 +20,15 @@ import java.util.ArrayList;
 public class JornadaAdapter extends ArrayAdapter {
 
 
-    Activity activity;
+    private Activity activity;
     private ArrayList<PartidoDTO> datos;
+    private String user_name;
 
-    public JornadaAdapter(Context context, ArrayList<PartidoDTO> datos) {
+    public JornadaAdapter(Context context, ArrayList<PartidoDTO> datos, String user_name) {
         super(context, R.layout.activity_item_jornada, datos);
         this.activity = (Activity) context;
         this.datos = datos;
+        this.user_name = user_name;
     }
 
     public View getView(final int posicion, View convertView, ViewGroup parent) {
@@ -81,9 +83,9 @@ public class JornadaAdapter extends ArrayAdapter {
         if (datos.get(posicion).getParFechaHora().split(" ")[1].equalsIgnoreCase("00:00")
                 && datos.get(posicion).getParGolesLocal()==99
                 && datos.get(posicion).getParGolesVisitante()==99) {
-            return getContext().getString(R.string.suspendido);
+            return activity.getString(R.string.suspendido);
         } else {
-            return getContext().getString(R.string.separador);
+            return activity.getString(R.string.separador);
         }
     }
 
@@ -96,37 +98,37 @@ public class JornadaAdapter extends ArrayAdapter {
     }
 
     private int ponerIconoAdecuadoMipmapLocal(int posicion) {
-        if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.barcelona))) {
+        if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.at_madrid))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.at_madrid))) {
             return R.mipmap.ic_atmadrid128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.at_bilbao))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.at_bilbao))) {
             return R.mipmap.ic_bilbao128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.betis))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.betis))) {
             return R.mipmap.ic_betis128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.deportivo))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.deportivo))) {
             return R.mipmap.ic_depor128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.espanyol))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.espanyol))) {
             return R.mipmap.ic_espanyol128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.levante))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.levante))) {
             return R.mipmap.ic_levante128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.logrono))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.logrono))) {
             return R.mipmap.ic_logrono128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.madrid))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.madrid))) {
             return R.mipmap.ic_madrid128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.rayo))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.rayo))) {
             return R.mipmap.ic_rayo128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.sevilla))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.sevilla))) {
             return R.mipmap.ic_sevilla128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.sociedad))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.sociedad))) {
             return R.mipmap.ic_sociedad128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.sporting))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.sporting))) {
             return R.mipmap.ic_sporting128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.tacones))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.tacones))) {
             return R.mipmap.ic_tacon128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.tenerife))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.tenerife))) {
             return R.mipmap.ic_tenerife128_foreground;
-        } else if (datos.get(posicion).getParEquLocal().contains(getContext().getString(R.string.valencia))) {
+        } else if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.valencia))) {
             return R.mipmap.ic_valencia128_foreground;
         } else {
             return R.mipmap.ic_equipos128_foreground;
@@ -134,37 +136,37 @@ public class JornadaAdapter extends ArrayAdapter {
     }
 
     private int ponerIconoAdecuadoMipmapVisitante(int posicion) {
-        if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.barcelona))) {
+        if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.at_madrid))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.at_madrid))) {
             return R.mipmap.ic_atmadrid128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.at_bilbao))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.at_bilbao))) {
             return R.mipmap.ic_bilbao128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.betis))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.betis))) {
             return R.mipmap.ic_betis128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.deportivo))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.deportivo))) {
             return R.mipmap.ic_depor128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.espanyol))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.espanyol))) {
             return R.mipmap.ic_espanyol128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.levante))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.levante))) {
             return R.mipmap.ic_levante128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.logrono))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.logrono))) {
             return R.mipmap.ic_logrono128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.madrid))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.madrid))) {
             return R.mipmap.ic_madrid128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.rayo))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.rayo))) {
             return R.mipmap.ic_rayo128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.sevilla))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.sevilla))) {
             return R.mipmap.ic_sevilla128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.sociedad))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.sociedad))) {
             return R.mipmap.ic_sociedad128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.sporting))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.sporting))) {
             return R.mipmap.ic_sporting128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.tacones))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.tacones))) {
             return R.mipmap.ic_tacon128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.tenerife))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.tenerife))) {
             return R.mipmap.ic_tenerife128_foreground;
-        } else if (datos.get(posicion).getParEquVisitante().contains(getContext().getString(R.string.valencia))) {
+        } else if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.valencia))) {
             return R.mipmap.ic_valencia128_foreground;
         } else {
             return R.mipmap.ic_equipos128_foreground;

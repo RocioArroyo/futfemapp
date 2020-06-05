@@ -116,6 +116,6 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
     @Override
     public void datosPassword(String nuevaPass) {
         BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
-        backgroundWorker.execute(getString(R.string.type_cambiar_pass), user_name, nuevaPass);
+        backgroundWorker.execute(getString(R.string.type_cambiar_pass), nuevaPass);
     }
 }

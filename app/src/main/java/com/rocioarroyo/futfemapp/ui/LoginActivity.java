@@ -148,7 +148,7 @@ public class LoginActivity extends AppCompatActivity {
             user_name = txtUserName.getText().toString();
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
             BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
-            backgroundWorker.execute(getString(R.string.type_login), user_name, txtPassword.getText().toString());
+            backgroundWorker.execute(getString(R.string.type_login), txtPassword.getText().toString());
         }
     }
 
@@ -174,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
             user_name = txtUserName.getText().toString();
             BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
-            backgroundWorker.execute(getString(R.string.type_registro), user_name, txtPassword.getText().toString());
+            backgroundWorker.execute(getString(R.string.type_registro), txtPassword.getText().toString());
         }
     }
 
@@ -194,7 +194,7 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
             user_name = txtUserName.getText().toString();
             BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
-            backgroundWorker.execute(getString(R.string.type_pass), user_name);
+            backgroundWorker.execute(getString(R.string.type_pass));
         }
     }
 

@@ -103,7 +103,7 @@ public class JornadaFragment extends Fragment {
         comoAdapter = new ArrayAdapter<>(this.getContext(), R.layout.custom_spinner, srtJornadas);
         spnJornada.setSelection(0);
         spnJornada.setAdapter(comoAdapter);
-        adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(0));
+        adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(0), mParam2);
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
     }
@@ -120,14 +120,14 @@ public class JornadaFragment extends Fragment {
         spnJornada.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(position));
+                adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(position), mParam2);
                 lv.setAdapter(adaptador);
                 Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(0));
+                adaptador = new JornadaAdapter(listener, obtenerPartidosJornada(0), mParam2);
                 lv.setAdapter(adaptador);
                 Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
             }

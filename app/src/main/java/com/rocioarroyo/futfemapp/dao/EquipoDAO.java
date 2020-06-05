@@ -41,10 +41,8 @@ public class EquipoDAO {
     public void validarClasificacion(ArrayList<EquipoDTO> s) {
         listaEquipos = s;
         if (s!=null) {
-            String user_name = s.get(17).getEquId();
-            s.remove(17);
-            BackgroundWorker backgroundWorker = new BackgroundWorker(context, s, this.user_name);
-            backgroundWorker.execute(context.getString(R.string.type_jornada), this.user_name);
+            BackgroundWorker backgroundWorker = new BackgroundWorker(context, s, user_name);
+            backgroundWorker.execute(context.getString(R.string.type_jornada));
         }
     }
 
@@ -152,9 +150,6 @@ public class EquipoDAO {
                             equipoDTO.setFav(jsonObject.getInt("fav"));
                             listaEquipos.add(equipoDTO);
                         }
-                        equipoDTO = new EquipoDTO();
-                        equipoDTO.setEquId(user_name);
-                        listaEquipos.add(equipoDTO);
                         return listaEquipos;
                     } else {
                         Log.i(TAG, "recibirEquipos: SALIDA");
