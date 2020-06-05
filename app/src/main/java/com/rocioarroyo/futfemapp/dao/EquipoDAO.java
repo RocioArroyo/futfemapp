@@ -29,6 +29,7 @@ public class EquipoDAO {
     private final String TAG = EquipoDAO.class.getName();
     private Context context;
     private ArrayList<EquipoDTO> listaEquipos;
+    private String user_name;
 
     public EquipoDAO() {}
 

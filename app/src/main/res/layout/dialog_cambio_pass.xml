@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/grisOscuro">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.FloatingLabel"
+        app:passwordToggleTint="@color/amarilloLetras"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idNuevaPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/amarilloLetras"
+            android:focusable="true"
+            android:hint="@string/title_nueva_pass"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/blanco"
+            android:theme="@style/EditText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.FloatingLabel"
+        app:passwordToggleTint="@color/amarilloLetras"
+        app:passwordToggleEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/idRepNuePass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/amarilloLetras"
+            android:focusable="true"
+            android:hint="@string/title_pass_repeat"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/blanco"
+            android:theme="@style/EditText" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/idErrorCamPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/rojoError"
+        android:visibility="gone"/>
+
+</LinearLayout>

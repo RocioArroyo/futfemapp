@@ -61,6 +61,9 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             tipo="favorito";
             String equ_id = strings[2];
             return equipoDAO.controlFavoritos(context.getString(R.string.type_fav), user_name, equ_id, login_url);
+        } else if (type.equalsIgnoreCase(context.getString(R.string.type_cambiar_pass))) {
+            String nueva_pass = strings[3];
+            return usuarioDAO.cambiarContrasena(context.getString(R.string.type_cambiar_pass), user_name, nueva_pass, login_url);
         }
         Log.i(TAG, "doInBackground: NO SE HAN PODIDO OBTENER LOS DATOS");
         Log.i(TAG, "doInBackground: SALIDA");

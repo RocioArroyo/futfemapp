@@ -95,6 +95,23 @@ public class UsuarioDAO {
         }
     }
 
+    private void validarCambioContrasen(ArrayList<String> s) {
+        String resultado = null;
+        if (s!=null && !s.isEmpty()) {
+            resultado = s.get(0);
+        }
+        if (resultado == null) {
+            Log.i(TAG, "validarLoginRegistro: No se ha podido conectar con la base de datos");
+        } else {
+            Log.i(TAG, "validarLoginRegistro: Se ha conectado con la base de datos");
+            if (resultado.equalsIgnoreCase(context.getString(R.string.cambio_ok))) {
+                Log.i(TAG, "validarLoginRegistro: abrimos la pantalla de inicio ya que el login es correcto");
+            } else if (resultado.equalsIgnoreCase(context.getString(R.string.cambio_fail))) {
+                Log.i(TAG, "validarLoginRegistro: inicio de sesion incorrecto");
+            }
+        }
+    }
+
     public ArrayList<String> mandarEmailPass(String type, String user_name, String pass_word, String login_url) {
         try {
             URL url = null;
@@ -209,6 +226,69 @@ public class UsuarioDAO {
             }
         } catch (MalformedURLException e) {
             Log.e(TAG, "recibirPassword: la URL esta incorrecta", e);
+        }
+        return null;
+    }
+
+
+
+    public ArrayList<String> cambiarContrasena(String type, String user_name, String nueva_pass, String login_url) {
+        try {
+            URL url = null;
+            if (type.equalsIgnoreCase(context.getString(R.string.type_login))) {
+                Log.i(TAG, "mandarEmailPass: OBTENEMOS DATOS DEL LOGIN");
+                url = new URL(login_url + "/login.php");
+            } else if (type.equalsIgnoreCase(context.getString(R.string.type_registro))) {
+                Log.i(TAG, "mandarEmailPass: OBTENEMOS DATOS DEL REGISTRO");
+                url = new URL(login_url + "/registro.php");
+            }
+            try {
+                if (url != null) {
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                    Log.i(TAG, "mandarEmailPass: abrimos la conexion con la base de datos");
+                    httpURLConnection.setRequestMethod("POST");
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setDoInput(true);
+
+                    OutputStream outputStream = httpURLConnection.getOutputStream();
+                    Log.i(TAG, "mandarEmailPass: mandamos mensaje a la base de datos");
+                    BufferedWriter bufferedWriter = null;
+                    bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+                    String post_data = URLEncoder.encode("username", "UTF-8") + "=" + URLEncoder.encode(user_name, "UTF-8")
+                            + "&" + URLEncoder.encode("password", "UTF-8") + "=" + URLEncoder.encode(nueva_pass, "UTF-8");
+                    Log.i(TAG, "mandarEmailPass: codificamos el mensaje a mandar");
+                    bufferedWriter.write(post_data);
+                    Log.i(TAG, "mandarEmailPass: mandamos el mensaje: " + post_data);
+                    bufferedWriter.flush();
+                    bufferedWriter.close();
+
+                    InputStream inputStream = httpURLConnection.getInputStream();
+                    Log.i(TAG, "mandarEmailPass: recibimos los datos de la base de datos");
+                    BufferedReader bufferedReader = null;
+                    bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "ISO-8859-1"));
+                    Log.i(TAG, "mandarEmailPass: empezamos a leer los datos");
+                    String result = "";
+                    String line = "";
+                    while ((line = bufferedReader.readLine()) != null) {
+                        result += line;
+                    }
+                    Log.i(TAG, "mandarEmailPass: terminamos de leer los datos: " + result);
+                    bufferedReader.close();
+                    inputStream.close();
+                    httpURLConnection.disconnect();
+                    Log.i(TAG, "mandarEmailPass: cerramos conexion con la base de datos");
+                    Log.i(TAG, "mandarEmailPass: DATOS OBTENIDOS CORRECTAMENTE");
+                    Log.i(TAG, "mandarEmailPass: SALIDA");
+                    ArrayList<String> resultados = new ArrayList<>();
+                    resultados.add(result);
+                    resultados.add(user_name);
+                    return resultados;
+                }
+            } catch (IOException e) {
+                Log.e(TAG, "mandarEmailPass: se ha producido un error con la conexion", e);
+            }
+        } catch (MalformedURLException e) {
+            Log.e(TAG, "mandarEmailPass: la URL esta incorrecta", e);
         }
         return null;
     }

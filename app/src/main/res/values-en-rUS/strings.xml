@@ -37,4 +37,5 @@
     <string name="posicion">Position:</string>
     <string name="puntos_equipo">Points:</string>
     <string name="title_baja">Unsubscribe</string>
+    <string name="title_nueva_pass">New Password</string>
 </resources>

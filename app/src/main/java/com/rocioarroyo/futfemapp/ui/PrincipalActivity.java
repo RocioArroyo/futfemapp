@@ -1,5 +1,6 @@
 package com.rocioarroyo.futfemapp.ui;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,13 +11,17 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.rocioarroyo.futfemapp.CambioContrasenaDialog;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.dao.EquipoDAO;
+import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
@@ -27,12 +32,13 @@ import com.rocioarroyo.futfemapp.fragments.NoticiasFragment;
 import java.util.ArrayList;
 
 
-public class PrincipalActivity extends AppCompatActivity {
+public class PrincipalActivity extends AppCompatActivity implements CambioContrasenaDialog.Datos {
 
-    Context context;
-    BottomNavigationView btnNavigation;
-    ArrayList<EquipoDTO> listaEquipos;
-    ArrayList<PartidoDTO> listaPartidos;
+    private Context context;
+    private BottomNavigationView btnNavigation;
+    private ArrayList<EquipoDTO> listaEquipos;
+    private ArrayList<PartidoDTO> listaPartidos;
+    private String user_name;
 
     public PrincipalActivity() {
     }
@@ -45,6 +51,8 @@ public class PrincipalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
+
+        user_name = getIntent().getStringExtra("user_name");
 
         btnNavigation = findViewById(R.id.idBottomNavigation);
         btnNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
@@ -70,6 +78,11 @@ public class PrincipalActivity extends AppCompatActivity {
                 return true;
             case R.id.iBaja:
                 return true;
+            case R.id.iCambiarPass:
+                FragmentManager fm = getSupportFragmentManager();
+                CambioContrasenaDialog ccd = new CambioContrasenaDialog();
+                ccd.show(fm, "Cambio de contraseña");
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -83,7 +96,6 @@ public class PrincipalActivity extends AppCompatActivity {
 
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            String user_name = getIntent().getStringExtra("user_name");
             switch (item.getItemId()) {
                 case R.id.iClasificacion:
                     listaEquipos = getIntent().getParcelableArrayListExtra("listaEquipos");
@@ -105,4 +117,9 @@ public class PrincipalActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    public void datosPassword(String nuevaPass) {
+        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        backgroundWorker.execute(getString(R.string.type_cambiar_pass), user_name, nuevaPass);
+    }
 }
