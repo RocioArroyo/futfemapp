@@ -86,7 +86,6 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
-        transaction.addToBackStack(null);
         transaction.commit();
     }
 
@@ -117,5 +116,18 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
     public void datosPassword(String nuevaPass) {
         BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
         backgroundWorker.execute(getString(R.string.type_cambiar_pass), nuevaPass);
+    }
+
+    @Override
+    public void onBackPressed() {
+        int selectedItemId = btnNavigation.getSelectedItemId();
+        if (R.id.iClasificacion != selectedItemId) {
+            btnNavigation.setSelectedItemId(R.id.iClasificacion);
+        } else {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("EXIT", true);
+            startActivity(intent);
+        }
     }
 }

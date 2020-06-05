@@ -130,6 +130,10 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        if (getIntent().getBooleanExtra("EXIT", false)) {
+            finish();
+        }
+
     }
 
     private void login() {
