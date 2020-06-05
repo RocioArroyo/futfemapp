@@ -5,8 +5,8 @@
     android:layout_height="match_parent"
     android:background="@color/grisFondo"
     android:orientation="vertical"
-    android:gravity="center"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="0sp"
         android:layout_weight="1"
         android:gravity="top"
@@ -45,9 +45,10 @@
 
         <TextView
             android:id="@+id/tvNombreLocal"
-            android:layout_width="100sp"
+            android:layout_width="match_parent"
             android:layout_height="32sp"
-            android:gravity="center"
+            android:gravity="start"
+            android:layout_gravity="start"
             android:textColor="@color/negro"
             android:textStyle="bold"/>
 
@@ -55,12 +56,13 @@
             android:id="@+id/ivLocal"
             android:layout_width="40sp"
             android:layout_height="32sp"
+            android:layout_gravity="start"
             app:srcCompat="@mipmap/ic_equipos128_foreground"
             android:contentDescription="@string/equipo_loc" />
 
         <TextView
             android:id="@+id/tvPuntosLocal"
-            android:layout_width="10sp"
+            android:layout_width="match_parent"
             android:layout_height="32sp"
             android:layout_weight="1"
             android:gravity="center"
@@ -69,7 +71,7 @@
 
         <TextView
             android:id="@+id/tvLineaSeparatoria"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="32sp"
             android:layout_weight="1"
             android:gravity="center"
@@ -78,7 +80,7 @@
 
         <TextView
             android:id="@+id/tvPuntosVisitante"
-            android:layout_width="10sp"
+            android:layout_width="match_parent"
             android:layout_height="32sp"
             android:layout_weight="1"
             android:gravity="center"
@@ -90,15 +92,17 @@
             android:layout_width="40sp"
             android:layout_height="32sp"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="end"
+            android:layout_gravity="end"
             app:srcCompat="@mipmap/ic_equipos128_foreground"
             android:contentDescription="@string/equipo_vis" />
 
         <TextView
             android:id="@+id/tvNombreVisitante"
-            android:layout_width="100sp"
+            android:layout_width="match_parent"
             android:layout_height="32sp"
-            android:gravity="center"
+            android:gravity="end"
+            android:layout_gravity="end"
             android:textColor="@color/negro"
             android:textStyle="bold" />
 

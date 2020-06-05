@@ -2,13 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grisFondo">
+    android:background="@color/grisFondo"
+    android:layout_gravity="center"
+    android:gravity="center">
 
     <LinearLayout
         android:id="@+id/llhEquipo1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center">
 
         <TextView
             android:id="@+id/tvPosicionE"
