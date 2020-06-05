@@ -34,17 +34,13 @@ import java.util.ArrayList;
 
 public class PrincipalActivity extends AppCompatActivity implements CambioContrasenaDialog.Datos {
 
-    private Context context;
+    private Context context = this;
     private BottomNavigationView btnNavigation;
     private ArrayList<EquipoDTO> listaEquipos;
     private ArrayList<PartidoDTO> listaPartidos;
     private String user_name;
 
     public PrincipalActivity() {
-    }
-
-    public PrincipalActivity(Context context) {
-        this.context = context;
     }
 
     @Override
@@ -70,7 +66,7 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.iCerrarSesion:
-                Intent intent = new Intent(this, LoginActivity.class);
+                Intent intent = new Intent(context, LoginActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.iCambiarPass:
@@ -80,7 +76,7 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
                 return true;
             case R.id.iCambiarPass:
                 FragmentManager fm = getSupportFragmentManager();
-                CambioContrasenaDialog ccd = new CambioContrasenaDialog();
+                CambioContrasenaDialog ccd = new CambioContrasenaDialog(context, user_name);
                 ccd.show(fm, "Cambio de contraseña");
                 return true;
         }
@@ -119,7 +115,7 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
 
     @Override
     public void datosPassword(String nuevaPass) {
-        BackgroundWorker backgroundWorker = new BackgroundWorker(this);
+        BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
         backgroundWorker.execute(getString(R.string.type_cambiar_pass), user_name, nuevaPass);
     }
 }

@@ -30,6 +30,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout txtLayoutPassRepeat, txtLayoutPass;
     private TextView txtErrorUsPass, txtRegistro, txtLogin, txtRecordarPass;
     private Button btnLogin, btnRegistrarse, btnRecordarPass;
+    private String user_name;
+    private Context context = LoginActivity.this;
 
     public LoginActivity() {}
 
@@ -143,14 +145,16 @@ public class LoginActivity extends AppCompatActivity {
             txtErrorUsPass.setVisibility(TextView.VISIBLE);
         } else {
             Log.i(TAG, "login: TODO VALIDADO");
+            user_name = txtUserName.getText().toString();
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
-            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            backgroundWorker.execute(getString(R.string.type_login), txtUserName.getText().toString(), txtPassword.getText().toString());
+            BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
+            backgroundWorker.execute(getString(R.string.type_login), user_name, txtPassword.getText().toString());
         }
     }
 
     private void registrarse() {
-        if (TextUtils.isEmpty(txtUserName.getText().toString().trim()) || TextUtils.isEmpty(txtPassword.getText().toString().trim()) || TextUtils.isEmpty(txtPassRepeat.getText().toString().trim())) {
+        if (TextUtils.isEmpty(txtUserName.getText().toString().trim()) || TextUtils.isEmpty(txtPassword.getText().toString().trim())
+                || TextUtils.isEmpty(txtPassRepeat.getText().toString().trim())) {
             Log.i(TAG, "registrarse: campo vacio");
             txtErrorUsPass.setText(getString(R.string.errorCampoVacio));
             txtErrorUsPass.setTextColor(Color.parseColor("#FC3232"));
@@ -168,8 +172,9 @@ public class LoginActivity extends AppCompatActivity {
         }else {
             Log.i(TAG, "registrarse: TODO VALIDADO");
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
-            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            backgroundWorker.execute(getString(R.string.type_registro), txtUserName.getText().toString(), txtPassword.getText().toString());
+            user_name = txtUserName.getText().toString();
+            BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
+            backgroundWorker.execute(getString(R.string.type_registro), user_name, txtPassword.getText().toString());
         }
     }
 
@@ -187,8 +192,9 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             Log.i(TAG, "registrarse: TODO VALIDADO");
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
-            BackgroundWorker backgroundWorker = new BackgroundWorker(this);
-            backgroundWorker.execute(getString(R.string.type_pass), txtUserName.getText().toString());
+            user_name = txtUserName.getText().toString();
+            BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
+            backgroundWorker.execute(getString(R.string.type_pass), user_name);
         }
     }
 

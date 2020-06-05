@@ -33,8 +33,9 @@ public class EquipoDAO {
 
     public EquipoDAO() {}
 
-    public EquipoDAO(Context context) {
+    public EquipoDAO(Context context, String user_name) {
         this.context=context;
+        this.user_name = user_name;
     }
 
     public void validarClasificacion(ArrayList<EquipoDTO> s) {
@@ -42,8 +43,8 @@ public class EquipoDAO {
         if (s!=null) {
             String user_name = s.get(17).getEquId();
             s.remove(17);
-            BackgroundWorker backgroundWorker = new BackgroundWorker(context, s);
-            backgroundWorker.execute(context.getString(R.string.type_jornada), user_name);
+            BackgroundWorker backgroundWorker = new BackgroundWorker(context, s, this.user_name);
+            backgroundWorker.execute(context.getString(R.string.type_jornada), this.user_name);
         }
     }
 
@@ -86,7 +87,7 @@ public class EquipoDAO {
         return listaOrdenada;
     }
 
-    public ArrayList<EquipoDTO> recibirClasificacion(String type, String user_name, String login_url) {
+    public ArrayList<EquipoDTO> recibirClasificacion(String type, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_clasificacion))) {
@@ -172,7 +173,7 @@ public class EquipoDAO {
         return null;
     }
 
-    public ArrayList<String> controlFavoritos(String type, String user_name, String equ_id, String login_url) {
+    public ArrayList<String> controlFavoritos(String type, String equ_id, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_fav))) {

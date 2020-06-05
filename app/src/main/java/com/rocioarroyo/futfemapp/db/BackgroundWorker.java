@@ -19,6 +19,7 @@ import java.util.Map;
 public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
 
     private Context context;
+    private String user_name;
     private final String TAG= BackgroundWorker.class.getName();
     private String tipo;
     private UsuarioDAO usuarioDAO;
@@ -26,44 +27,46 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
     private PartidoDAO partidoDAO;
     private ArrayList<EquipoDTO> listaEquipos;
 
-    public BackgroundWorker(Context context){
+    public BackgroundWorker(Context context, String user_name){
         this.context = context;
+        this.user_name = user_name;
     }
 
-    public BackgroundWorker(Context context, ArrayList<EquipoDTO> listaEquipos) {
+    public BackgroundWorker(Context context, ArrayList<EquipoDTO> listaEquipos, String user_name) {
         this.context=context;
         this.listaEquipos=listaEquipos;
+        this.user_name = user_name;
     }
 
     @Override
     protected ArrayList doInBackground(String... strings) {
-        usuarioDAO = new UsuarioDAO(context);
-        equipoDAO = new EquipoDAO(context);
-        partidoDAO = new PartidoDAO(context);
-        Log.i(TAG, "doInBackground: ENTRADA");
         String type = strings[0];
-        String user_name = strings[1];
+        user_name = strings[1];
+        usuarioDAO = new UsuarioDAO(context, user_name);
+        equipoDAO = new EquipoDAO(context, user_name);
+        partidoDAO = new PartidoDAO(context, user_name);
+        Log.i(TAG, "doInBackground: ENTRADA");
         String login_url="http://192.168.1.149";
         if (type.equalsIgnoreCase(context.getString(R.string.type_login)) || type.equalsIgnoreCase(context.getString(R.string.type_registro))) {
             tipo = "loginregistro";
             String pass_word = strings[2];
-            return usuarioDAO.mandarEmailPass(type, user_name, pass_word, login_url);
+            return usuarioDAO.mandarEmailPass(type, pass_word, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_pass))) {
             tipo = "recuperapass";
-            return usuarioDAO.recibirPassword(type, user_name, login_url);
+            return usuarioDAO.recibirPassword(type, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_clasificacion))) {
             tipo="clasificacion";
-            return equipoDAO.recibirClasificacion(type, user_name, login_url);
+            return equipoDAO.recibirClasificacion(type, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_jornada))) {
             tipo = "jornada";
-            return partidoDAO.recibirJornadas(type, user_name, login_url);
+            return partidoDAO.recibirJornadas(type, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_fav))) {
             tipo="favorito";
             String equ_id = strings[2];
-            return equipoDAO.controlFavoritos(context.getString(R.string.type_fav), user_name, equ_id, login_url);
+            return equipoDAO.controlFavoritos(context.getString(R.string.type_fav), equ_id, login_url);
         } else if (type.equalsIgnoreCase(context.getString(R.string.type_cambiar_pass))) {
             String nueva_pass = strings[3];
-            return usuarioDAO.cambiarContrasena(context.getString(R.string.type_cambiar_pass), user_name, nueva_pass, login_url);
+            return usuarioDAO.cambiarContrasena(context.getString(R.string.type_cambiar_pass), nueva_pass, login_url);
         }
         Log.i(TAG, "doInBackground: NO SE HAN PODIDO OBTENER LOS DATOS");
         Log.i(TAG, "doInBackground: SALIDA");
@@ -77,8 +80,8 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
 
     @Override
     protected void onPostExecute(ArrayList s) {
-        usuarioDAO = new UsuarioDAO(context);
-        equipoDAO = new EquipoDAO(context);
+        usuarioDAO = new UsuarioDAO(context, user_name);
+        equipoDAO = new EquipoDAO(context, user_name);
         Log.i(TAG, "onPostExecute: ENTRADA");
         if (tipo.equalsIgnoreCase("loginregistro")) {
             usuarioDAO.validarLoginRegistro(s);

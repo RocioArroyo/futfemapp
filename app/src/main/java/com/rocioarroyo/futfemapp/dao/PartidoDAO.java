@@ -32,15 +32,17 @@ import java.util.Map;
 public class PartidoDAO {
 
     private final String TAG = PartidoDAO.class.getName();
-    Context context;
+    private Context context;
+    private String user_name;
 
     public PartidoDAO(){}
 
-    public PartidoDAO(Context context) {
+    public PartidoDAO(Context context, String user_name) {
         this.context = context;
+        this.user_name = user_name;
     }
 
-    public ArrayList<PartidoDTO> recibirJornadas(String type, String user_name, String login_url) {
+    public ArrayList<PartidoDTO> recibirJornadas(String type, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_jornada))) {
@@ -125,7 +127,7 @@ public class PartidoDAO {
             Intent intent = new Intent(context, PrincipalActivity.class);
             intent.putParcelableArrayListExtra("listaEquipos", listaEquipos);
             intent.putParcelableArrayListExtra("listaPartidos" , listaPartidos);
-            intent.putExtra("user_name" ,user_name);
+            intent.putExtra("user_name" , this.user_name);
             context.startActivity(intent);
         }
     }

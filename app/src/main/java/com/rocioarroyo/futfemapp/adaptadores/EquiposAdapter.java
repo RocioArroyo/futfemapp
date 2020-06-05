@@ -25,7 +25,7 @@ public class EquiposAdapter extends ArrayAdapter {
 
     Activity activity;
     private ArrayList<EquipoDTO> datos;
-    private String user_name="";
+    private String user_name;
 
     public EquiposAdapter(Context context, ArrayList<EquipoDTO> datos, String user_name) {
         super(context, R.layout.activity_item_equipos, datos);
@@ -52,18 +52,18 @@ public class EquiposAdapter extends ArrayAdapter {
         }
         vistaTagEquipos.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
         vistaTagEquipos.nombre.setText(datos.get(posicion).getEquNombre().split("-")[0]);
-        vistaTagEquipos.posicion.setText(getContext().getString(R.string.posicion) + " " + datos.get(posicion).getPosicion());
-        vistaTagEquipos.puntos.setText(getContext().getString(R.string.puntos) + " " + datos.get(posicion).getEquPuntos());
+        vistaTagEquipos.posicion.setText(activity.getString(R.string.posicion) + " " + datos.get(posicion).getPosicion());
+        vistaTagEquipos.puntos.setText(activity.getString(R.string.puntos) + " " + datos.get(posicion).getEquPuntos());
         vistaTagEquipos.fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     if (datos.get(posicion).getFav()==1) {
                         datos.get(posicion).setFav(0);
-                        vistaTagEquipos.fav.setBackground(getContext().getDrawable(R.drawable.ic_nofav_foreground));
+                        vistaTagEquipos.fav.setBackground(activity.getDrawable(R.drawable.ic_nofav_foreground));
                     } else {
                         datos.get(posicion).setFav(1);
-                        vistaTagEquipos.fav.setBackground(getContext().getDrawable(R.drawable.ic_fav_foreground));
+                        vistaTagEquipos.fav.setBackground(activity.getDrawable(R.drawable.ic_fav_foreground));
                     }
                 }
                 new EquipoDAO().reordenarLista(datos);
@@ -81,9 +81,9 @@ public class EquiposAdapter extends ArrayAdapter {
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private Drawable ponerIconoFavDrawable (int posicion) {
         if (datos.get(posicion).getFav()==1) {
-            return getContext().getDrawable(R.drawable.ic_fav_foreground);
+            return activity.getDrawable(R.drawable.ic_fav_foreground);
         } else {
-            return getContext().getDrawable(R.drawable.ic_nofav_foreground);
+            return activity.getDrawable(R.drawable.ic_nofav_foreground);
         }
     }
 
@@ -96,37 +96,37 @@ public class EquiposAdapter extends ArrayAdapter {
     }
 
     private int ponerIconoAdecuadoMipmap(int posicion) {
-        if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.barcelona))) {
+        if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_madrid))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.at_madrid))) {
             return R.mipmap.ic_atmadrid128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.at_bilbao))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.at_bilbao))) {
             return R.mipmap.ic_bilbao128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.betis))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.betis))) {
             return R.mipmap.ic_betis128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.deportivo))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.deportivo))) {
             return R.mipmap.ic_depor128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.espanyol))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.espanyol))) {
             return R.mipmap.ic_espanyol128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.levante))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.levante))) {
             return R.mipmap.ic_levante128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.logrono))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.logrono))) {
             return R.mipmap.ic_logrono128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.madrid))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.madrid))) {
             return R.mipmap.ic_madrid128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.rayo))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.rayo))) {
             return R.mipmap.ic_rayo128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.sevilla))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.sevilla))) {
             return R.mipmap.ic_sevilla128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.sociedad))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.sociedad))) {
             return R.mipmap.ic_sociedad128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.sporting))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.sporting))) {
             return R.mipmap.ic_sporting128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.tacones))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.tacones))) {
             return R.mipmap.ic_tacon128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.tenerife))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.tenerife))) {
             return R.mipmap.ic_tenerife128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(getContext().getString(R.string.valencia))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.valencia))) {
             return R.mipmap.ic_valencia128_foreground;
         } else {
             return R.mipmap.ic_equipos128_foreground;
@@ -134,8 +134,8 @@ public class EquiposAdapter extends ArrayAdapter {
     }
 
     private void favoritos(int posicion) {
-        BackgroundWorker backgroundWorker = new BackgroundWorker(getContext());
-        backgroundWorker.execute(getContext().getString(R.string.type_fav), user_name, datos.get(posicion).getEquId());
+        BackgroundWorker backgroundWorker = new BackgroundWorker(activity, user_name);
+        backgroundWorker.execute(activity.getString(R.string.type_fav), user_name, datos.get(posicion).getEquId());
     }
 }
     class VistaTagEquipos {

@@ -19,11 +19,20 @@ import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 public class CambioContrasenaDialog extends DialogFragment {
 
     private Datos datos;
+    private Context context;
+    private String user_name;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         datos = (CambioContrasenaDialog.Datos) getActivity();
+    }
+
+    public CambioContrasenaDialog() {}
+
+    public CambioContrasenaDialog(Context context, String user_name) {
+        this.context = context;
+        this.user_name = user_name;
     }
 
     @Override

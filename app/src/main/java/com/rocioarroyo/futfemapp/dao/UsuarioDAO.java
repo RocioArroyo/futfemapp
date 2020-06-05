@@ -33,11 +33,13 @@ public class UsuarioDAO {
     private final String TAG = UsuarioDAO.class.getName();
     private Context context;
     private BackgroundWorker backgroundWorker;
+    private String user_name;
 
     public UsuarioDAO() {}
 
-    public UsuarioDAO (Context context) {
+    public UsuarioDAO (Context context, String user_name) {
         this.context = context;
+        this.user_name = user_name;
     }
 
     public void validarLoginRegistro(ArrayList<String> resultados) {
@@ -56,7 +58,7 @@ public class UsuarioDAO {
             if (resultado.equalsIgnoreCase(context.getString(R.string.login_ok)) || resultado.equalsIgnoreCase(context.getString(R.string.registro_ok))) {
                 Log.i(TAG, "validarLoginRegistro: abrimos la pantalla de inicio ya que el login es correcto");
                 txtError.setVisibility(TextView.INVISIBLE);
-                backgroundWorker = new BackgroundWorker(context);
+                backgroundWorker = new BackgroundWorker(context, user_name);
                 backgroundWorker.execute(context.getString(R.string.type_clasificacion), resultados.get(1), textInputEditText.getText().toString());
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.login_fail))) {
                 Log.i(TAG, "validarLoginRegistro: inicio de sesion incorrecto");
@@ -112,7 +114,7 @@ public class UsuarioDAO {
         }
     }
 
-    public ArrayList<String> mandarEmailPass(String type, String user_name, String pass_word, String login_url) {
+    public ArrayList<String> mandarEmailPass(String type, String pass_word, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_login))) {
@@ -173,7 +175,7 @@ public class UsuarioDAO {
         return null;
     }
 
-    public ArrayList<String> recibirPassword(String type, String user_name, String login_url) {
+    public ArrayList<String> recibirPassword(String type, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_pass))) {
@@ -232,7 +234,7 @@ public class UsuarioDAO {
 
 
 
-    public ArrayList<String> cambiarContrasena(String type, String user_name, String nueva_pass, String login_url) {
+    public ArrayList<String> cambiarContrasena(String type, String nueva_pass, String login_url) {
         try {
             URL url = null;
             if (type.equalsIgnoreCase(context.getString(R.string.type_login))) {
