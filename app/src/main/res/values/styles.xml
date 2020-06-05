@@ -46,4 +46,10 @@
         <item name="android:textColor">@color/amarilloLetras</item>
     </style>
 
+    <style name="custom_dialog" parent="@android:style/Theme.Holo.Dialog">
+        <item name="android:windowBackground">@color/grisOscuro</item>
+        <item name="android:textColor">@color/amarilloLetras</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>

@@ -98,4 +98,5 @@
     <string name="app_name" translatable="false">FutFemApp</string>
     <string name="equipo_vis" translatable="false">icono equipo visitante</string>
     <string name="equipo_loc" translatable="false">icono del equipo visitante</string>
+    <string name="pass_cambiada">Contraseña Cambiada Correctamente</string>
 </resources>

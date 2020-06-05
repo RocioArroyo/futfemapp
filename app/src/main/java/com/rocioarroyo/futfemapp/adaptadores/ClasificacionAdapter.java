@@ -91,7 +91,7 @@ public class ClasificacionAdapter extends ArrayAdapter {
     }
 
     private void darColorCabecera(int posicion, VistaTagClasificacion vistaTagClasificacion) {
-        if (posicion==0 && vistaTagClasificacion.nombre.getText().toString().equalsIgnoreCase(activity.getString(R.string.nombre))) {
+        if (datos.get(posicion).getPosicion()==0 && vistaTagClasificacion.nombre.getText().toString().equalsIgnoreCase(activity.getString(R.string.nombre))) {
             vistaTagClasificacion.listado.setBackgroundColor(Color.parseColor("#F9F7B2"));
         }
     }

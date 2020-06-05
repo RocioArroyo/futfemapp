@@ -1,14 +1,18 @@
 package com.rocioarroyo.futfemapp.db;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
 
+import androidx.fragment.app.FragmentManager;
+
 import com.rocioarroyo.futfemapp.dao.EquipoDAO;
 import com.rocioarroyo.futfemapp.dao.PartidoDAO;
 import com.rocioarroyo.futfemapp.dao.UsuarioDAO;
 import com.rocioarroyo.futfemapp.R;
+import com.rocioarroyo.futfemapp.dialogos.InformativoDialog;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.ui.PrincipalActivity;
 
@@ -93,6 +97,8 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             partidoDAO.validarPartidos(s, listaEquipos);
         } else if (tipo.equalsIgnoreCase("favorito")) {
             equipoDAO.validarFavorito(s);
+        } else if (tipo.equalsIgnoreCase("cambiarpass")) {
+            usuarioDAO.validarCambioContrasena(s);
         }
     }
 

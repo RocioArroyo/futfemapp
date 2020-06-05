@@ -84,6 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.i(TAG, "onClick: REGISTRO PULSADO");
                 registrarse();
+
                 InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 inputMethodManager.hideSoftInputFromWindow(txtUserName.getWindowToken(), 0);
                 inputMethodManager.hideSoftInputFromWindow(txtPassword.getWindowToken(), 0);

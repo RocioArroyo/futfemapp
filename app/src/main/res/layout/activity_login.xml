@@ -10,9 +10,9 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="70sp" />
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -27,11 +27,7 @@
             android:foregroundGravity="center"
             app:srcCompat="@mipmap/ic_logo128_foreground" />
 
-    </RelativeLayout>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="30dp" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

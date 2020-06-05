@@ -1,15 +1,25 @@
 package com.rocioarroyo.futfemapp.dao;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
+import com.rocioarroyo.futfemapp.dialogos.CambioContrasenaDialog;
+import com.rocioarroyo.futfemapp.dialogos.InformativoDialog;
 import com.rocioarroyo.futfemapp.dto.UsuarioDTO;
+import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -96,7 +106,7 @@ public class UsuarioDAO {
         }
     }
 
-    private void validarCambioContrasen(ArrayList<String> s) {
+    public String validarCambioContrasena(ArrayList<String> s) {
         String resultado = null;
         if (s!=null && !s.isEmpty()) {
             resultado = s.get(0);
@@ -107,10 +117,13 @@ public class UsuarioDAO {
             Log.i(TAG, "validarLoginRegistro: Se ha conectado con la base de datos");
             if (resultado.equalsIgnoreCase(context.getString(R.string.cambio_ok))) {
                 Log.i(TAG, "validarLoginRegistro: abrimos la pantalla de inicio ya que el login es correcto");
+                return context.getString(R.string.pass_cambiada);
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.cambio_fail))) {
                 Log.i(TAG, "validarLoginRegistro: inicio de sesion incorrecto");
+                return context.getString(R.string.errorConectionDB);
             }
         }
+        return null;
     }
 
     public ArrayList<String> mandarEmailPass(String type, String pass_word, String login_url) {
@@ -235,12 +248,9 @@ public class UsuarioDAO {
     public ArrayList<String> cambiarContrasena(String type, String nueva_pass, String login_url) {
         try {
             URL url = null;
-            if (type.equalsIgnoreCase(context.getString(R.string.type_login))) {
+            if (type.equalsIgnoreCase(context.getString(R.string.type_cambiar_pass))) {
                 Log.i(TAG, "mandarEmailPass: OBTENEMOS DATOS DEL LOGIN");
-                url = new URL(login_url + "/login.php");
-            } else if (type.equalsIgnoreCase(context.getString(R.string.type_registro))) {
-                Log.i(TAG, "mandarEmailPass: OBTENEMOS DATOS DEL REGISTRO");
-                url = new URL(login_url + "/registro.php");
+                url = new URL(login_url + "/cambiarpass.php");
             }
             try {
                 if (url != null) {

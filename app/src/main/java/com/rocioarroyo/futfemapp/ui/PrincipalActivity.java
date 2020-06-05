@@ -1,24 +1,21 @@
 package com.rocioarroyo.futfemapp.ui;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.rocioarroyo.futfemapp.CambioContrasenaDialog;
+import com.rocioarroyo.futfemapp.dialogos.CambioContrasenaDialog;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.dao.EquipoDAO;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
@@ -32,7 +29,7 @@ import com.rocioarroyo.futfemapp.fragments.NoticiasFragment;
 import java.util.ArrayList;
 
 
-public class PrincipalActivity extends AppCompatActivity implements CambioContrasenaDialog.Datos {
+public class PrincipalActivity extends AppCompatActivity {
 
     private Context context = this;
     private BottomNavigationView btnNavigation;
@@ -113,12 +110,6 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
     };
 
     @Override
-    public void datosPassword(String nuevaPass) {
-        BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
-        backgroundWorker.execute(getString(R.string.type_cambiar_pass), nuevaPass);
-    }
-
-    @Override
     public void onBackPressed() {
         int selectedItemId = btnNavigation.getSelectedItemId();
         if (R.id.iClasificacion != selectedItemId) {
@@ -129,5 +120,13 @@ public class PrincipalActivity extends AppCompatActivity implements CambioContra
             intent.putExtra("EXIT", true);
             startActivity(intent);
         }
+    }
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
 }

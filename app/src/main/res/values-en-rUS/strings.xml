@@ -38,4 +38,5 @@
     <string name="puntos_equipo">Points:</string>
     <string name="title_baja">Unsubscribe</string>
     <string name="title_nueva_pass">New Password</string>
+    <string name="pass_cambiada">"Password Successfully Changed "</string>
 </resources>
