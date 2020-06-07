@@ -67,7 +67,6 @@ public class EquipoDAO {
         ArrayList<EquipoDTO> listaOrdenada = new ArrayList<>();
         ArrayList<EquipoDTO> listaFav = new ArrayList<>();
         ArrayList<EquipoDTO> listaNoFav = new ArrayList<>();
-        listaOrdenada.add(listaEquipos.get(0));
         for (EquipoDTO equipoDTO: listaEquipos) {
             if (equipoDTO.getEquNombre()!=null && equipoDTO.getFav()==1) {
                 listaFav.add(equipoDTO);
@@ -134,7 +133,6 @@ public class EquipoDAO {
                         jsonArray = new JSONArray(result);
                         ArrayList<EquipoDTO> listaEquipos = new ArrayList<>();
                         EquipoDTO equipoDTO = new EquipoDTO();
-                        listaEquipos.add(equipoDTO);
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
                             equipoDTO = new EquipoDTO();

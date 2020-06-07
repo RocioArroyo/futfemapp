@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
@@ -17,9 +18,11 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dialogos.CambioContrasenaDialog;
+import com.rocioarroyo.futfemapp.dialogos.CargaDialog;
 import com.rocioarroyo.futfemapp.dialogos.InformativoDialog;
 import com.rocioarroyo.futfemapp.dto.UsuarioDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
+import com.rocioarroyo.futfemapp.ui.LoginActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,6 +54,8 @@ public class UsuarioDAO {
         this.context = context;
         this.user_name = user_name;
     }
+
+
 
     public void validarLoginRegistro(ArrayList<String> resultados) {
         String resultado = null;

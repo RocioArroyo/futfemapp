@@ -21,6 +21,7 @@
     <string name="title_login"><u>Iniciar Sesión</u></string>
     <string name="title_pass_olvidada"><u>¿Has olvidado tu contraseña? <b>Pulsa aquí</b></u></string>
     <string name="title_wait">Por favor espere…</string>
+    <string name="title_carga">Cargando Datos</string>
     <string name="title_menu_usuario">Usuario</string>
     <string name="title_cerrar_sesion">Cerrar Sesión</string>
     <string name="title_cambiar_pass">Cambiar Contraseña</string>

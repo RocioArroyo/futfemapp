@@ -1,9 +1,11 @@
 package com.rocioarroyo.futfemapp.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import java.util.regex.Pattern;
 import com.google.android.material.textfield.TextInputLayout;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
+import com.rocioarroyo.futfemapp.dialogos.CargaDialog;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin, btnRegistrarse, btnRecordarPass;
     private String user_name;
     private Context context = LoginActivity.this;
+    private FragmentManager fm;
 
     public LoginActivity() {}
 
@@ -53,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
         txtRecordarPass = findViewById(R.id.idPassOlvidada);
         btnRecordarPass = findViewById(R.id.idBtnRecordarPass);
         txtLayoutPass = findViewById(R.id.idLayoutPass);
+
+        fm = getSupportFragmentManager();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -135,6 +141,8 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
+        fm = getSupportFragmentManager();
+
     }
 
     private void login() {
@@ -152,7 +160,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.i(TAG, "login: TODO VALIDADO");
             user_name = txtUserName.getText().toString();
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
-            BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
+            BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name, fm);
             backgroundWorker.execute(getString(R.string.type_login), txtPassword.getText().toString());
         }
     }
@@ -178,7 +186,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.i(TAG, "registrarse: TODO VALIDADO");
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
             user_name = txtUserName.getText().toString();
-            BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
+            BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name, fm);
             backgroundWorker.execute(getString(R.string.type_registro), txtPassword.getText().toString());
         }
     }
@@ -198,6 +206,9 @@ public class LoginActivity extends AppCompatActivity {
             Log.i(TAG, "registrarse: TODO VALIDADO");
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
             user_name = txtUserName.getText().toString();
+            FragmentManager fm = getSupportFragmentManager();
+            CargaDialog ccd = new CargaDialog(context, user_name);
+            ccd.show(fm, "Carga datos");
             BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
             backgroundWorker.execute(getString(R.string.type_pass));
         }

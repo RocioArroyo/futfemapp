@@ -85,9 +85,6 @@ public class EquipoFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv = view.findViewById(R.id.lvEquipos);
-        if (mParam1.get(0).getEquId()==null) {
-            mParam1.remove(0);
-        }
         adaptador = new EquiposAdapter(listener, mParam1, mParam2);
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");

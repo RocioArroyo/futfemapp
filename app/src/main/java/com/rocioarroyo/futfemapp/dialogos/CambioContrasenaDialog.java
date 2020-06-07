@@ -26,6 +26,8 @@ public class CambioContrasenaDialog extends DialogFragment {
 
     private Context context;
     private String user_name;
+    private TextInputEditText tvPass;
+    private TextInputEditText tvCmabPass;
 
     @Override
     public void onAttach(Context context) {
@@ -68,6 +70,9 @@ public class CambioContrasenaDialog extends DialogFragment {
                     InformativoDialog dp = new InformativoDialog(context.getString(R.string.pass_cambiada));
                     dp.show(fm, "Tag Dialogo informacion");
                 } else {
+                    InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(tvPass.getWindowToken(), 0);
+                    inputMethodManager.hideSoftInputFromWindow(tvCmabPass.getWindowToken(), 0);
                     FragmentManager fm = getFragmentManager();
                     InformativoDialog dp = new InformativoDialog(context.getString(R.string.errorPass));
                     dp.show(fm, "Tag Dialogo Informativo");

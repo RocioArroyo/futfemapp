@@ -12,6 +12,7 @@ import com.rocioarroyo.futfemapp.dao.EquipoDAO;
 import com.rocioarroyo.futfemapp.dao.PartidoDAO;
 import com.rocioarroyo.futfemapp.dao.UsuarioDAO;
 import com.rocioarroyo.futfemapp.R;
+import com.rocioarroyo.futfemapp.dialogos.CargaDialog;
 import com.rocioarroyo.futfemapp.dialogos.InformativoDialog;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.ui.PrincipalActivity;
@@ -30,6 +31,8 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
     private EquipoDAO equipoDAO;
     private PartidoDAO partidoDAO;
     private ArrayList<EquipoDTO> listaEquipos;
+    private FragmentManager fm;
+    private CargaDialog ccd;
 
     public BackgroundWorker(Context context, String user_name){
         this.context = context;
@@ -40,6 +43,13 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
         this.context=context;
         this.listaEquipos=listaEquipos;
         this.user_name = user_name;
+    }
+
+    public BackgroundWorker(Context context, String user_name, FragmentManager fm) {
+        this.context=context;
+        this.user_name=user_name;
+        this.fm = fm;
+        ccd=new CargaDialog(context, user_name);
     }
 
     @Override
@@ -80,6 +90,9 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        if (ccd!=null) {
+            ccd.show(fm, "Carga datos");
+        }
     }
 
     @Override
@@ -99,6 +112,9 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             equipoDAO.validarFavorito(s);
         } else if (tipo.equalsIgnoreCase("cambiarpass")) {
             usuarioDAO.validarCambioContrasena(s);
+        }
+        if (ccd!=null) {
+            ccd.dismiss();
         }
     }
 

@@ -39,4 +39,5 @@
     <string name="title_baja">Unsubscribe</string>
     <string name="title_nueva_pass">New Password</string>
     <string name="pass_cambiada">"Password Successfully Changed "</string>
+    <string name="title_carga">" Loading Data"</string>
 </resources>

@@ -9,18 +9,177 @@
     android:background="@color/grisFondo">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="center"
-        android:gravity="center">
+        android:focusable="false">
 
-        <ListView
-            android:id="@+id/lvClasificacion"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:layout_height="30dp"/>
 
+        <LinearLayout
+            android:id="@+id/llhEquipo1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:gravity="bottom"
+            android:background="@color/amarilloSuave">
+
+            <TextView
+                android:id="@+id/tvPosicionT"
+                android:layout_width="2dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text=" "
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:clickable="false"/>
+
+            <ImageView
+                android:id="@+id/idIconoEquipoT"
+                android:layout_width="16dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/tvNombreT"
+                android:layout_width="35dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="text"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/nombre"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvPuntosT"
+                android:layout_width="3dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/puntos"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvPartidosJugadosT"
+                android:layout_width="2dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/partidos_jugados"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvPartidosGanadosT"
+                android:layout_width="2dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/partidos_ganados"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvPartidosEmpatadosT"
+                android:layout_width="2dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/partidos_empatados"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvPartidosPerdidosT"
+                android:layout_width="2dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/partidos_perdidos"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvGolesFavorT"
+                android:layout_width="3dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/goles_favor"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvGolesContraT"
+                android:layout_width="3dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/goles_contra"
+                android:clickable="false"/>
+
+            <TextView
+                android:id="@+id/tvGolesDiferenciaT"
+                android:layout_width="3dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/negro"
+                android:textStyle="bold"
+                android:text="@string/goles_diferencia"
+                android:clickable="false"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ListView
+                android:id="@+id/lvClasificacion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

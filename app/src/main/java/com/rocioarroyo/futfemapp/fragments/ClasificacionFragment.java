@@ -1,5 +1,6 @@
 package com.rocioarroyo.futfemapp.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -10,9 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.adaptadores.ClasificacionAdapter;
@@ -35,6 +38,7 @@ public class ClasificacionFragment extends Fragment {
     public static ClasificacionAdapter adaptador;
     FragmentActivity listener;
     private ListView lv;
+    private TextView tvPosicion, tvNombre, tvPuntos, tvParJug, tvParGan, tvParEmp, tvParPer, tvGolFav, tvGolCont, tvGolesDif;
 
     public ClasificacionFragment() {
     }
@@ -84,6 +88,27 @@ public class ClasificacionFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         lv = view.findViewById(R.id.lvClasificacion);
+        tvPosicion = ((Activity)listener).findViewById(R.id.tvPosicionT);
+        tvNombre = ((Activity)listener).findViewById(R.id.tvNombreT);
+        tvPuntos = ((Activity)listener).findViewById(R.id.tvPuntosT);
+        tvParJug = ((Activity)listener).findViewById(R.id.tvPartidosJugadosT);
+        tvParEmp = ((Activity)listener).findViewById(R.id.tvPartidosEmpatadosT);
+        tvParGan = ((Activity)listener).findViewById(R.id.tvPartidosGanadosT);
+        tvParPer = ((Activity)listener).findViewById(R.id.tvPartidosPerdidosT);
+        tvGolFav = ((Activity)listener).findViewById(R.id.tvGolesFavorT);
+        tvGolCont = ((Activity)listener).findViewById(R.id.tvGolesContraT);
+        tvGolesDif = ((Activity)listener).findViewById(R.id.tvGolesDiferenciaT);
+        InputMethodManager inputMethodManager = (InputMethodManager) listener.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(tvPosicion.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvNombre.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvParJug.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvParGan.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvParEmp.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvParPer.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvPuntos.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvGolFav.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvGolCont.getWindowToken(), 0);
+        inputMethodManager.hideSoftInputFromWindow(tvGolesDif.getWindowToken(), 0);
         adaptador = new ClasificacionAdapter(listener, mParam1, mParam2);
         lv.setAdapter(adaptador);
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");

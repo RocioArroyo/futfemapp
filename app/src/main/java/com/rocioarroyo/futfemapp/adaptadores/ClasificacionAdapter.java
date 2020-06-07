@@ -52,33 +52,17 @@ public class ClasificacionAdapter extends ArrayAdapter {
         } else {
             vistaTagClasificacion = (VistaTagClasificacion) view.getTag();
         }
-        if (posicion == 0) {
-            vistaTagClasificacion.posicion.setText("  ");
-            vistaTagClasificacion.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
-            vistaTagClasificacion.icono.setVisibility(ImageView.INVISIBLE);
-            vistaTagClasificacion.nombre.setText(activity.getString(R.string.nombre));
-            vistaTagClasificacion.puntos.setText(activity.getString(R.string.puntos));
-            vistaTagClasificacion.partidosJugados.setText(activity.getString(R.string.partidos_jugados));
-            vistaTagClasificacion.partidosGanados.setText(activity.getString(R.string.partidos_ganados));
-            vistaTagClasificacion.partidosEmpatados.setText(activity.getString(R.string.partidos_empatados));
-            vistaTagClasificacion.partidoPerdidos.setText(activity.getString(R.string.partidos_perdidos));
-            vistaTagClasificacion.golesFavor.setText(activity.getString(R.string.goles_favor));
-            vistaTagClasificacion.golesContra.setText(activity.getString(R.string.goles_contra));
-            vistaTagClasificacion.golesDiferencia.setText(activity.getString(R.string.goles_diferencia));
-            darColorCabecera(posicion, vistaTagClasificacion);
-        } else {
-            vistaTagClasificacion.posicion.setText(Integer.toString(posicion));
-            vistaTagClasificacion.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
-            vistaTagClasificacion.nombre.setText(datos.get(posicion).getEquNombre().split("-")[1]);
-            vistaTagClasificacion.puntos.setText(Integer.toString(datos.get(posicion).getEquPuntos()));
-            vistaTagClasificacion.partidosJugados.setText(Integer.toString(partidosJugados(datos.get(posicion).getEquParGanado(), datos.get(posicion).getEquParEmpatados(), datos.get(posicion).getEquParPerdidos())));
-            vistaTagClasificacion.partidosGanados.setText(Integer.toString(datos.get(posicion).getEquParGanado()));
-            vistaTagClasificacion.partidosEmpatados.setText(Integer.toString(datos.get(posicion).getEquParEmpatados()));
-            vistaTagClasificacion.partidoPerdidos.setText(Integer.toString(datos.get(posicion).getEquParPerdidos()));
-            vistaTagClasificacion.golesFavor.setText(Integer.toString(datos.get(posicion).getEquGolesFavor()));
-            vistaTagClasificacion.golesContra.setText(Integer.toString(datos.get(posicion).getEquGolesContra()));
-            vistaTagClasificacion.golesDiferencia.setText(Integer.toString(golesDiferencia(datos.get(posicion).getEquGolesFavor(), datos.get(posicion).getEquGolesContra())));
-        }
+        vistaTagClasificacion.posicion.setText(Integer.toString(datos.get(posicion).getPosicion()));
+        vistaTagClasificacion.icono.setImageResource(ponerIconoAdecuadoMipmap(posicion));
+        vistaTagClasificacion.nombre.setText(datos.get(posicion).getEquNombre().split("-")[1]);
+        vistaTagClasificacion.puntos.setText(Integer.toString(datos.get(posicion).getEquPuntos()));
+        vistaTagClasificacion.partidosJugados.setText(Integer.toString(partidosJugados(datos.get(posicion).getEquParGanado(), datos.get(posicion).getEquParEmpatados(), datos.get(posicion).getEquParPerdidos())));
+        vistaTagClasificacion.partidosGanados.setText(Integer.toString(datos.get(posicion).getEquParGanado()));
+        vistaTagClasificacion.partidosEmpatados.setText(Integer.toString(datos.get(posicion).getEquParEmpatados()));
+        vistaTagClasificacion.partidoPerdidos.setText(Integer.toString(datos.get(posicion).getEquParPerdidos()));
+        vistaTagClasificacion.golesFavor.setText(Integer.toString(datos.get(posicion).getEquGolesFavor()));
+        vistaTagClasificacion.golesContra.setText(Integer.toString(datos.get(posicion).getEquGolesContra()));
+        vistaTagClasificacion.golesDiferencia.setText(Integer.toString(golesDiferencia(datos.get(posicion).getEquGolesFavor(), datos.get(posicion).getEquGolesContra())));
         return (view);
     }
 
@@ -90,46 +74,38 @@ public class ClasificacionAdapter extends ArrayAdapter {
         return partidosGnados+partidosEmpatados+partidosPerdidos;
     }
 
-    private void darColorCabecera(int posicion, VistaTagClasificacion vistaTagClasificacion) {
-        if (datos.get(posicion).getPosicion()==0 && vistaTagClasificacion.nombre.getText().toString().equalsIgnoreCase(activity.getString(R.string.nombre))) {
-            vistaTagClasificacion.listado.setBackgroundColor(Color.parseColor("#F9F7B2"));
-        }
-    }
-
     private int ponerIconoAdecuadoMipmap(int posicion) {
-        if(posicion==0){
-            return R.mipmap.ic_equipos128_foreground;
-        }else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.barcelona))) {
+        if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.at_madrid))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.at_madrid))) {
             return R.mipmap.ic_atmadrid128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.at_bilbao))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.at_bilbao))) {
             return R.mipmap.ic_bilbao128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.betis))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.betis))) {
             return R.mipmap.ic_betis128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.deportivo))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.deportivo))) {
             return R.mipmap.ic_depor128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.espanyol))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.espanyol))) {
             return R.mipmap.ic_espanyol128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.levante))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.levante))) {
             return R.mipmap.ic_levante128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.logrono))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.logrono))) {
             return R.mipmap.ic_logrono128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.madrid))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.madrid))) {
             return R.mipmap.ic_madrid128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.rayo))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.rayo))) {
             return R.mipmap.ic_rayo128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.sevilla))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.sevilla))) {
             return R.mipmap.ic_sevilla128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.sociedad))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.sociedad))) {
             return R.mipmap.ic_sociedad128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.sporting))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.sporting))) {
             return R.mipmap.ic_sporting128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.tacones))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.tacones))) {
             return R.mipmap.ic_tacon128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.tenerife))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.tenerife))) {
             return R.mipmap.ic_tenerife128_foreground;
-        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.valencia))) {
+        } else if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.valencia))) {
             return R.mipmap.ic_valencia128_foreground;
         } else {
             return R.mipmap.ic_equipos128_foreground;
