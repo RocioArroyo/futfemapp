@@ -57,7 +57,7 @@ public class UsuarioDAO {
 
 
 
-    public void validarLoginRegistro(ArrayList<String> resultados) {
+    public void validarLoginRegistro(ArrayList<String> resultados, CargaDialog ccd) {
         String resultado = null;
         if (resultados!=null && !resultados.isEmpty()) {
             resultado = resultados.get(0);
@@ -67,6 +67,7 @@ public class UsuarioDAO {
             Log.i(TAG, "validarLoginRegistro: No se ha podido conectar con la base de datos");
             txtError.setText(context.getString(R.string.errorConectionDB));
             txtError.setVisibility(TextView.VISIBLE);
+            ccd.dismiss();
         } else {
             Log.i(TAG, "validarLoginRegistro: Se ha conectado con la base de datos");
             if (resultado.equalsIgnoreCase(context.getString(R.string.login_ok)) || resultado.equalsIgnoreCase(context.getString(R.string.registro_ok))) {
@@ -78,10 +79,12 @@ public class UsuarioDAO {
                 Log.i(TAG, "validarLoginRegistro: inicio de sesion incorrecto");
                 txtError.setText(context.getString(R.string.errorUsPass));
                 txtError.setVisibility(TextView.VISIBLE);
+                ccd.dismiss();
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.registro_fail))) {
                 Log.i(TAG, "validarLoginRegistro: registro incorrecto");
                 txtError.setText(context.getString(R.string.errorUsExistente));
                 txtError.setVisibility(TextView.VISIBLE);
+                ccd.dismiss();
             }
         }
     }

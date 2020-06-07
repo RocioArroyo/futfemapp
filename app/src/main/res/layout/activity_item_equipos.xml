@@ -17,8 +17,8 @@
             android:id="@+id/ivIconoClub"
             android:layout_width="match_parent"
             android:layout_height="100sp"
-            android:layout_gravity="center"
-            android:foregroundGravity="left"
+            android:layout_gravity="start"
+            android:foregroundGravity="right"
             android:contentDescription="@string/equipo_loc" />
 
     </LinearLayout>

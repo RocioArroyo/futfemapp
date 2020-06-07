@@ -101,20 +101,29 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
         equipoDAO = new EquipoDAO(context, user_name);
         Log.i(TAG, "onPostExecute: ENTRADA");
         if (tipo.equalsIgnoreCase("loginregistro")) {
-            usuarioDAO.validarLoginRegistro(s);
+            usuarioDAO.validarLoginRegistro(s, ccd);
         } else if (tipo.equalsIgnoreCase("recuperapass")) {
             usuarioDAO.validarPassword(s);
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
         } else if (tipo.equalsIgnoreCase("clasificacion")){
-            equipoDAO.validarClasificacion(s);
+            equipoDAO.validarClasificacion(s, ccd);
         } else if (tipo.equalsIgnoreCase("jornada")) {
             partidoDAO.validarPartidos(s, listaEquipos);
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
         } else if (tipo.equalsIgnoreCase("favorito")) {
             equipoDAO.validarFavorito(s);
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
         } else if (tipo.equalsIgnoreCase("cambiarpass")) {
             usuarioDAO.validarCambioContrasena(s);
-        }
-        if (ccd!=null) {
-            ccd.dismiss();
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
         }
     }
 

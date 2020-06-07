@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
+import com.rocioarroyo.futfemapp.dialogos.CargaDialog;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 
 import org.json.JSONArray;
@@ -38,11 +39,13 @@ public class EquipoDAO {
         this.user_name = user_name;
     }
 
-    public void validarClasificacion(ArrayList<EquipoDTO> s) {
+    public void validarClasificacion(ArrayList<EquipoDTO> s, CargaDialog ccd) {
         listaEquipos = s;
         if (s!=null) {
             BackgroundWorker backgroundWorker = new BackgroundWorker(context, s, user_name);
             backgroundWorker.execute(context.getString(R.string.type_jornada));
+        } else {
+            ccd.dismiss();
         }
     }
 
