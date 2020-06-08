@@ -64,6 +64,10 @@ public class JornadaFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * onAttach
+     * @param context
+     */
     @Override
     public void onAttach (Context context) {
         super.onAttach(context);
@@ -72,6 +76,10 @@ public class JornadaFragment extends Fragment {
         }
     }
 
+    /**
+     * Método apra crear el fragmentp
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +89,13 @@ public class JornadaFragment extends Fragment {
         }
     }
 
+    /**
+     * Método para crear la vista
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,6 +103,11 @@ public class JornadaFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_jornada, container, false);
     }
 
+    /**
+     * Método que se genera tras crear la vista
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -108,12 +128,19 @@ public class JornadaFragment extends Fragment {
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
     }
 
+    /**
+     * Método que se lanza despues de cambiar de fragmento
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         this.listener = null;
     }
 
+    /**
+     * Método que se genra al crear la actividad que sostiene el fragment
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -134,6 +161,11 @@ public class JornadaFragment extends Fragment {
         });
     }
 
+    /**
+     * Método que obtiene los partidos divididos por cada jornada y enera una lista de partidos
+     * @param posicion
+     * @return
+     */
     private ArrayList<PartidoDTO> obtenerPartidosJornada (int posicion) {
         ArrayList<PartidoDTO> listaPartipoxJornada = new ArrayList<>();
         for (PartidoDTO partidoDTO: mParam1) {

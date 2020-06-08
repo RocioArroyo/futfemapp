@@ -25,19 +25,37 @@ public class DarBajaDialog extends DialogFragment {
     private String user_name;
     String mensaje;
 
+    /**
+     * onAttach
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
 
+    /**
+     * Constructor vacio
+     */
     public DarBajaDialog() {}
 
+    /**
+     * Contructor con las constantes de la aplicacion y el mensaje a mostrar
+     * @param context
+     * @param user_name
+     * @param mensaje
+     */
     public DarBajaDialog(Context context, String user_name, String mensaje) {
         this.context = context;
         this.user_name = user_name;
         this.mensaje=mensaje;
     }
 
+    /**
+     * Método de creacion de dialogo
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder ventana = new AlertDialog.Builder(getActivity(), R.style.custom_dialog);

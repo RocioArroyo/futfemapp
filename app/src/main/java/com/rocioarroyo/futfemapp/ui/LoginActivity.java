@@ -37,8 +37,15 @@ public class LoginActivity extends AppCompatActivity {
     private Context context = LoginActivity.this;
     private FragmentManager fm;
 
+    /**
+     * Constructor vacio
+     */
     public LoginActivity() {}
 
+    /**
+     * Método que crea la actividad
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -145,6 +152,9 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Método que se lanza al hacer click en el boton de incio de sesio y que comprueba errores vasicoas antes de lanzar el hilo
+     */
     private void login() {
         if (TextUtils.isEmpty(txtUserName.getText().toString().trim()) || TextUtils.isEmpty(txtPassword.getText().toString().trim())) {
             Log.i(TAG, "login: campo vacio");
@@ -165,6 +175,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método que se lanzar al hacer click en el boton de registro y que comprueba antes errores vasico, antes de lanzar el hilo
+     */
     private void registrarse() {
         if (TextUtils.isEmpty(txtUserName.getText().toString().trim()) || TextUtils.isEmpty(txtPassword.getText().toString().trim())
                 || TextUtils.isEmpty(txtPassRepeat.getText().toString().trim())) {
@@ -191,6 +204,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método que obtiene la contraseña y se ejecuta al clicar el boton de recuperar contraseña, prueba errores vasicaon antes de lanzar el hilo
+     */
     private void recuperarContrasena() {
         if (TextUtils.isEmpty(txtUserName.getText().toString().trim())) {
             Log.i(TAG, "registrarse: campo vacio");
@@ -214,6 +230,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método de comprobacion de error con la formacion del email
+     * @param email
+     * @return
+     */
     private boolean emailValidator(String email) {
         Pattern pattern;
         Matcher matcher;

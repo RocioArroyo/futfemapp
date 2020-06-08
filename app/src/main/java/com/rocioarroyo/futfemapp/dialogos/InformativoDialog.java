@@ -5,8 +5,6 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,17 +16,33 @@ public class InformativoDialog extends DialogFragment {
 
     private String mensaje;
 
+    /**
+     * Constructor vacio
+     */
     public InformativoDialog(){}
 
+    /**
+     * Constructor con el mensjae a mostrar
+     * @param mensaje
+     */
     public InformativoDialog(String mensaje) {
         this.mensaje = mensaje;
     }
 
+    /**
+     * onAttach
+     * @param context
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
     }
 
+    /**
+     * Método de creacion del dialogo
+     * @param savedInstanceState
+     * @return
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

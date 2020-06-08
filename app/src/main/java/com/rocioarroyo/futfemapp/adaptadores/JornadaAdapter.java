@@ -10,10 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.rocioarroyo.futfemapp.R;
-import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -24,6 +22,12 @@ public class JornadaAdapter extends ArrayAdapter {
     private ArrayList<PartidoDTO> datos;
     private String user_name;
 
+    /**
+     * Constructor con las constantes de la apliacion y la lista de partidos a mostrar
+     * @param context
+     * @param datos
+     * @param user_name
+     */
     public JornadaAdapter(Context context, ArrayList<PartidoDTO> datos, String user_name) {
         super(context, R.layout.activity_item_jornada, datos);
         this.activity = (Activity) context;
@@ -31,6 +35,13 @@ public class JornadaAdapter extends ArrayAdapter {
         this.user_name = user_name;
     }
 
+    /**
+     * Método para llamar a la vista y generarla
+     * @param posicion
+     * @param convertView
+     * @param parent
+     * @return
+     */
     public View getView(final int posicion, View convertView, ViewGroup parent) {
         View view = convertView;
         VistaTagJornada vistaTagJornada;
@@ -63,6 +74,12 @@ public class JornadaAdapter extends ArrayAdapter {
         return (view);
     }
 
+    /**
+     * Método para poner la hora de cada partido
+     * Separa la hora de la fehca completa
+     * @param posicion
+     * @return
+     */
     private String ponerHora(int posicion) {
         if (datos.get(posicion).getParFechaHora().split(" ")[1].equalsIgnoreCase("00:00")) {
             return "--:--";
@@ -71,6 +88,11 @@ public class JornadaAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método para mostrar, o no, los goles del equipo local, segun se haya suspendido, o aun no se haya ejecutado
+     * @param posicion
+     * @return
+     */
     private String ponerGolesLocal(int posicion) {
         if (datos.get(posicion).getParGolesLocal()==99) {
             return " ";
@@ -79,6 +101,11 @@ public class JornadaAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método para mostrar lel separados o la abreviatura de suspendido en el separador entre goles
+     * @param posicion
+     * @return
+     */
     private String ponerSeparador(int posicion) {
         if (datos.get(posicion).getParFechaHora().split(" ")[1].equalsIgnoreCase("00:00")
                 && datos.get(posicion).getParGolesLocal()==99
@@ -89,6 +116,12 @@ public class JornadaAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método para mostrar los goles del equipos visitante, o no si es un partido no ejecutado o suspendido
+     * SOLO PARA VISITANTES
+     * @param posicion
+     * @return
+     */
     private String ponerGolesVisitante(int posicion) {
         if (datos.get(posicion).getParGolesVisitante()==99) {
             return " ";
@@ -97,6 +130,12 @@ public class JornadaAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método par amostrar el icono del equipo a mostrar en cada fila
+     * SOLO PARA EQUIPOS LOCALES
+     * @param posicion
+     * @return
+     */
     private int ponerIconoAdecuadoMipmapLocal(int posicion) {
         if (datos.get(posicion).getParEquLocal().contains(activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
@@ -135,6 +174,12 @@ public class JornadaAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método para mosotrar el icono de cada equiop en la fila que corresponde
+     * SOLO AR AEQUIPOS VISITANTES
+     * @param posicion
+     * @return
+     */
     private int ponerIconoAdecuadoMipmapVisitante(int posicion) {
         if (datos.get(posicion).getParEquVisitante().contains(activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
@@ -175,6 +220,9 @@ public class JornadaAdapter extends ArrayAdapter {
 
 }
 
+/**
+ * Class de los campos pa mostrar en la vista
+ */
     class VistaTagJornada {
         TextView fecha;
         TextView hora;

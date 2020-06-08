@@ -10,24 +10,34 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.FragmentManager;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.rocioarroyo.futfemapp.R;
-import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 
 public class CargaDialog extends DialogFragment {
 
     private Context context;
     private String user_name;
 
+    /**
+     * Constructor vacio
+     */
     public CargaDialog(){}
 
+    /**
+     * Constructor con las constantes de la aplicacion
+     * @param context
+     * @param user_name
+     */
     public CargaDialog(Context context, String user_name) {
         this.context=context;
         this.user_name=user_name;
     }
 
+    /**
+     * Método que se ejecuta al crear el dialogo
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder ventana = new AlertDialog.Builder(getActivity(), R.style.custom_dialog);
@@ -38,6 +48,10 @@ public class CargaDialog extends DialogFragment {
         return ventana.create();
     }
 
+    /**
+     * Método que se ejecuta al cerrar una aplicacion
+     * @param dialog
+     */
     @Override
     public void onDismiss(DialogInterface dialog) {
         super.onDismiss(dialog);

@@ -22,6 +22,12 @@ public class ClasificacionAdapter extends ArrayAdapter {
     private ArrayList<EquipoDTO> datos;
     private String user_name;
 
+    /**
+     * Constructor del adaptador con los datos de la apliacaion y la lista a mostrar
+     * @param context
+     * @param datos
+     * @param user_name
+     */
     public ClasificacionAdapter(Context context, ArrayList<EquipoDTO> datos, String user_name) {
         super(context, R.layout.activity_item_clasificacion, datos);
         this.activity = (Activity) context;
@@ -29,6 +35,13 @@ public class ClasificacionAdapter extends ArrayAdapter {
         this.user_name = user_name;
     }
 
+    /**
+     * Método para llamar a la vista a crear
+     * @param posicion
+     * @param convertView
+     * @param parent
+     * @return
+     */
     public View getView(final int posicion, View convertView, ViewGroup parent) {
         View view = convertView;
         VistaTagClasificacion vistaTagClasificacion;
@@ -66,14 +79,32 @@ public class ClasificacionAdapter extends ArrayAdapter {
         return (view);
     }
 
+    /**
+     * Método que calcula la diferencia de goles
+     * @param golesFavor
+     * @param golesContra
+     * @return
+     */
     private int golesDiferencia(int golesFavor, int golesContra) {
         return golesFavor-golesContra;
     }
 
+    /**
+     * Método que clacula el total de partidos ya jugados
+     * @param partidosGnados
+     * @param partidosEmpatados
+     * @param partidosPerdidos
+     * @return
+     */
     private int partidosJugados(int partidosGnados, int partidosEmpatados, int partidosPerdidos) {
         return partidosGnados+partidosEmpatados+partidosPerdidos;
     }
 
+    /**
+     * Método que saca qué icono sacar en cada fila de la lista a mostrar
+     * @param posicion
+     * @return
+     */
     private int ponerIconoAdecuadoMipmap(int posicion) {
         if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.separador) + activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
@@ -114,6 +145,9 @@ public class ClasificacionAdapter extends ArrayAdapter {
 
 }
 
+/**
+ * Class de todos los campos a mostrar en la vista
+ */
     class VistaTagClasificacion {
         TextView posicion;
         ImageView icono;

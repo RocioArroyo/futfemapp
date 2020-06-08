@@ -60,6 +60,10 @@ public class ClasificacionFragment extends Fragment {
         return fragment;
     }
 
+    /**
+     * onAttach
+     * @param context
+     */
     @Override
     public void onAttach (Context context) {
         super.onAttach(context);
@@ -68,6 +72,10 @@ public class ClasificacionFragment extends Fragment {
         }
     }
 
+    /**
+     * Método apra crear el fragmentp
+     * @param savedInstanceState
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +85,13 @@ public class ClasificacionFragment extends Fragment {
         }
     }
 
+    /**
+     * Método para crear la vista
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,6 +99,11 @@ public class ClasificacionFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_clasificacion, container, false);
     }
 
+    /**
+     * Método que se genera tras crear la vista
+     * @param view
+     * @param savedInstanceState
+     */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -114,12 +134,19 @@ public class ClasificacionFragment extends Fragment {
         Log.i(TAG, "onViewCreated: ADAPTADOR CREADO");
     }
 
+    /**
+     * Método que se lanza despues de cambiar de fragmento
+     */
     @Override
     public void onDetach() {
         super.onDetach();
         this.listener = null;
     }
 
+    /**
+     * Método que se lanza al crear la actividad que sostiene el fragmento
+     * @param savedInstanceState
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

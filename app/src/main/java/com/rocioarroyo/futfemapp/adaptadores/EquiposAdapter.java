@@ -27,6 +27,12 @@ public class EquiposAdapter extends ArrayAdapter {
     private ArrayList<EquipoDTO> datos;
     private String user_name;
 
+    /**
+     * Constructor con las constantes de la apliacion y la lista de equipos a mostrar
+     * @param context
+     * @param datos
+     * @param user_name
+     */
     public EquiposAdapter(Context context, ArrayList<EquipoDTO> datos, String user_name) {
         super(context, R.layout.activity_item_equipos, datos);
         this.activity = (Activity) context;
@@ -34,6 +40,13 @@ public class EquiposAdapter extends ArrayAdapter {
         this.datos = datos;
     }
 
+    /**
+     * Método que se utiliza para llamar y mostrar la lista en cuestion
+     * @param posicion
+     * @param convertView
+     * @param parent
+     * @return
+     */
     public View getView(final int posicion, View convertView, ViewGroup parent) {
         View view = convertView;
         VistaTagEquipos vistaTagEquipos;
@@ -78,6 +91,12 @@ public class EquiposAdapter extends ArrayAdapter {
         return (view);
     }
 
+    /**
+     * Método que muestra el icono de favorritos a mostrar en la vista
+     * SOLO PARA ANDROID CON API MAYOR A LOLLIPOP
+     * @param posicion
+     * @return
+     */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private Drawable ponerIconoFavDrawable (int posicion) {
         if (datos.get(posicion).getFav()==1) {
@@ -87,6 +106,12 @@ public class EquiposAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método que muestra el icono de favoritos en la vista
+     * SOLO PARA APIS MENOSRES DE LOLLIPOP
+     * @param posicion
+     * @return
+     */
     private int ponerIconoFavMipMap (int posicion) {
         if (datos.get(posicion).getFav()==1) {
             return R.drawable.ic_fav_foreground;
@@ -95,6 +120,11 @@ public class EquiposAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método que saca el icono que ha de aparecera para cada lista o equipo
+     * @param posicion
+     * @return
+     */
     private int ponerIconoAdecuadoMipmap(int posicion) {
         if (datos.get(posicion).getEquNombre().contains(activity.getString(R.string.barcelona))) {
             return R.mipmap.ic_barcelona128_foreground;
@@ -133,11 +163,19 @@ public class EquiposAdapter extends ArrayAdapter {
         }
     }
 
+    /**
+     * Método que llama al sevidor para informar de un nuevo favorito o eliminacion de un favorito
+     * @param posicion
+     */
     private void favoritos(int posicion) {
         BackgroundWorker backgroundWorker = new BackgroundWorker(activity, user_name);
         backgroundWorker.execute(activity.getString(R.string.type_fav), datos.get(posicion).getEquId());
     }
 }
+
+/**
+ * Class de los campos a mostrar en la vista
+ */
     class VistaTagEquipos {
         ImageView icono;
         TextView nombre;

@@ -12,6 +12,7 @@ import com.rocioarroyo.futfemapp.dao.PartidoDAO;
 import com.rocioarroyo.futfemapp.dao.UsuarioDAO;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.dialogos.CargaDialog;
+import com.rocioarroyo.futfemapp.dialogos.InformativoDialog;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.excepcion.FutFemAppException;
 
@@ -110,10 +111,16 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
                 throw new FutFemAppException("No se ha recoocido el tipo de llamada");
             }
         } catch (IOException e) {
+            InformativoDialog id = new InformativoDialog("SE HA PRODUCIDO UN ERROR");
+            id.show(fm, "ERROR");
             Log.e(TAG, "doInBackground: ERROR: ", e);
         } catch (FutFemAppException e) {
+            InformativoDialog id = new InformativoDialog("ERROR AL CONECTAR CON EL SERVIDOR");
+            id.show(fm, "ERROR");
             Log.e(TAG, "doInBackground: ERROR: ", e);
         } catch (JSONException e) {
+            InformativoDialog id = new InformativoDialog("SE HA PRODUCIDO UN ERROR");
+            id.show(fm, "ERROR");
             Log.e(TAG, "doInBackground: ERROR: ", e);
         }
         Log.i(TAG, "doInBackground: NO SE HAN PODIDO OBTENER LOS DATOS");
@@ -182,7 +189,9 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             else {
                 throw new FutFemAppException("ERROR AL RECUPERAR DATOS DEL SERVIDOR");
             }
-        } catch (FutFemAppException e) {
+        } catch (FutFemAppException | JSONException e) {
+            InformativoDialog id = new InformativoDialog("ERROR AL CONECTAR CON EL SERVIDOR");
+            id.show(fm, "ERROR");
             Log.e(TAG, "onPostExecute: ERROR: ", e);
         }
         Log.i(TAG, "onPostExecute: SALIDA");

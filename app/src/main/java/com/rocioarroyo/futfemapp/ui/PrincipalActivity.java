@@ -3,11 +3,8 @@ package com.rocioarroyo.futfemapp.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,9 +16,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.rocioarroyo.futfemapp.dialogos.CambioContrasenaDialog;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.dao.EquipoDAO;
-import com.rocioarroyo.futfemapp.db.BackgroundWorker;
 import com.rocioarroyo.futfemapp.dialogos.DarBajaDialog;
-import com.rocioarroyo.futfemapp.dialogos.InformativoDialog;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
@@ -40,9 +35,16 @@ public class PrincipalActivity extends AppCompatActivity {
     private ArrayList<PartidoDTO> listaPartidos;
     private String user_name;
 
+    /**
+     * Constructor vacio
+     */
     public PrincipalActivity() {
     }
 
+    /**
+     * Método para crear la actividad
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +58,22 @@ public class PrincipalActivity extends AppCompatActivity {
         btnNavigation.setSelectedItemId(R.id.iClasificacion);
     }
 
+    /**
+     * Método para crear las opciones del menu de usuario de la actividad
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_login, menu);
         return true;
     }
 
+    /**
+     * Méodo que se ejecuta al hacer clicl en el menu contextual del menu de usuario de la actividad
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -87,12 +99,19 @@ public class PrincipalActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Método que se utiliza para abrir los fragmentos de la actividad
+     * @param fragment
+     */
     public void openFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);
         transaction.commit();
     }
 
+    /**
+     * Método que se ejecuta al pulsar los botones del navegador inferior
+     */
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
@@ -116,6 +135,10 @@ public class PrincipalActivity extends AppCompatActivity {
         }
     };
 
+    /**
+     * Método que se ejecuta al pulsar el boton de retroceso del sistema operativo
+     * Cierra la aplicacion si el fragmento abierto es el de al calsificacion
+     */
     @Override
     public void onBackPressed() {
         int selectedItemId = btnNavigation.getSelectedItemId();
@@ -129,10 +152,18 @@ public class PrincipalActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * getUser_name
+     * @return user_name
+     */
     public String getUser_name() {
         return user_name;
     }
 
+    /**
+     * setUser_name
+     * @param user_name
+     */
     public void setUser_name(String user_name) {
         this.user_name = user_name;
     }

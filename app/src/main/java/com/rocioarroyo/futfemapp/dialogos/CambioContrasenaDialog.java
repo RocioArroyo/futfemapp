@@ -24,18 +24,35 @@ public class CambioContrasenaDialog extends DialogFragment {
     private TextInputEditText tvPass;
     private TextInputEditText tvCambPass;
 
+    /**
+     * OnAttach
+     * @param context
+     */
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
     }
 
+    /**
+     * Constructor vacio
+     */
     public CambioContrasenaDialog() {}
 
+    /**
+     * Constructor con las constantes de la apliacion
+     * @param context
+     * @param user_name
+     */
     public CambioContrasenaDialog(Context context, String user_name) {
         this.context = context;
         this.user_name = user_name;
     }
 
+    /**
+     * Método de creacion del dialogo
+     * @param savedInstanceState
+     * @return
+     */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder ventana = new AlertDialog.Builder(getActivity(), R.style.custom_dialog);
