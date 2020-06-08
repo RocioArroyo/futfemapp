@@ -20,6 +20,8 @@ import com.rocioarroyo.futfemapp.dialogos.CambioContrasenaDialog;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.dao.EquipoDAO;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
+import com.rocioarroyo.futfemapp.dialogos.DarBajaDialog;
+import com.rocioarroyo.futfemapp.dialogos.InformativoDialog;
 import com.rocioarroyo.futfemapp.dto.EquipoDTO;
 import com.rocioarroyo.futfemapp.dto.PartidoDTO;
 import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
@@ -75,8 +77,12 @@ public class PrincipalActivity extends AppCompatActivity {
             case R.id.iCambiarPass:
                 FragmentManager fm = getSupportFragmentManager();
                 CambioContrasenaDialog ccd = new CambioContrasenaDialog(context, user_name);
-                ccd.show(fm, "Cambio de contraseña");
+                ccd.show(fmp, "Cambio de contraseña");
                 return true;
+            case R.id.iBaja:
+                FragmentManager fmb = getSupportFragmentManager();
+                DarBajaDialog dbd = new DarBajaDialog(context, user_name, context.getString(R.string.dar_baja));
+                dbd.show(fmb, "Dar Baja");
         }
         return super.onOptionsItemSelected(item);
     }

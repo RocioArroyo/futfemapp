@@ -9,25 +9,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.rocioarroyo.futfemapp.R;
 import com.rocioarroyo.futfemapp.db.BackgroundWorker;
-import com.rocioarroyo.futfemapp.fragments.ClasificacionFragment;
-import com.rocioarroyo.futfemapp.ui.PrincipalActivity;
 
 public class CambioContrasenaDialog extends DialogFragment {
 
     private Context context;
     private String user_name;
     private TextInputEditText tvPass;
-    private TextInputEditText tvCmabPass;
+    private TextInputEditText tvCambPass;
 
     @Override
     public void onAttach(Context context) {
@@ -47,32 +42,32 @@ public class CambioContrasenaDialog extends DialogFragment {
         ventana.setTitle(getString(R.string.title_cambiar_pass));
         LayoutInflater inflater = getActivity().getLayoutInflater();
         final View vistaVentana = inflater.inflate(R.layout.dialog_cambio_pass, null);
-        TextInputEditText tietNuevaPass = vistaVentana.findViewById(R.id.idNuevaPass);
-        TextInputEditText tietRepNuePass = vistaVentana.findViewById(R.id.idRepNuePass);
+        tvPass = vistaVentana.findViewById(R.id.idNuevaPass);
+        tvCambPass = vistaVentana.findViewById(R.id.idRepNuePass);
         ventana.setView(vistaVentana)
-                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                .setNegativeButton(context.getString(R.string.cancelar), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
                     }
-                }).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                }).setPositiveButton(context.getString(R.string.aceptar), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (tietNuevaPass.getText().toString().isEmpty() || tietRepNuePass.getText().toString().isEmpty()) {
+                if (tvPass.getText().toString().isEmpty() || tvCambPass.getText().toString().isEmpty()) {
                     FragmentManager fm = getFragmentManager();
                     InformativoDialog dp = new InformativoDialog(context.getString(R.string.errorCampoVacio));
                     dp.show(fm, "Tag Dialogo Informativo");
-                } else if (tietNuevaPass.getText().toString().equalsIgnoreCase(tietRepNuePass.getText().toString())) {
+                } else if (tvPass.getText().toString().equalsIgnoreCase(tvCambPass.getText().toString())) {
                     BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
-                    backgroundWorker.execute(context.getString(R.string.type_cambiar_pass), tietNuevaPass.getText().toString());
+                    backgroundWorker.execute(context.getString(R.string.type_cambiar_pass), tvPass.getText().toString());
                     FragmentManager fm = getFragmentManager();
                     InformativoDialog dp = new InformativoDialog(context.getString(R.string.pass_cambiada));
                     dp.show(fm, "Tag Dialogo informacion");
                 } else {
                     InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(tvPass.getWindowToken(), 0);
-                    inputMethodManager.hideSoftInputFromWindow(tvCmabPass.getWindowToken(), 0);
+                    inputMethodManager.hideSoftInputFromWindow(tvCambPass.getWindowToken(), 0);
                     FragmentManager fm = getFragmentManager();
                     InformativoDialog dp = new InformativoDialog(context.getString(R.string.errorPass));
                     dp.show(fm, "Tag Dialogo Informativo");

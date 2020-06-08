@@ -36,6 +36,7 @@
     <string name="type_jornada" translatable="false">jornada</string>
     <string name="type_fav" translatable="false">fav</string>
     <string name="type_cambiar_pass" translatable="false">cambiapass</string>
+    <string name="type_baja" translatable="false">baja</string>
 
     <!-- MENSAJES TRAIDOS DE LA BASE DE DATOS -->
         <!-- FAILS -->
@@ -100,4 +101,11 @@
     <string name="equipo_vis" translatable="false">icono equipo visitante</string>
     <string name="equipo_loc" translatable="false">icono del equipo visitante</string>
     <string name="pass_cambiada">Contraseña Cambiada Correctamente</string>
+    <string name="dar_baja">¿Seguro que desea darse de baja?</string>
+
+    <!-- BOTONES DIALOG -->
+    <string name="aceptar">ACEPTAR</string>
+    <string name="cancelar">CANCELAR</string>
+    <string name="no">NO</string>
+    <string name="si">SI</string>
 </resources>

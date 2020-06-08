@@ -35,7 +35,7 @@ public class InformativoDialog extends DialogFragment {
         AlertDialog.Builder ventana = new AlertDialog.Builder(getActivity(), R.style.custom_dialog);
         ventana.setTitle(getString(R.string.title_cambiar_pass));
         ventana.setMessage(mensaje);
-        ventana.setPositiveButton("ACEPTAR", new DialogInterface.OnClickListener() {
+        ventana.setPositiveButton(getContext().getString(R.string.aceptar), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();

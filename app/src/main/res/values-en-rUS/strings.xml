@@ -40,4 +40,9 @@
     <string name="title_nueva_pass">New Password</string>
     <string name="pass_cambiada">"Password Successfully Changed "</string>
     <string name="title_carga">" Loading Data"</string>
+    <string name="dar_baja">Are you sure you want to unsubscribe?</string>
+    <string name="aceptar">ACCEPT</string>
+    <string name="cancelar">CANCEL</string>
+    <string name="si">YES</string>
+    <string name="no">NO</string>
 </resources>

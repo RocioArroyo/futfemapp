@@ -81,6 +81,9 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
             tipo="cambiarpass";
             String nueva_pass = strings[1];
             return usuarioDAO.cambiarContrasena(context.getString(R.string.type_cambiar_pass), nueva_pass, login_url);
+        } else if (type.equalsIgnoreCase(context.getString(R.string.type_baja))){
+            tipo="baja";
+            return usuarioDAO.darBaja(context.getString(R.string.type_baja), login_url);
         }
         Log.i(TAG, "doInBackground: NO SE HAN PODIDO OBTENER LOS DATOS");
         Log.i(TAG, "doInBackground: SALIDA");
@@ -122,6 +125,11 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
         } else if (tipo.equalsIgnoreCase("cambiarpass")) {
             usuarioDAO.validarCambioContrasena(s);
             if (ccd!=null) {
+                ccd.dismiss();
+            }
+        } else if (tipo.equalsIgnoreCase("baja")) {
+            usuarioDAO.validaBaja(s);
+            if(ccd!=null) {
                 ccd.dismiss();
             }
         }
