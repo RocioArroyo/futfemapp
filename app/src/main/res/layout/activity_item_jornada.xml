@@ -45,7 +45,7 @@
 
         <TextView
             android:id="@+id/tvNombreLocal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="32sp"
             android:gravity="start"
             android:layout_gravity="start"
@@ -99,7 +99,7 @@
 
         <TextView
             android:id="@+id/tvNombreVisitante"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="32sp"
             android:gravity="end"
             android:layout_gravity="end"

@@ -81,10 +81,10 @@ public class EquipoDAO {
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.fav_ins_fail))) {
                 Log.e(TAG, "validarFavorito: NO SE HAN PODIDO INSERTAR EN LA TABLA", new Exception());
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.fav_del_ok))) {
-                reordenarLista(listaEquipos);
+                //reordenarLista(listaEquipos);
                 Log.i(TAG, "validarFavorito: SE HA ELIMINADO CORRECTAMENTE");
             } else if (resultado.equalsIgnoreCase(context.getString(R.string.fav_ins_ok))) {
-                reordenarLista(listaEquipos);
+                //reordenarLista(listaEquipos);
                 Log.i(TAG, "validarFavorito: SE HA INSERTADO CORRECTAMENTE");
             } else {
                 throw new FutFemAppException("NO SE HA PODIDO CONECTAR CON EL SERVIDOR");

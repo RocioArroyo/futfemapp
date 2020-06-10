@@ -108,20 +108,35 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
                 tipo="baja";
                 return usuarioDAO.darBaja(context.getString(R.string.type_baja), login_url);
             } else {
+                if (ccd!=null) {
+                    ccd.dismiss();
+                }
                 throw new FutFemAppException("No se ha recoocido el tipo de llamada");
             }
         } catch (IOException e) {
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
             InformativoDialog id = new InformativoDialog("SE HA PRODUCIDO UN ERROR");
             id.show(fm, "ERROR");
             Log.e(TAG, "doInBackground: ERROR: ", e);
         } catch (FutFemAppException e) {
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
             InformativoDialog id = new InformativoDialog("ERROR AL CONECTAR CON EL SERVIDOR");
             id.show(fm, "ERROR");
             Log.e(TAG, "doInBackground: ERROR: ", e);
         } catch (JSONException e) {
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
             InformativoDialog id = new InformativoDialog("SE HA PRODUCIDO UN ERROR");
             id.show(fm, "ERROR");
             Log.e(TAG, "doInBackground: ERROR: ", e);
+        }
+        if (ccd!=null) {
+            ccd.dismiss();
         }
         Log.i(TAG, "doInBackground: NO SE HAN PODIDO OBTENER LOS DATOS");
         Log.i(TAG, "doInBackground: SALIDA");
@@ -187,9 +202,15 @@ public class BackgroundWorker extends AsyncTask <String, Integer, ArrayList> {
                 }
             }
             else {
+                if (ccd!=null) {
+                    ccd.dismiss();
+                }
                 throw new FutFemAppException("ERROR AL RECUPERAR DATOS DEL SERVIDOR");
             }
         } catch (FutFemAppException | JSONException e) {
+            if (ccd!=null) {
+                ccd.dismiss();
+            }
             InformativoDialog id = new InformativoDialog("ERROR AL CONECTAR CON EL SERVIDOR");
             id.show(fm, "ERROR");
             Log.e(TAG, "onPostExecute: ERROR: ", e);

@@ -222,9 +222,6 @@ public class LoginActivity extends AppCompatActivity {
             Log.i(TAG, "registrarse: TODO VALIDADO");
             txtErrorUsPass.setVisibility(TextView.INVISIBLE);
             user_name = txtUserName.getText().toString();
-            FragmentManager fm = getSupportFragmentManager();
-            CargaDialog ccd = new CargaDialog(context, user_name);
-            ccd.show(fm, "Carga datos");
             BackgroundWorker backgroundWorker = new BackgroundWorker(context, user_name);
             backgroundWorker.execute(getString(R.string.type_pass));
         }
